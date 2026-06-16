@@ -170,13 +170,22 @@ class PluginSlot:
     """
     A named plugin slot that holds the current active version and a list of
     retiring versions that are waiting for in-flight calls to drain.
+
+    The ``_op_mutex`` serialises top-level operations (load/unload/replace)
+    so that a concurrent ``unload`` cannot tear down the version that a
+    running ``load_module`` has just installed.
     """
 
     def __init__(self, name: str) -> None:
         self.name = name
         self._lock = threading.Lock()
+        self._op_mutex = threading.RLock()
         self._current: Optional[ModuleVersion] = None
         self._retiring: List[ModuleVersion] = []
+
+    @property
+    def op_mutex(self) -> threading.RLock:
+        return self._op_mutex
 
     @property
     def current(self) -> Optional[ModuleVersion]:
@@ -195,6 +204,15 @@ class PluginSlot:
                 old = self._current
                 self._retiring.append(old)
             self._current = mv
+        return old
+
+    def clear_current(self) -> Optional[ModuleVersion]:
+        old: Optional[ModuleVersion] = None
+        with self._lock:
+            old = self._current
+            self._current = None
+            if old is not None:
+                self._retiring.append(old)
         return old
 
     def remove_retired(self, mv: ModuleVersion) -> None:
@@ -302,10 +320,11 @@ class PluginManager:
 
         guard.mark_ready()
 
-        old = slot.set_current(mv)
-        if old is not None:
-            old.guard.mark_retired()
-            self._drain_and_unload(old, slot)
+        with slot.op_mutex:
+            old = slot.set_current(mv)
+            if old is not None:
+                old.guard.mark_retired()
+                self._drain_and_unload(old, slot)
 
         return mv
 
@@ -314,15 +333,13 @@ class PluginManager:
             slot = self._slots.get(name)
         if slot is None:
             return False
-        current = slot.current
-        if current is None:
-            return False
-        current.guard.mark_retired()
-        new_placeholder: Optional[ModuleVersion] = None
-        with slot._lock:
-            slot._current = new_placeholder
-        self._drain_and_unload(current, slot)
-        return True
+        with slot.op_mutex:
+            current = slot.clear_current()
+            if current is None:
+                return False
+            current.guard.mark_retired()
+            self._drain_and_unload(current, slot)
+            return True
 
     def _drain_and_unload(self, mv: ModuleVersion, slot: PluginSlot) -> None:
         def _worker() -> None:
