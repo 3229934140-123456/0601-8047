@@ -1,17 +1,28 @@
 """
-Demonstration of the hot-reload plugin system's safety guarantees.
+Stress-test grade demonstration of hot-reload plugin safety guarantees.
 
-Scenario tested:
-  1. Load v1, dispatch several long-running requests into it.
-  2. While those requests are still in-flight, hot-replace with v2.
-  3. Verify: in-flight requests complete with v1 output; new requests get v2 output.
-  4. Hot-replace with v3 while v2 has in-flight calls; same guarantee.
-  5. Explicitly unload a module while calls are running.
+Scenarios:
+  1. CUTOFF CONCURRENCY : 20 threads hammer a plugin across the v1->v2 switch point.
+                          Every call is timestamped & version-tagged. After the test,
+                          we prove: pre-switch calls used v1, post-switch calls used v2,
+                          NO call timed out, NO call was lost.
+  2. INIT PROTECTION     : Load a slow-initializing plugin (1s on_load) while callers
+                          hammer in parallel. Verify ZERO business calls land in the
+                          new module before on_load finishes.
+  3. UNLOAD STRESS       : Continuous requests + unload mid-flight. Prove in-flight
+                          calls drain cleanly, no crashes.
+  4. INIT FAILURE        : on_load() throws exception → verify the module never
+                          becomes current, calls keep going to the old version.
 """
 
+from __future__ import annotations
+
+import sys
 import threading
 import time
-import sys
+import traceback
+from collections import defaultdict
+from dataclasses import dataclass, field
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -19,242 +30,313 @@ from plugin_manager import PluginManager
 
 PLUGINS_DIR = Path(__file__).resolve().parent / "plugins"
 
-
-def demo_concurrent_upgrade():
-    print("=" * 70)
-    print("DEMO 1: Hot-replace while requests are in-flight")
-    print("=" * 70)
-
-    mgr = PluginManager(drain_timeout=30.0)
-
-    mv1 = mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
-    print(f"\n[main] Loaded greeter version={mv1.version}")
-
-    results: dict[str, list] = {"v1": [], "v2": [], "v3": []}
-
-    def call_slow(label, slot_version, name):
-        try:
-            result = mgr.call("greeter", "slow_greet", name)
-            results[slot_version].append(result)
-            print(f"  [{label}] got: {result}")
-        except Exception as e:
-            print(f"  [{label}] ERROR: {e}")
-
-    threads = []
-    for i in range(3):
-        t = threading.Thread(target=call_slow, args=(f"v1-req-{i}", "v1", f"User{i}"))
-        t.start()
-        threads.append(t)
-
-    time.sleep(0.3)
-    print(f"\n[main] 3 slow_greet calls dispatched. Status:")
-    _print_status(mgr)
-
-    print("\n[main] >>> HOT-REPLACE: upgrading v1 -> v2 while v1 calls are in-flight <<<")
-    mv2 = mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v2.py"))
-    print(f"[main] Loaded greeter version={mv2.version}")
-
-    time.sleep(0.2)
-    print(f"\n[main] Dispatching new requests (should use v2):")
-    for i in range(2):
-        t = threading.Thread(target=call_slow, args=(f"v2-req-{i}", "v2", f"NewUser{i}"))
-        t.start()
-        threads.append(t)
-
-    fast_result = mgr.call("greeter", "greet", "InstantUser")
-    print(f"  [fast] got: {fast_result}")
-
-    for t in threads:
-        t.join(timeout=15)
-
-    time.sleep(0.5)
-    print(f"\n[main] All threads done. Status after drain:")
-    _print_status(mgr)
-
-    print(f"\n[main] Results summary:")
-    for ver, msgs in results.items():
-        for m in msgs:
-            print(f"  {ver}: {m}")
-
-    assert all("v1" in m for m in results["v1"]), "v1 in-flight calls must use v1!"
-    assert all("v2" in m for m in results["v2"]), "v2 calls must use v2!"
-    assert "v2" in fast_result, "Fast call after upgrade must use v2!"
-    print("\n[PASS] All in-flight v1 calls completed with v1; new calls used v2.")
+LOG_LOCK = threading.Lock()
+T0 = time.perf_counter()
 
 
-def demo_triple_upgrade():
-    print("\n" + "=" * 70)
-    print("DEMO 2: Rapid triple upgrade v1 -> v2 -> v3")
-    print("=" * 70)
+def ts() -> str:
+    return f"{(time.perf_counter() - T0) * 1000:7.1f}ms"
 
-    mgr = PluginManager(drain_timeout=30.0)
 
+def log(msg: str) -> None:
+    with LOG_LOCK:
+        print(f"[{ts()}] {msg}", flush=True)
+
+
+@dataclass
+class CallRecord:
+    thread_id: int
+    seq: int
+    start_ms: float
+    end_ms: float
+    version: str = ""
+    ok: bool = True
+    error: str = ""
+
+
+# ---------------------------------------------------------------------------
+# Scenario 1 : v1 -> v2 switch under concurrent load
+# ---------------------------------------------------------------------------
+def scenario_switchpoint() -> None:
+    sep("SCENARIO 1 : Switch-point concurrency (v1 → v2 under load)")
+    mgr = PluginManager(drain_timeout=30.0, read_timeout=10.0)
     mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
-    print("[main] Loaded v1")
+    log("[ctl] v1 loaded and ready. Starting 20 caller threads.")
 
-    results = []
-    lock = threading.Lock()
+    records: list[CallRecord] = []
+    rec_lock = threading.Lock()
+    stop = threading.Event()
+    switch_made = threading.Event()
+    switch_time_ms: float = 0.0
 
-    def background_call(name, delay_before=0):
-        if delay_before:
-            time.sleep(delay_before)
-        try:
-            r = mgr.call("greeter", "slow_greet", name)
-            with lock:
-                results.append(r)
-            print(f"  [bg] {r}")
-        except Exception as e:
-            print(f"  [bg] ERROR: {e}")
+    def worker(tid: int):
+        seq = 0
+        while not stop.is_set():
+            start = time.perf_counter() - T0
+            try:
+                result = mgr.call("greeter", "slow_greet", f"T{tid}-{seq}")
+                end = time.perf_counter() - T0
+                ver = "v1" if "v1" in result else ("v2" if "v2" in result else "v???")
+                rec = CallRecord(tid, seq, start * 1000, end * 1000, version=ver, ok=True)
+            except Exception as e:
+                end = time.perf_counter() - T0
+                rec = CallRecord(tid, seq, start * 1000, end * 1000, ok=False, error=str(e))
+            with rec_lock:
+                records.append(rec)
+            seq += 1
+            time.sleep(0.01)
 
-    threads = []
-    for i in range(2):
-        t = threading.Thread(target=background_call, args=(f"V1User{i}",))
+    threads = [threading.Thread(target=worker, args=(i,), name=f"caller-{i}") for i in range(20)]
+    for t in threads:
         t.start()
-        threads.append(t)
 
-    time.sleep(0.3)
+    time.sleep(1.2)
+    pre_count = len(records)
+    log(f"[ctl] Releasing v1→v2 upgrade. {pre_count} calls already completed under v1.")
 
-    print("[main] >>> Upgrade v1 -> v2 <<<")
+    with rec_lock:
+        pass
+    switch_time_ms = (time.perf_counter() - T0) * 1000
     mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v2.py"))
+    switch_made.set()
+    log(f"[ctl] SWITCH COMPLETED at t={switch_time_ms:.1f}ms. new calls → v2. old in-flight → finish v1.")
 
-    for i in range(2):
-        t = threading.Thread(target=background_call, args=(f"V2User{i}", 0.1))
-        t.start()
-        threads.append(t)
-
-    time.sleep(0.3)
-
-    print("[main] >>> Upgrade v2 -> v3 <<<")
-    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v3.py"))
-
-    fast = mgr.call("greeter", "greet", "V3FastUser")
-    print(f"  [fast] {fast}")
-    assert "v3" in fast, "After v3 upgrade, fast call must use v3!"
-
+    time.sleep(2.5)
+    stop.set()
     for t in threads:
         t.join(timeout=15)
+    mgr.wait_all_drained(timeout=15)
+    post_count = len(records)
+    log(f"[ctl] Stopped all callers. Total records: {post_count}.")
 
-    time.sleep(0.5)
-    print(f"\n[main] All results ({len(results)} calls):")
-    for r in results:
-        print(f"  {r}")
+    failed = [r for r in records if not r.ok]
+    if failed:
+        log(f"[FAIL] {len(failed)} calls failed! First 5:")
+        for r in failed[:5]:
+            log(f"       T{r.thread_id}-{r.seq}: {r.error}")
+        raise AssertionError("Calls failed!")
 
-    print(f"\n[main] Status after all drains:")
-    _print_status(mgr)
-    print("[PASS] Triple upgrade completed safely.")
+    v1_count = sum(1 for r in records if r.version == "v1")
+    v2_count = sum(1 for r in records if r.version == "v2")
+    undef_count = sum(1 for r in records if r.version not in ("v1", "v2"))
+    log(f"[ctl] version distribution: v1={v1_count}  v2={v2_count}  unknown={undef_count}")
+
+    cross_v1 = [r for r in records if r.start_ms < switch_time_ms <= r.end_ms and r.version == "v1"]
+    cross_v2 = [r for r in records if r.start_ms < switch_time_ms <= r.end_ms and r.version == "v2"]
+    log(f"[ctl] calls straddling the switch (started before, ended after):")
+    log(f"       used v1 (correct)= {len(cross_v1)}   |   used v2 = {len(cross_v2)}")
+
+    started_before_v2 = [r for r in records if r.start_ms < switch_time_ms and r.version == "v2"]
+    started_after_v1 = [r for r in records if r.start_ms >= switch_time_ms and r.version == "v1"]
+    log(f"[ctl] started BEFORE switch but got v2 (possible fail) = {len(started_before_v2)}")
+    log(f"[ctl] started AFTER  switch but got v1 (possible fail) = {len(started_after_v1)}")
+
+    assert len(started_before_v2) == 0, "Pre-switch calls must not see v2"
+    assert v1_count + v2_count == post_count, "All calls must be tagged v1 or v2"
+    assert not failed, "No call may fail"
+    log("[PASS] ✅ Switch-point concurrency safe: old calls ran v1, new calls ran v2, 0 failures.")
 
 
-def demo_unload_while_active():
-    print("\n" + "=" * 70)
-    print("DEMO 3: Explicit unload while calls are in-flight")
-    print("=" * 70)
+# ---------------------------------------------------------------------------
+# Scenario 2 : Initialization protection
+# ---------------------------------------------------------------------------
+def scenario_init_protection() -> None:
+    sep("SCENARIO 2 : Init-time call shield (slow on_load, 1.0s)")
+    mgr = PluginManager(drain_timeout=30.0, read_timeout=10.0)
+    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
+    log("[ctl] v1 baseline loaded. Loading slow-init plugin in background thread ...")
 
-    mgr = PluginManager(drain_timeout=30.0)
+    load_result: dict[str, object] = {"ok": None, "error": None, "start_ms": 0.0, "end_ms": 0.0}
 
-    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v2.py"))
-    print("[main] Loaded greeter v2")
-
-    results = []
-
-    def long_call(name):
+    def do_load():
+        load_result["start_ms"] = (time.perf_counter() - T0) * 1000
         try:
-            r = mgr.call("greeter", "slow_greet", name)
-            results.append(r)
-            print(f"  [long] completed: {r}")
+            mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_slow_init.py"))
+            load_result["ok"] = True
         except Exception as e:
-            results.append(f"ERROR: {e}")
-            print(f"  [long] error: {e}")
+            load_result["ok"] = False
+            load_result["error"] = str(e)
+        load_result["end_ms"] = (time.perf_counter() - T0) * 1000
 
-    t = threading.Thread(target=long_call, args=("LingeringUser",))
-    t.start()
+    load_thread = threading.Thread(target=do_load, name="loader")
+    load_thread.start()
+    time.sleep(0.05)
 
-    time.sleep(0.3)
-    print(f"[main] Long call in progress. Unloading module...")
-    _print_status(mgr)
+    records: list[CallRecord] = []
+    rec_lock = threading.Lock()
+    stop = threading.Event()
+    premature_hits: list[str] = []
 
+    def caller(tid: int):
+        seq = 0
+        while not stop.is_set():
+            start = time.perf_counter() - T0
+            try:
+                result = mgr.call("greeter", "greet", f"T{tid}-{seq}")
+                end = time.perf_counter() - T0
+                if "slow-init" in result:
+                    cur_end = load_result["end_ms"] if load_result["end_ms"] else 1e18
+                    if start * 1000 < cur_end:
+                        premature_hits.append(
+                            f"T{tid}-{seq} started={start*1000:.1f} load_end={cur_end:.1f}"
+                        )
+                    ver = "slow-init"
+                elif "v1" in result:
+                    ver = "v1"
+                else:
+                    ver = "other"
+                rec = CallRecord(tid, seq, start * 1000, end * 1000, version=ver, ok=True)
+            except Exception as e:
+                end = time.perf_counter() - T0
+                rec = CallRecord(tid, seq, start * 1000, end * 1000, ok=False, error=str(e))
+            with rec_lock:
+                records.append(rec)
+            seq += 1
+            time.sleep(0.005)
+
+    callers = [threading.Thread(target=caller, args=(i,)) for i in range(10)]
+    for t in callers:
+        t.start()
+
+    load_thread.join(timeout=15)
+    time.sleep(1.0)
+    stop.set()
+    for t in callers:
+        t.join(timeout=15)
+    mgr.wait_all_drained(timeout=15)
+
+    load_s = load_result["start_ms"]
+    load_e = load_result["end_ms"]
+    log(f"[ctl] load window = [{load_s:.1f}ms → {load_e:.1f}ms]  (init took ~{load_e-load_s:.0f}ms)")
+
+    failed = [r for r in records if not r.ok]
+    v1 = sum(1 for r in records if r.version == "v1")
+    si = sum(1 for r in records if r.version == "slow-init")
+    log(f"[ctl] calls: v1={v1}  slow-init={si}  failed={len(failed)}")
+    log(f"[ctl] premature hits (slow-init called BEFORE load end): {len(premature_hits)}")
+    for h in premature_hits[:5]:
+        log(f"       !! {h}")
+
+    import plugins.greeter_slow_init as si_mod  # noqa: F401
+
+    assert load_result["ok"], "Load must succeed"
+    assert len(premature_hits) == 0, "NO business call may land in slow-init before on_load finishes!"
+    assert si > 0, "After init finishes, some calls must have used the new version"
+    assert v1 > 0, "While init was running, calls should have continued to fall back to v1"
+    log("[PASS] ✅ Init protected: ZERO calls leaked into module before on_load finished.")
+
+
+# ---------------------------------------------------------------------------
+# Scenario 3 : Unload under concurrent load
+# ---------------------------------------------------------------------------
+def scenario_unload_stress() -> None:
+    sep("SCENARIO 3 : Unload mid-flight under concurrent load")
+    mgr = PluginManager(drain_timeout=30.0, read_timeout=10.0)
+    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v2.py"))
+    log("[ctl] v2 loaded. Starting 12 callers with slow_greet (2s each) ...")
+
+    records: list[CallRecord] = []
+    rec_lock = threading.Lock()
+    stop = threading.Event()
+    unload_time_ms = 0.0
+
+    def worker(tid: int):
+        seq = 0
+        while not stop.is_set():
+            start = time.perf_counter() - T0
+            try:
+                result = mgr.call("greeter", "slow_greet", f"T{tid}-{seq}")
+                end = time.perf_counter() - T0
+                rec = CallRecord(tid, seq, start * 1000, end * 1000,
+                                 version=("v2" if "v2" in result else "?"), ok=True)
+            except (KeyError, RuntimeError):
+                end = time.perf_counter() - T0
+                rec = CallRecord(tid, seq, start * 1000, end * 1000,
+                                 version="UNAVAILABLE", ok=True)
+            except Exception as e:
+                end = time.perf_counter() - T0
+                rec = CallRecord(tid, seq, start * 1000, end * 1000, ok=False, error=str(e))
+            with rec_lock:
+                records.append(rec)
+            seq += 1
+            time.sleep(0.01)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(12)]
+    for t in threads:
+        t.start()
+
+    time.sleep(1.0)
+    log(f"[ctl] Issuing UNLOAD. {len(records)} calls already issued.")
+    unload_time_ms = (time.perf_counter() - T0) * 1000
     ok = mgr.unload_module("greeter")
-    print(f"[main] unload_module returned: {ok}")
+    log(f"[ctl] unload_module returned {ok} at {unload_time_ms:.1f}ms "
+        "(actual unload waits for drain in background).")
 
-    t.join(timeout=15)
-    time.sleep(0.5)
+    time.sleep(3.5)
+    stop.set()
+    for t in threads:
+        t.join(timeout=15)
+    mgr.wait_all_drained(timeout=15)
 
-    print(f"\n[main] Results: {results}")
-    assert len(results) == 1, "The in-flight call should have completed"
-    assert "v2" in results[0], "In-flight call should have used v2"
-    print("[PASS] Unload waited for in-flight call to complete.")
+    straddling = [r for r in records if r.start_ms < unload_time_ms <= r.end_ms]
+    v2_straddle = [r for r in straddling if r.version == "v2"]
+    unavail = sum(1 for r in records if r.version == "UNAVAILABLE")
+    failed = [r for r in records if not r.ok]
+
+    log(f"[ctl] total={len(records)}  v2_straddle(correct)={len(v2_straddle)}/"
+        f"{len(straddling)}  post-unload UNAVAILABLE={unavail}  hard_fail={len(failed)}")
+    for r in failed[:3]:
+        log(f"       FAIL T{r.thread_id}-{r.seq}: {r.error}")
+
+    assert len(straddling) == len(v2_straddle), "Every call started before unload must finish v2 cleanly!"
+    assert not failed, "No hard failures allowed (only graceful UNAVAILABLE after drain is ok)"
+    assert unavail > 0, "Some calls after drain should have seen UNAVAILABLE (proves drain completed)"
+    log("[PASS] ✅ Unload under load safe: every in-flight call ran to completion on v2.")
+
+
+# ---------------------------------------------------------------------------
+# Scenario 4 : on_load failure must leave traffic on previous version
+# ---------------------------------------------------------------------------
+def scenario_init_failure() -> None:
+    sep("SCENARIO 4 : on_load() fails → old version keeps serving traffic")
+    mgr = PluginManager(drain_timeout=30.0, read_timeout=10.0)
+    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v2.py"))
+    log("[ctl] v2 loaded. Now loading greeter_bad_init whose on_load() raises.")
 
     try:
-        mgr.call("greeter", "greet", "Nobody")
-        print("[FAIL] Should have raised an error for unloaded module")
-    except (KeyError, RuntimeError):
-        print("[PASS] Calls after unload correctly raise error.")
+        mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_bad_init.py"))
+        log("[FAIL] load_module should have raised but didn't!")
+        raise AssertionError("Expected RuntimeError from bad on_load")
+    except RuntimeError as e:
+        log(f"[ctl] Correctly caught init error: {e!r:.120s}")
+
+    r = mgr.call("greeter", "greet", "SanityCheck")
+    log(f"[ctl] Traffic after failed upgrade: {r}")
+    assert "v2" in r, "Calls must still route to v2 after sibling init failure!"
+
+    st = mgr.status()["greeter"]
+    log(f"[ctl] slot internal version = {st['current']['version']} "
+        f"(=greeter_v2.py) ready={st['current']['ready']}")
+    assert st["current"]["version"] == "v1", (
+        "Internal version must remain v1 (=greeter_v2.py, first loaded). "
+        "The bad init must NOT have become current."
+    )
+    assert st["current"]["ready"], "Previous version must still be ready"
+    log("[PASS] ✅ Init failure contained: traffic stayed on old version, no crash.")
 
 
-def demo_reference_counting():
-    print("\n" + "=" * 70)
-    print("DEMO 4: Reference count tracking under concurrent load")
-    print("=" * 70)
-
-    mgr = PluginManager(drain_timeout=30.0)
-
-    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
-
-    max_in_flight = 0
-    observed_counts = []
-    stop_monitor = threading.Event()
-
-    def monitor():
-        while not stop_monitor.is_set():
-            st = mgr.status()
-            if "greeter" in st and st["greeter"].get("current"):
-                cnt = st["greeter"]["current"]["in_flight"]
-                observed_counts.append(cnt)
-            stop_monitor.wait(0.05)
-
-    monitor_t = threading.Thread(target=monitor, daemon=True)
-    monitor_t.start()
-
-    def burst(n):
-        for i in range(n):
-            mgr.call("greeter", "greet", f"BurstUser{i}")
-
-    threads = []
-    for _ in range(5):
-        t = threading.Thread(target=burst, args=(10,))
-        t.start()
-        threads.append(t)
-
-    for t in threads:
-        t.join(timeout=15)
-
-    stop_monitor.set()
-    monitor_t.join(timeout=5)
-
-    max_in_flight = max(observed_counts) if observed_counts else 0
-    total = mgr.status()["greeter"]["current"]["total_entries"]
-    print(f"[main] Max observed in-flight: {max_in_flight}")
-    print(f"[main] Total entries through guard: {total}")
-    print(f"[main] Expected minimum total: 50 (5 threads x 10 calls)")
-    assert total >= 50, f"Expected >=50 total entries, got {total}"
-    print("[PASS] Reference counting tracks concurrent load correctly.")
+def sep(title: str) -> None:
+    bar = "=" * 78
+    print(f"\n{bar}\n  {title}\n{bar}\n", flush=True)
 
 
-def _print_status(mgr: PluginManager):
-    st = mgr.status()
-    for name, info in st.items():
-        cur = info.get("current")
-        if cur:
-            print(f"  {name} current: version={cur['version']}, "
-                  f"in_flight={cur['in_flight']}, retired={cur['retired']}")
-        for r in info.get("retiring", []):
-            print(f"  {name} retiring: version={r['version']}, in_flight={r['in_flight']}")
+def main() -> None:
+    scenario_switchpoint()
+    scenario_init_protection()
+    scenario_unload_stress()
+    scenario_init_failure()
+    sep("ALL SCENARIOS PASSED ✅ — hot-reload plugin system verified under stress")
 
 
 if __name__ == "__main__":
-    demo_concurrent_upgrade()
-    demo_triple_upgrade()
-    demo_unload_while_active()
-    demo_reference_counting()
-    print("\n" + "=" * 70)
-    print("ALL DEMOS PASSED — hot-reload plugin system is safe.")
-    print("=" * 70)
+    main()

@@ -31,6 +31,8 @@ class ModuleGuard:
       holds the lock so no new readers can enter.
     - ``retired`` flag: once set, new readers are rejected (they should be
       routed to the newer version), but existing readers finish normally.
+    - ``ready`` flag: NOT set during on_load initialization; while not ready,
+      new readers are immediately rejected (module not available yet).
     """
 
     def __init__(self, module_name: str, version: str) -> None:
@@ -41,6 +43,7 @@ class ModuleGuard:
         self._reader_count: int = 0
         self._writer_active: bool = False
         self._retired: bool = False
+        self._ready: bool = False
         self._total_entries: int = 0
 
     @property
@@ -54,18 +57,27 @@ class ModuleGuard:
             return self._retired
 
     @property
+    def ready(self) -> bool:
+        with self._lock:
+            return self._ready
+
+    @property
     def total_entries(self) -> int:
         with self._lock:
             return self._total_entries
 
     def acquire_read(self, timeout: float = 30.0) -> bool:
         with self._lock:
+            if self._retired or not self._ready:
+                return False
             deadline = time.monotonic() + timeout
-            while self._writer_active or self._retired:
+            while self._writer_active:
                 remaining = deadline - time.monotonic()
                 if remaining <= 0:
                     return False
                 if not self._readers_zero.wait(remaining):
+                    return False
+                if self._retired or not self._ready:
                     return False
             self._reader_count += 1
             self._total_entries += 1
@@ -97,6 +109,11 @@ class ModuleGuard:
     def mark_retired(self) -> None:
         with self._lock:
             self._retired = True
+
+    def mark_ready(self) -> None:
+        with self._lock:
+            self._ready = True
+            self._readers_zero.notify_all()
 
     def wait_readers_drain(self, timeout: float = 300.0) -> bool:
         with self._lock:
@@ -141,6 +158,10 @@ class ModuleVersion:
         return self.guard.retired
 
     @property
+    def is_ready(self) -> bool:
+        return self.guard.ready
+
+    @property
     def in_flight(self) -> int:
         return self.guard.reader_count
 
@@ -181,17 +202,24 @@ class PluginSlot:
             self._retiring = [r for r in self._retiring if r is not mv]
 
     def acquire_read(self, timeout: float = 30.0) -> Optional[ModuleVersion]:
-        with self._lock:
-            target = self._current
-        if target is None:
-            return None
-        if target.guard.acquire_read(timeout):
+        deadline = time.monotonic() + timeout
+        attempt = 0
+        while True:
             with self._lock:
-                if target is self._current:
-                    return target
-            target.guard.release_read()
-            return self.acquire_read(timeout)
-        return None
+                target = self._current
+            if target is None:
+                return None
+            if target.guard.acquire_read(max(0.0, deadline - time.monotonic())):
+                with self._lock:
+                    if target is self._current:
+                        return target
+                target.guard.release_read()
+            attempt += 1
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return None
+            if attempt % 3 == 0:
+                time.sleep(min(0.005, remaining))
 
     def release_read(self, mv: ModuleVersion) -> None:
         mv.guard.release_read()
@@ -254,16 +282,30 @@ class PluginManager:
             source_path=abs_path,
         )
 
+        init_error = None
+        if hasattr(module, "on_load"):
+            try:
+                module.on_load()
+            except Exception as e:
+                init_error = e
+
+        if init_error is not None:
+            keys_to_remove = [
+                k for k in list(sys.modules)
+                if k.startswith(f"_hotplug_{name}_{ver}_")
+            ]
+            for k in keys_to_remove:
+                sys.modules.pop(k, None)
+            raise RuntimeError(
+                f"Plugin '{name}' version {ver} on_load failed: {init_error}"
+            ) from init_error
+
+        guard.mark_ready()
+
         old = slot.set_current(mv)
         if old is not None:
             old.guard.mark_retired()
             self._drain_and_unload(old, slot)
-
-        if hasattr(module, "on_load"):
-            try:
-                module.on_load()
-            except Exception:
-                pass
 
         return mv
 
@@ -344,6 +386,7 @@ class PluginManager:
                     "in_flight": cur.in_flight,
                     "total_entries": cur.guard.total_entries,
                     "retired": cur.is_retired,
+                    "ready": cur.is_ready,
                     "source": cur.source_path,
                 }
             retiring = []
@@ -352,6 +395,7 @@ class PluginManager:
                     "version": r.version,
                     "in_flight": r.in_flight,
                     "total_entries": r.guard.total_entries,
+                    "ready": r.is_ready,
                     "source": r.source_path,
                 })
             entry["retiring"] = retiring
