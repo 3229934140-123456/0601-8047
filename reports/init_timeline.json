@@ -1,0 +1,372 @@
+[
+  {
+    "ts_ms": 16591.51,
+    "kind": "CTRL",
+    "id": "C0-0",
+    "sub": "LOAD_SLOW_INIT",
+    "outcome": "OK",
+    "end_ms": 17594.27,
+    "latency_ms": 1002.76,
+    "detail": "→ v2 ready=True"
+  },
+  {
+    "ts_ms": 16612.73,
+    "kind": "CALL",
+    "id": "W0-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16913.14,
+    "latency_ms": 300.42,
+    "detail": "Hello, W0-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16612.88,
+    "kind": "CALL",
+    "id": "W1-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16913.08,
+    "latency_ms": 300.2,
+    "detail": "Hello, W1-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.01,
+    "kind": "CALL",
+    "id": "W2-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.6,
+    "latency_ms": 301.59,
+    "detail": "Hello, W2-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.13,
+    "kind": "CALL",
+    "id": "W3-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.57,
+    "latency_ms": 301.44,
+    "detail": "Hello, W3-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.26,
+    "kind": "CALL",
+    "id": "W4-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.41,
+    "latency_ms": 301.15,
+    "detail": "Hello, W4-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.37,
+    "kind": "CALL",
+    "id": "W5-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.54,
+    "latency_ms": 301.18,
+    "detail": "Hello, W5-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.58,
+    "kind": "CALL",
+    "id": "W6-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.45,
+    "latency_ms": 300.86,
+    "detail": "Hello, W6-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.69,
+    "kind": "CALL",
+    "id": "W7-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.48,
+    "latency_ms": 300.79,
+    "detail": "Hello, W7-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.81,
+    "kind": "CALL",
+    "id": "W8-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.5,
+    "latency_ms": 300.7,
+    "detail": "Hello, W8-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.9,
+    "kind": "CALL",
+    "id": "W9-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.31,
+    "latency_ms": 300.41,
+    "detail": "Hello, W9-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16613.98,
+    "kind": "CALL",
+    "id": "W10-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.11,
+    "latency_ms": 300.13,
+    "detail": "Hello, W10-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16614.06,
+    "kind": "CALL",
+    "id": "W11-0",
+    "sub": "greet",
+    "outcome": "v1",
+    "end_ms": 16914.63,
+    "latency_ms": 300.57,
+    "detail": "Hello, W11-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16916.7,
+    "kind": "CALL",
+    "id": "W1-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18917.22,
+    "latency_ms": 2000.52,
+    "detail": "Slow hello, W1-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16916.78,
+    "kind": "CALL",
+    "id": "W0-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18917.18,
+    "latency_ms": 2000.4,
+    "detail": "Slow hello, W0-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16917.48,
+    "kind": "CALL",
+    "id": "W10-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18917.74,
+    "latency_ms": 2000.25,
+    "detail": "Slow hello, W10-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16917.53,
+    "kind": "CALL",
+    "id": "W7-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18917.9,
+    "latency_ms": 2000.38,
+    "detail": "Slow hello, W7-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16917.77,
+    "kind": "CALL",
+    "id": "W4-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.69,
+    "latency_ms": 2000.92,
+    "detail": "Slow hello, W4-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16917.79,
+    "kind": "CALL",
+    "id": "W2-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.38,
+    "latency_ms": 2000.58,
+    "detail": "Slow hello, W2-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16917.81,
+    "kind": "CALL",
+    "id": "W9-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.24,
+    "latency_ms": 2000.43,
+    "detail": "Slow hello, W9-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16917.84,
+    "kind": "CALL",
+    "id": "W11-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.07,
+    "latency_ms": 2000.23,
+    "detail": "Slow hello, W11-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16918.24,
+    "kind": "CALL",
+    "id": "W6-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.72,
+    "latency_ms": 2000.48,
+    "detail": "Slow hello, W6-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16918.29,
+    "kind": "CALL",
+    "id": "W3-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.81,
+    "latency_ms": 2000.52,
+    "detail": "Slow hello, W3-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16918.31,
+    "kind": "CALL",
+    "id": "W8-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.78,
+    "latency_ms": 2000.46,
+    "detail": "Slow hello, W8-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 16918.34,
+    "kind": "CALL",
+    "id": "W5-1",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 18918.75,
+    "latency_ms": 2000.41,
+    "detail": "Slow hello, W5-1! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 18927.48,
+    "kind": "CALL",
+    "id": "W1-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.06,
+    "latency_ms": 200.58,
+    "detail": "Hello, W1-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18927.84,
+    "kind": "CALL",
+    "id": "W0-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.12,
+    "latency_ms": 200.28,
+    "detail": "Hello, W0-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.36,
+    "kind": "CALL",
+    "id": "W11-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.59,
+    "latency_ms": 200.23,
+    "detail": "Hello, W11-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.42,
+    "kind": "CALL",
+    "id": "W7-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.78,
+    "latency_ms": 200.36,
+    "detail": "Hello, W7-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.46,
+    "kind": "CALL",
+    "id": "W9-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.73,
+    "latency_ms": 200.27,
+    "detail": "Hello, W9-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.48,
+    "kind": "CALL",
+    "id": "W2-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.67,
+    "latency_ms": 200.19,
+    "detail": "Hello, W2-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.51,
+    "kind": "CALL",
+    "id": "W10-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19128.83,
+    "latency_ms": 200.31,
+    "detail": "Hello, W10-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.9,
+    "kind": "CALL",
+    "id": "W5-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19129.25,
+    "latency_ms": 200.35,
+    "detail": "Hello, W5-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18928.94,
+    "kind": "CALL",
+    "id": "W8-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19129.32,
+    "latency_ms": 200.37,
+    "detail": "Hello, W8-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18929.09,
+    "kind": "CALL",
+    "id": "W3-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19129.37,
+    "latency_ms": 200.28,
+    "detail": "Hello, W3-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18929.14,
+    "kind": "CALL",
+    "id": "W6-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19129.48,
+    "latency_ms": 200.34,
+    "detail": "Hello, W6-2! (from slow-init plugin)"
+  },
+  {
+    "ts_ms": 18929.16,
+    "kind": "CALL",
+    "id": "W4-2",
+    "sub": "greet",
+    "outcome": "slow-init",
+    "end_ms": 19129.42,
+    "latency_ms": 200.25,
+    "detail": "Hello, W4-2! (from slow-init plugin)"
+  }
+]

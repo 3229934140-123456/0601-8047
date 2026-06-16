@@ -1,0 +1,1040 @@
+ts_ms,kind,id,sub,outcome,end_ms,latency_ms,detail
+19137.84,CALL,W0-0,slow_greet,v1,21138.29,2000.45,"Slow hello, W0-0! (from greeter v1.0)"
+19137.98,CALL,W1-0,slow_greet,v1,21138.23,2000.24,"Slow hello, W1-0! (from greeter v1.0)"
+19138.11,CALL,W2-0,slow_greet,v1,21138.33,2000.22,"Slow hello, W2-0! (from greeter v1.0)"
+19138.29,CALL,W3-0,slow_greet,v1,21138.78,2000.49,"Slow hello, W3-0! (from greeter v1.0)"
+19138.44,CALL,W4-0,slow_greet,v1,21138.71,2000.28,"Slow hello, W4-0! (from greeter v1.0)"
+19138.96,CALL,W5-0,slow_greet,v1,21139.42,2000.46,"Slow hello, W5-0! (from greeter v1.0)"
+19139.11,CALL,W6-0,slow_greet,v1,21139.45,2000.34,"Slow hello, W6-0! (from greeter v1.0)"
+19139.2,CALL,W7-0,slow_greet,v1,21139.32,2000.11,"Slow hello, W7-0! (from greeter v1.0)"
+19139.41,CALL,W8-0,slow_greet,v1,21140.11,2000.71,"Slow hello, W8-0! (from greeter v1.0)"
+19139.56,CALL,W9-0,slow_greet,v1,21140.02,2000.45,"Slow hello, W9-0! (from greeter v1.0)"
+19139.7,CALL,W10-0,slow_greet,v1,21140.06,2000.36,"Slow hello, W10-0! (from greeter v1.0)"
+19139.82,CALL,W11-0,slow_greet,v1,21140.09,2000.27,"Slow hello, W11-0! (from greeter v1.0)"
+19139.94,CALL,W12-0,slow_greet,v1,21140.72,2000.78,"Slow hello, W12-0! (from greeter v1.0)"
+19140.1,CALL,W13-0,slow_greet,v1,21140.69,2000.59,"Slow hello, W13-0! (from greeter v1.0)"
+19140.22,CALL,W14-0,slow_greet,v1,21140.65,2000.43,"Slow hello, W14-0! (from greeter v1.0)"
+19140.36,CALL,W15-0,slow_greet,v1,21140.56,2000.2,"Slow hello, W15-0! (from greeter v1.0)"
+19140.51,CTRL,C0-0,RELOAD_V2,OK,19141.67,1.17,→ v2
+19140.65,CTRL,C1-0,LOAD_SLOW,OK,20144.9,1004.25,→ v3
+19996.12,CTRL,C0-1,REPLACE_V2,OK,19997.12,1.0,→ v4
+21145.31,CTRL,C1-1,LOAD_SLOW,OK,22148.43,1003.13,→ v5
+21157.28,CTRL,C0-2,RELOAD_V2,OK,21158.79,1.5,→ v6
+21168.52,CALL,W1-1,slow_greet,v2,23169.19,2000.68,"Slow hey, W1-1! Welcome back! (from greeter v2.0"
+21168.74,CALL,W0-1,slow_greet,v2,23169.09,2000.34,"Slow hey, W0-1! Welcome back! (from greeter v2.0"
+21168.77,CALL,W2-1,slow_greet,v2,23169.16,2000.39,"Slow hey, W2-1! Welcome back! (from greeter v2.0"
+21169.15,CALL,W3-1,slow_greet,v2,23170.2,2001.05,"Slow hey, W3-1! Welcome back! (from greeter v2.0"
+21169.26,CALL,W4-1,slow_greet,v2,23170.17,2000.9,"Slow hey, W4-1! Welcome back! (from greeter v2.0"
+21169.8,CALL,W5-1,slow_greet,v2,23170.11,2000.31,"Slow hey, W5-1! Welcome back! (from greeter v2.0"
+21169.91,CALL,W7-1,slow_greet,v2,23170.14,2000.23,"Slow hey, W7-1! Welcome back! (from greeter v2.0"
+21169.94,CALL,W6-1,slow_greet,v2,23170.08,2000.14,"Slow hey, W6-1! Welcome back! (from greeter v2.0"
+21170.45,CALL,W9-1,slow_greet,v2,23170.76,2000.31,"Slow hey, W9-1! Welcome back! (from greeter v2.0"
+21170.49,CALL,W10-1,slow_greet,v2,23170.74,2000.25,"Slow hey, W10-1! Welcome back! (from greeter v2."
+21170.51,CALL,W11-1,slow_greet,v2,23170.68,2000.17,"Slow hey, W11-1! Welcome back! (from greeter v2."
+21170.54,CALL,W8-1,slow_greet,v2,23170.71,2000.17,"Slow hey, W8-1! Welcome back! (from greeter v2.0"
+21171.01,CALL,W12-1,slow_greet,v2,23171.3,2000.3,"Slow hey, W12-1! Welcome back! (from greeter v2."
+21171.09,CALL,W14-1,slow_greet,v2,23171.46,2000.37,"Slow hey, W14-1! Welcome back! (from greeter v2."
+21171.13,CALL,W13-1,slow_greet,v2,23171.43,2000.29,"Slow hey, W13-1! Welcome back! (from greeter v2."
+21171.15,CALL,W15-1,slow_greet,v2,23171.51,2000.36,"Slow hey, W15-1! Welcome back! (from greeter v2."
+23015.31,CTRL,C0-3,UNLOAD,OK,23015.66,0.35,unload=True
+23199.48,CALL,W0-2,slow_greet,degraded,23199.54,0.07,[fallback-slow] Service temporarily unavailable 
+23200.2,CALL,W2-2,slow_greet,degraded,23200.21,0.01,[fallback-slow] Service temporarily unavailable 
+23200.26,CALL,W1-2,slow_greet,degraded,23200.27,0.01,[fallback-slow] Service temporarily unavailable 
+23200.29,CALL,W6-2,slow_greet,degraded,23200.3,0.01,[fallback-slow] Service temporarily unavailable 
+23200.74,CALL,W5-2,slow_greet,degraded,23200.74,0.01,[fallback-slow] Service temporarily unavailable 
+23200.78,CALL,W3-2,slow_greet,degraded,23200.79,0.01,[fallback-slow] Service temporarily unavailable 
+23200.82,CALL,W7-2,slow_greet,degraded,23200.82,0.01,[fallback-slow] Service temporarily unavailable 
+23201.5,CALL,W4-2,slow_greet,degraded,23201.53,0.03,[fallback-slow] Service temporarily unavailable 
+23201.59,CALL,W15-2,slow_greet,degraded,23201.6,0.01,[fallback-slow] Service temporarily unavailable 
+23201.62,CALL,W9-2,slow_greet,degraded,23201.64,0.01,[fallback-slow] Service temporarily unavailable 
+23201.67,CALL,W8-2,slow_greet,degraded,23201.68,0.01,[fallback-slow] Service temporarily unavailable 
+23201.7,CALL,W11-2,slow_greet,degraded,23201.71,0.01,[fallback-slow] Service temporarily unavailable 
+23201.75,CALL,W10-2,slow_greet,degraded,23201.76,0.01,[fallback-slow] Service temporarily unavailable 
+23201.78,CALL,W13-2,slow_greet,degraded,23201.79,0.01,[fallback-slow] Service temporarily unavailable 
+23202.13,CALL,W12-2,slow_greet,degraded,23202.14,0.01,[fallback-slow] Service temporarily unavailable 
+23202.67,CALL,W14-2,slow_greet,degraded,23202.92,0.26,[fallback-slow] Service temporarily unavailable 
+23229.95,CALL,W0-3,slow_greet,degraded,23230.06,0.11,[fallback-slow] Service temporarily unavailable 
+23230.62,CALL,W6-3,slow_greet,degraded,23230.62,0.01,[fallback-slow] Service temporarily unavailable 
+23231.14,CALL,W1-3,slow_greet,degraded,23231.19,0.04,[fallback-slow] Service temporarily unavailable 
+23231.38,CALL,W7-3,slow_greet,degraded,23231.47,0.09,[fallback-slow] Service temporarily unavailable 
+23231.5,CALL,W3-3,slow_greet,degraded,23231.52,0.01,[fallback-slow] Service temporarily unavailable 
+23231.55,CALL,W5-3,slow_greet,degraded,23231.56,0.01,[fallback-slow] Service temporarily unavailable 
+23231.62,CALL,W2-3,slow_greet,degraded,23231.63,0.01,[fallback-slow] Service temporarily unavailable 
+23232.01,CALL,W8-3,slow_greet,degraded,23232.09,0.08,[fallback-slow] Service temporarily unavailable 
+23232.15,CALL,W10-3,slow_greet,degraded,23232.18,0.03,[fallback-slow] Service temporarily unavailable 
+23232.36,CALL,W11-3,slow_greet,degraded,23232.37,0.02,[fallback-slow] Service temporarily unavailable 
+23233.01,CALL,W13-3,slow_greet,degraded,23233.02,0.01,[fallback-slow] Service temporarily unavailable 
+23233.04,CALL,W4-3,slow_greet,degraded,23233.05,0.01,[fallback-slow] Service temporarily unavailable 
+23233.08,CALL,W12-3,slow_greet,degraded,23233.09,0.01,[fallback-slow] Service temporarily unavailable 
+23233.11,CALL,W15-3,slow_greet,degraded,23233.12,0.01,[fallback-slow] Service temporarily unavailable 
+23233.14,CALL,W14-3,slow_greet,degraded,23233.15,0.01,[fallback-slow] Service temporarily unavailable 
+23233.18,CALL,W9-3,slow_greet,degraded,23233.2,0.01,[fallback-slow] Service temporarily unavailable 
+23261.19,CALL,W0-4,slow_greet,degraded,23261.2,0.02,[fallback-slow] Service temporarily unavailable 
+23261.3,CALL,W6-4,slow_greet,degraded,23261.32,0.02,[fallback-slow] Service temporarily unavailable 
+23261.34,CALL,W1-4,slow_greet,degraded,23261.35,0.01,[fallback-slow] Service temporarily unavailable 
+23261.72,CALL,W5-4,slow_greet,degraded,23261.73,0.01,[fallback-slow] Service temporarily unavailable 
+23262.46,CALL,W3-4,slow_greet,degraded,23262.47,0.01,[fallback-slow] Service temporarily unavailable 
+23262.5,CALL,W10-4,slow_greet,degraded,23262.52,0.01,[fallback-slow] Service temporarily unavailable 
+23262.55,CALL,W7-4,slow_greet,degraded,23262.56,0.01,[fallback-slow] Service temporarily unavailable 
+23262.58,CALL,W11-4,slow_greet,degraded,23262.59,0.01,[fallback-slow] Service temporarily unavailable 
+23262.64,CALL,W2-4,slow_greet,degraded,23262.65,0.01,[fallback-slow] Service temporarily unavailable 
+23262.98,CALL,W8-4,slow_greet,degraded,23263.01,0.03,[fallback-slow] Service temporarily unavailable 
+23263.68,CALL,W12-4,slow_greet,degraded,23263.75,0.07,[fallback-slow] Service temporarily unavailable 
+23263.81,CALL,W4-4,slow_greet,degraded,23263.82,0.01,[fallback-slow] Service temporarily unavailable 
+23263.83,CALL,W14-4,slow_greet,degraded,23263.84,0.01,[fallback-slow] Service temporarily unavailable 
+23263.86,CALL,W15-4,slow_greet,degraded,23263.88,0.01,[fallback-slow] Service temporarily unavailable 
+23263.91,CALL,W13-4,slow_greet,degraded,23263.93,0.01,[fallback-slow] Service temporarily unavailable 
+23264.31,CALL,W9-4,slow_greet,degraded,23264.32,0.01,[fallback-slow] Service temporarily unavailable 
+23292.34,CALL,W6-5,slow_greet,degraded,23292.42,0.08,[fallback-slow] Service temporarily unavailable 
+23292.54,CALL,W3-5,slow_greet,degraded,23292.62,0.08,[fallback-slow] Service temporarily unavailable 
+23292.65,CALL,W7-5,slow_greet,degraded,23292.66,0.01,[fallback-slow] Service temporarily unavailable 
+23292.69,CALL,W0-5,slow_greet,degraded,23292.7,0.01,[fallback-slow] Service temporarily unavailable 
+23292.71,CALL,W1-5,slow_greet,degraded,23292.73,0.01,[fallback-slow] Service temporarily unavailable 
+23292.74,CALL,W5-5,slow_greet,degraded,23292.75,0.01,[fallback-slow] Service temporarily unavailable 
+23292.77,CALL,W11-5,slow_greet,degraded,23292.78,0.01,[fallback-slow] Service temporarily unavailable 
+23292.79,CALL,W10-5,slow_greet,degraded,23292.8,0.01,[fallback-slow] Service temporarily unavailable 
+23293.98,CALL,W8-5,slow_greet,degraded,23293.99,0.01,[fallback-slow] Service temporarily unavailable 
+23294.06,CALL,W2-5,slow_greet,degraded,23294.09,0.02,[fallback-slow] Service temporarily unavailable 
+23294.1,CALL,W13-5,slow_greet,degraded,23294.12,0.01,[fallback-slow] Service temporarily unavailable 
+23294.17,CALL,W15-5,slow_greet,degraded,23294.18,0.01,[fallback-slow] Service temporarily unavailable 
+23294.23,CALL,W14-5,slow_greet,degraded,23294.23,0.01,[fallback-slow] Service temporarily unavailable 
+23294.65,CALL,W12-5,slow_greet,degraded,23294.66,0.02,[fallback-slow] Service temporarily unavailable 
+23294.98,CALL,W4-5,slow_greet,degraded,23294.99,0.01,[fallback-slow] Service temporarily unavailable 
+23295.53,CALL,W9-5,slow_greet,degraded,23295.55,0.01,[fallback-slow] Service temporarily unavailable 
+23322.74,CALL,W1-6,slow_greet,degraded,23322.81,0.07,[fallback-slow] Service temporarily unavailable 
+23322.85,CALL,W0-6,slow_greet,degraded,23322.86,0.01,[fallback-slow] Service temporarily unavailable 
+23322.88,CALL,W6-6,slow_greet,degraded,23322.9,0.01,[fallback-slow] Service temporarily unavailable 
+23322.94,CALL,W3-6,slow_greet,degraded,23322.96,0.01,[fallback-slow] Service temporarily unavailable 
+23323.4,CALL,W5-6,slow_greet,degraded,23323.41,0.01,[fallback-slow] Service temporarily unavailable 
+23323.45,CALL,W10-6,slow_greet,degraded,23323.46,0.01,[fallback-slow] Service temporarily unavailable 
+23323.49,CALL,W11-6,slow_greet,degraded,23323.5,0.01,[fallback-slow] Service temporarily unavailable 
+23323.54,CALL,W7-6,slow_greet,degraded,23323.55,0.01,[fallback-slow] Service temporarily unavailable 
+23324.06,CALL,W8-6,slow_greet,degraded,23324.08,0.01,[fallback-slow] Service temporarily unavailable 
+23324.58,CALL,W15-6,slow_greet,degraded,23324.66,0.08,[fallback-slow] Service temporarily unavailable 
+23324.92,CALL,W13-6,slow_greet,degraded,23324.93,0.01,[fallback-slow] Service temporarily unavailable 
+23324.95,CALL,W2-6,slow_greet,degraded,23324.96,0.01,[fallback-slow] Service temporarily unavailable 
+23324.99,CALL,W12-6,slow_greet,degraded,23324.99,0.01,[fallback-slow] Service temporarily unavailable 
+23325.52,CALL,W14-6,slow_greet,degraded,23325.53,0.01,[fallback-slow] Service temporarily unavailable 
+23325.56,CALL,W9-6,slow_greet,degraded,23325.57,0.01,[fallback-slow] Service temporarily unavailable 
+23326.3,CALL,W4-6,slow_greet,degraded,23326.31,0.01,[fallback-slow] Service temporarily unavailable 
+23353.15,CALL,W0-7,slow_greet,degraded,23353.16,0.02,[fallback-slow] Service temporarily unavailable 
+23353.19,CALL,W6-7,slow_greet,degraded,23353.21,0.01,[fallback-slow] Service temporarily unavailable 
+23353.23,CALL,W3-7,slow_greet,degraded,23353.24,0.01,[fallback-slow] Service temporarily unavailable 
+23353.68,CALL,W7-7,slow_greet,degraded,23353.76,0.08,[fallback-slow] Service temporarily unavailable 
+23353.77,CALL,W11-7,slow_greet,degraded,23353.78,0.01,[fallback-slow] Service temporarily unavailable 
+23353.82,CALL,W10-7,slow_greet,degraded,23353.82,0.01,[fallback-slow] Service temporarily unavailable 
+23353.84,CALL,W1-7,slow_greet,degraded,23353.85,0.01,[fallback-slow] Service temporarily unavailable 
+23354.4,CALL,W5-7,slow_greet,degraded,23354.41,0.01,[fallback-slow] Service temporarily unavailable 
+23354.46,CALL,W8-7,slow_greet,degraded,23354.47,0.01,[fallback-slow] Service temporarily unavailable 
+23355.04,CALL,W2-7,slow_greet,degraded,23355.08,0.04,[fallback-slow] Service temporarily unavailable 
+23355.32,CALL,W15-7,slow_greet,degraded,23355.33,0.01,[fallback-slow] Service temporarily unavailable 
+23355.39,CALL,W13-7,slow_greet,degraded,23355.4,0.01,[fallback-slow] Service temporarily unavailable 
+23355.98,CALL,W12-7,slow_greet,degraded,23355.99,0.01,[fallback-slow] Service temporarily unavailable 
+23356.0,CALL,W9-7,slow_greet,degraded,23356.02,0.01,[fallback-slow] Service temporarily unavailable 
+23356.73,CALL,W4-7,slow_greet,degraded,23356.74,0.01,[fallback-slow] Service temporarily unavailable 
+23356.76,CALL,W14-7,slow_greet,degraded,23356.77,0.01,[fallback-slow] Service temporarily unavailable 
+23383.42,CALL,W0-8,slow_greet,degraded,23383.44,0.02,[fallback-slow] Service temporarily unavailable 
+23383.98,CALL,W1-8,slow_greet,degraded,23384.02,0.03,[fallback-slow] Service temporarily unavailable 
+23384.17,CALL,W6-8,slow_greet,degraded,23384.18,0.01,[fallback-slow] Service temporarily unavailable 
+23384.2,CALL,W10-8,slow_greet,degraded,23384.21,0.01,[fallback-slow] Service temporarily unavailable 
+23384.23,CALL,W3-8,slow_greet,degraded,23384.24,0.01,[fallback-slow] Service temporarily unavailable 
+23384.29,CALL,W11-8,slow_greet,degraded,23384.3,0.01,[fallback-slow] Service temporarily unavailable 
+23384.73,CALL,W7-8,slow_greet,degraded,23384.75,0.02,[fallback-slow] Service temporarily unavailable 
+23384.78,CALL,W5-8,slow_greet,degraded,23384.79,0.01,[fallback-slow] Service temporarily unavailable 
+23384.84,CALL,W8-8,slow_greet,degraded,23384.85,0.01,[fallback-slow] Service temporarily unavailable 
+23385.5,CALL,W13-8,slow_greet,degraded,23385.63,0.13,[fallback-slow] Service temporarily unavailable 
+23386.27,CALL,W9-8,slow_greet,degraded,23386.28,0.01,[fallback-slow] Service temporarily unavailable 
+23386.3,CALL,W2-8,slow_greet,degraded,23386.31,0.01,[fallback-slow] Service temporarily unavailable 
+23386.37,CALL,W15-8,slow_greet,degraded,23386.39,0.01,[fallback-slow] Service temporarily unavailable 
+23386.79,CALL,W14-8,slow_greet,degraded,23386.84,0.05,[fallback-slow] Service temporarily unavailable 
+23387.22,CALL,W12-8,slow_greet,degraded,23387.24,0.01,[fallback-slow] Service temporarily unavailable 
+23388.47,CALL,W4-8,slow_greet,degraded,23388.52,0.04,[fallback-slow] Service temporarily unavailable 
+23414.18,CALL,W0-9,slow_greet,degraded,23414.23,0.05,[fallback-slow] Service temporarily unavailable 
+23414.79,CALL,W1-9,slow_greet,degraded,23414.84,0.05,[fallback-slow] Service temporarily unavailable 
+23414.88,CALL,W10-9,slow_greet,degraded,23414.9,0.01,[fallback-slow] Service temporarily unavailable 
+23414.93,CALL,W8-9,slow_greet,degraded,23414.94,0.01,[fallback-slow] Service temporarily unavailable 
+23415.35,CALL,W11-9,slow_greet,degraded,23415.37,0.02,[fallback-slow] Service temporarily unavailable 
+23415.38,CALL,W7-9,slow_greet,degraded,23415.4,0.02,[fallback-slow] Service temporarily unavailable 
+23415.43,CALL,W6-9,slow_greet,degraded,23415.45,0.01,[fallback-slow] Service temporarily unavailable 
+23415.47,CALL,W5-9,slow_greet,degraded,23415.48,0.01,[fallback-slow] Service temporarily unavailable 
+23415.51,CALL,W3-9,slow_greet,degraded,23415.52,0.01,[fallback-slow] Service temporarily unavailable 
+23416.03,CALL,W13-9,slow_greet,degraded,23416.05,0.02,[fallback-slow] Service temporarily unavailable 
+23416.59,CALL,W9-9,slow_greet,degraded,23416.64,0.05,[fallback-slow] Service temporarily unavailable 
+23417.17,CALL,W2-9,slow_greet,degraded,23417.22,0.04,[fallback-slow] Service temporarily unavailable 
+23417.23,CALL,W15-9,slow_greet,degraded,23417.24,0.01,[fallback-slow] Service temporarily unavailable 
+23417.94,CALL,W14-9,slow_greet,degraded,23418.01,0.07,[fallback-slow] Service temporarily unavailable 
+23418.1,CALL,W12-9,slow_greet,degraded,23418.2,0.1,[fallback-slow] Service temporarily unavailable 
+23418.79,CALL,W4-9,slow_greet,degraded,23418.8,0.01,[fallback-slow] Service temporarily unavailable 
+23445.25,CALL,W1-10,slow_greet,degraded,23445.3,0.05,[fallback-slow] Service temporarily unavailable 
+23445.36,CALL,W0-10,slow_greet,degraded,23445.43,0.08,[fallback-slow] Service temporarily unavailable 
+23445.46,CALL,W10-10,slow_greet,degraded,23445.47,0.01,[fallback-slow] Service temporarily unavailable 
+23445.51,CALL,W8-10,slow_greet,degraded,23445.52,0.01,[fallback-slow] Service temporarily unavailable 
+23445.57,CALL,W5-10,slow_greet,degraded,23445.58,0.01,[fallback-slow] Service temporarily unavailable 
+23445.97,CALL,W6-10,slow_greet,degraded,23445.98,0.01,[fallback-slow] Service temporarily unavailable 
+23445.99,CALL,W7-10,slow_greet,degraded,23446.01,0.01,[fallback-slow] Service temporarily unavailable 
+23446.02,CALL,W3-10,slow_greet,degraded,23446.03,0.01,[fallback-slow] Service temporarily unavailable 
+23446.55,CALL,W11-10,slow_greet,degraded,23446.56,0.01,[fallback-slow] Service temporarily unavailable 
+23446.84,CALL,W9-10,slow_greet,degraded,23446.85,0.01,[fallback-slow] Service temporarily unavailable 
+23447.29,CALL,W13-10,slow_greet,degraded,23447.34,0.05,[fallback-slow] Service temporarily unavailable 
+23447.93,CALL,W2-10,slow_greet,degraded,23447.96,0.04,[fallback-slow] Service temporarily unavailable 
+23448.04,CALL,W15-10,slow_greet,degraded,23448.04,0.01,[fallback-slow] Service temporarily unavailable 
+23448.06,CALL,W14-10,slow_greet,degraded,23448.08,0.01,[fallback-slow] Service temporarily unavailable 
+23449.29,CALL,W4-10,slow_greet,degraded,23449.32,0.03,[fallback-slow] Service temporarily unavailable 
+23449.4,CALL,W12-10,slow_greet,degraded,23449.44,0.04,[fallback-slow] Service temporarily unavailable 
+23476.03,CALL,W6-11,slow_greet,degraded,23476.05,0.02,[fallback-slow] Service temporarily unavailable 
+23476.07,CALL,W3-11,slow_greet,degraded,23476.08,0.01,[fallback-slow] Service temporarily unavailable 
+23476.1,CALL,W7-11,slow_greet,degraded,23476.11,0.01,[fallback-slow] Service temporarily unavailable 
+23476.57,CALL,W0-11,slow_greet,degraded,23476.59,0.02,[fallback-slow] Service temporarily unavailable 
+23476.62,CALL,W1-11,slow_greet,degraded,23476.63,0.01,[fallback-slow] Service temporarily unavailable 
+23476.66,CALL,W5-11,slow_greet,degraded,23476.66,0.01,[fallback-slow] Service temporarily unavailable 
+23476.68,CALL,W8-11,slow_greet,degraded,23476.69,0.01,[fallback-slow] Service temporarily unavailable 
+23476.72,CALL,W11-11,slow_greet,degraded,23476.73,0.01,[fallback-slow] Service temporarily unavailable 
+23476.76,CALL,W10-11,slow_greet,degraded,23476.77,0.01,[fallback-slow] Service temporarily unavailable 
+23478.05,CALL,W9-11,slow_greet,degraded,23478.07,0.02,[fallback-slow] Service temporarily unavailable 
+23478.15,CALL,W15-11,slow_greet,degraded,23478.16,0.01,[fallback-slow] Service temporarily unavailable 
+23478.38,CALL,W13-11,slow_greet,degraded,23478.41,0.03,[fallback-slow] Service temporarily unavailable 
+23479.23,CALL,W2-11,slow_greet,degraded,23479.25,0.02,[fallback-slow] Service temporarily unavailable 
+23479.29,CALL,W14-11,slow_greet,degraded,23479.3,0.01,[fallback-slow] Service temporarily unavailable 
+23479.85,CALL,W12-11,slow_greet,degraded,23479.87,0.01,[fallback-slow] Service temporarily unavailable 
+23480.51,CALL,W4-11,slow_greet,degraded,23480.52,0.01,[fallback-slow] Service temporarily unavailable 
+23506.86,CALL,W5-12,slow_greet,degraded,23506.88,0.02,[fallback-slow] Service temporarily unavailable 
+23506.92,CALL,W3-12,slow_greet,degraded,23506.93,0.01,[fallback-slow] Service temporarily unavailable 
+23506.95,CALL,W6-12,slow_greet,degraded,23506.97,0.01,[fallback-slow] Service temporarily unavailable 
+23506.99,CALL,W7-12,slow_greet,degraded,23507.01,0.01,[fallback-slow] Service temporarily unavailable 
+23507.41,CALL,W1-12,slow_greet,degraded,23507.43,0.02,[fallback-slow] Service temporarily unavailable 
+23507.52,CALL,W0-12,slow_greet,degraded,23507.53,0.01,[fallback-slow] Service temporarily unavailable 
+23507.55,CALL,W8-12,slow_greet,degraded,23507.56,0.01,[fallback-slow] Service temporarily unavailable 
+23507.62,CALL,W11-12,slow_greet,degraded,23507.63,0.01,[fallback-slow] Service temporarily unavailable 
+23508.16,CALL,W10-12,slow_greet,degraded,23508.18,0.01,[fallback-slow] Service temporarily unavailable 
+23508.85,CALL,W9-12,slow_greet,degraded,23508.85,0.01,[fallback-slow] Service temporarily unavailable 
+23509.34,CALL,W15-12,slow_greet,degraded,23509.35,0.01,[fallback-slow] Service temporarily unavailable 
+23509.38,CALL,W13-12,slow_greet,degraded,23509.39,0.01,[fallback-slow] Service temporarily unavailable 
+23509.91,CALL,W2-12,slow_greet,degraded,23509.92,0.01,[fallback-slow] Service temporarily unavailable 
+23510.08,CALL,W14-12,slow_greet,degraded,23510.1,0.01,[fallback-slow] Service temporarily unavailable 
+23510.66,CALL,W12-12,slow_greet,degraded,23510.67,0.01,[fallback-slow] Service temporarily unavailable 
+23511.29,CALL,W4-12,slow_greet,degraded,23511.31,0.02,[fallback-slow] Service temporarily unavailable 
+23537.27,CALL,W5-13,slow_greet,degraded,23537.33,0.07,[fallback-slow] Service temporarily unavailable 
+23537.44,CALL,W3-13,slow_greet,degraded,23537.46,0.01,[fallback-slow] Service temporarily unavailable 
+23538.06,CALL,W6-13,slow_greet,degraded,23538.08,0.01,[fallback-slow] Service temporarily unavailable 
+23538.1,CALL,W7-13,slow_greet,degraded,23538.1,0.01,[fallback-slow] Service temporarily unavailable 
+23538.68,CALL,W1-13,slow_greet,degraded,23538.69,0.01,[fallback-slow] Service temporarily unavailable 
+23538.71,CALL,W0-13,slow_greet,degraded,23538.72,0.01,[fallback-slow] Service temporarily unavailable 
+23538.75,CALL,W11-13,slow_greet,degraded,23538.76,0.01,[fallback-slow] Service temporarily unavailable 
+23538.81,CALL,W8-13,slow_greet,degraded,23538.83,0.01,[fallback-slow] Service temporarily unavailable 
+23539.11,CALL,W10-13,slow_greet,degraded,23539.14,0.03,[fallback-slow] Service temporarily unavailable 
+23539.7,CALL,W13-13,slow_greet,degraded,23539.74,0.03,[fallback-slow] Service temporarily unavailable 
+23539.8,CALL,W15-13,slow_greet,degraded,23539.86,0.06,[fallback-slow] Service temporarily unavailable 
+23539.96,CALL,W2-13,slow_greet,degraded,23539.97,0.01,[fallback-slow] Service temporarily unavailable 
+23540.05,CALL,W9-13,slow_greet,degraded,23540.06,0.01,[fallback-slow] Service temporarily unavailable 
+23541.17,CALL,W14-13,slow_greet,degraded,23541.18,0.01,[fallback-slow] Service temporarily unavailable 
+23541.25,CALL,W12-13,slow_greet,degraded,23541.26,0.01,[fallback-slow] Service temporarily unavailable 
+23542.62,CALL,W4-13,slow_greet,degraded,23542.63,0.01,[fallback-slow] Service temporarily unavailable 
+23568.61,CALL,W7-14,slow_greet,degraded,23568.64,0.02,[fallback-slow] Service temporarily unavailable 
+23568.7,CALL,W3-14,slow_greet,degraded,23568.71,0.02,[fallback-slow] Service temporarily unavailable 
+23568.75,CALL,W6-14,slow_greet,degraded,23568.76,0.01,[fallback-slow] Service temporarily unavailable 
+23568.78,CALL,W1-14,slow_greet,degraded,23568.79,0.01,[fallback-slow] Service temporarily unavailable 
+23568.81,CALL,W5-14,slow_greet,degraded,23568.82,0.01,[fallback-slow] Service temporarily unavailable 
+23568.83,CALL,W0-14,slow_greet,degraded,23568.85,0.01,[fallback-slow] Service temporarily unavailable 
+23570.35,CALL,W8-14,slow_greet,degraded,23570.4,0.04,[fallback-slow] Service temporarily unavailable 
+23570.43,CALL,W13-14,slow_greet,degraded,23570.44,0.01,[fallback-slow] Service temporarily unavailable 
+23570.49,CALL,W15-14,slow_greet,degraded,23570.5,0.01,[fallback-slow] Service temporarily unavailable 
+23570.51,CALL,W9-14,slow_greet,degraded,23570.53,0.01,[fallback-slow] Service temporarily unavailable 
+23570.55,CALL,W2-14,slow_greet,degraded,23570.56,0.01,[fallback-slow] Service temporarily unavailable 
+23570.57,CALL,W11-14,slow_greet,degraded,23570.59,0.01,[fallback-slow] Service temporarily unavailable 
+23570.6,CALL,W10-14,slow_greet,degraded,23570.61,0.01,[fallback-slow] Service temporarily unavailable 
+23571.77,CALL,W14-14,slow_greet,degraded,23571.81,0.03,[fallback-slow] Service temporarily unavailable 
+23571.95,CALL,W12-14,slow_greet,degraded,23571.96,0.01,[fallback-slow] Service temporarily unavailable 
+23573.8,CALL,W4-14,slow_greet,degraded,23573.81,0.01,[fallback-slow] Service temporarily unavailable 
+23598.96,CALL,W3-15,slow_greet,degraded,23599.0,0.05,[fallback-slow] Service temporarily unavailable 
+23599.09,CALL,W7-15,slow_greet,degraded,23599.1,0.02,[fallback-slow] Service temporarily unavailable 
+23599.63,CALL,W0-15,slow_greet,degraded,23599.67,0.04,[fallback-slow] Service temporarily unavailable 
+23599.77,CALL,W6-15,slow_greet,degraded,23599.79,0.01,[fallback-slow] Service temporarily unavailable 
+23599.8,CALL,W5-15,slow_greet,degraded,23599.81,0.01,[fallback-slow] Service temporarily unavailable 
+23600.29,CALL,W1-15,slow_greet,degraded,23600.31,0.02,[fallback-slow] Service temporarily unavailable 
+23600.8,CALL,W13-15,slow_greet,degraded,23600.85,0.06,[fallback-slow] Service temporarily unavailable 
+23600.93,CALL,W11-15,slow_greet,degraded,23600.94,0.01,[fallback-slow] Service temporarily unavailable 
+23601.42,CALL,W15-15,slow_greet,degraded,23601.45,0.02,[fallback-slow] Service temporarily unavailable 
+23601.54,CALL,W2-15,slow_greet,degraded,23601.55,0.01,[fallback-slow] Service temporarily unavailable 
+23601.59,CALL,W8-15,slow_greet,degraded,23601.6,0.01,[fallback-slow] Service temporarily unavailable 
+23601.63,CALL,W9-15,slow_greet,degraded,23601.64,0.01,[fallback-slow] Service temporarily unavailable 
+23601.67,CALL,W10-15,slow_greet,degraded,23601.68,0.01,[fallback-slow] Service temporarily unavailable 
+23602.01,CALL,W12-15,slow_greet,degraded,23602.05,0.04,[fallback-slow] Service temporarily unavailable 
+23602.78,CALL,W14-15,slow_greet,degraded,23602.8,0.02,[fallback-slow] Service temporarily unavailable 
+23603.92,CALL,W4-15,slow_greet,degraded,23603.93,0.01,[fallback-slow] Service temporarily unavailable 
+23629.63,CALL,W7-16,slow_greet,degraded,23629.66,0.02,[fallback-slow] Service temporarily unavailable 
+23629.88,CALL,W3-16,slow_greet,degraded,23629.89,0.02,[fallback-slow] Service temporarily unavailable 
+23629.94,CALL,W6-16,slow_greet,degraded,23629.95,0.01,[fallback-slow] Service temporarily unavailable 
+23630.37,CALL,W5-16,slow_greet,degraded,23630.41,0.03,[fallback-slow] Service temporarily unavailable 
+23630.44,CALL,W0-16,slow_greet,degraded,23630.67,0.23,[fallback-slow] Service temporarily unavailable 
+23631.39,CALL,W13-16,slow_greet,degraded,23631.43,0.04,[fallback-slow] Service temporarily unavailable 
+23631.44,CALL,W1-16,slow_greet,degraded,23631.45,0.01,[fallback-slow] Service temporarily unavailable 
+23631.96,CALL,W8-16,slow_greet,degraded,23632.07,0.1,[fallback-slow] Service temporarily unavailable 
+23632.12,CALL,W15-16,slow_greet,degraded,23632.13,0.01,[fallback-slow] Service temporarily unavailable 
+23632.17,CALL,W11-16,slow_greet,degraded,23632.18,0.01,[fallback-slow] Service temporarily unavailable 
+23632.21,CALL,W9-16,slow_greet,degraded,23632.22,0.01,[fallback-slow] Service temporarily unavailable 
+23632.58,CALL,W12-16,slow_greet,degraded,23632.61,0.03,[fallback-slow] Service temporarily unavailable 
+23632.63,CALL,W2-16,slow_greet,degraded,23632.63,0.01,[fallback-slow] Service temporarily unavailable 
+23632.68,CALL,W10-16,slow_greet,degraded,23632.69,0.01,[fallback-slow] Service temporarily unavailable 
+23633.17,CALL,W14-16,slow_greet,degraded,23633.2,0.04,[fallback-slow] Service temporarily unavailable 
+23634.73,CALL,W4-16,slow_greet,degraded,23634.81,0.08,[fallback-slow] Service temporarily unavailable 
+23659.91,CALL,W7-17,slow_greet,degraded,23659.93,0.02,[fallback-slow] Service temporarily unavailable 
+23659.98,CALL,W6-17,slow_greet,degraded,23659.99,0.01,[fallback-slow] Service temporarily unavailable 
+23661.23,CALL,W3-17,slow_greet,degraded,23661.27,0.04,[fallback-slow] Service temporarily unavailable 
+23661.35,CALL,W5-17,slow_greet,degraded,23661.36,0.01,[fallback-slow] Service temporarily unavailable 
+23661.86,CALL,W0-17,slow_greet,degraded,23661.87,0.01,[fallback-slow] Service temporarily unavailable 
+23661.93,CALL,W1-17,slow_greet,degraded,23661.94,0.01,[fallback-slow] Service temporarily unavailable 
+23662.59,CALL,W13-17,slow_greet,degraded,23662.61,0.02,[fallback-slow] Service temporarily unavailable 
+23662.65,CALL,W15-17,slow_greet,degraded,23662.66,0.01,[fallback-slow] Service temporarily unavailable 
+23662.68,CALL,W11-17,slow_greet,degraded,23662.69,0.01,[fallback-slow] Service temporarily unavailable 
+23662.7,CALL,W12-17,slow_greet,degraded,23662.72,0.01,[fallback-slow] Service temporarily unavailable 
+23663.17,CALL,W8-17,slow_greet,degraded,23663.18,0.01,[fallback-slow] Service temporarily unavailable 
+23663.19,CALL,W9-17,slow_greet,degraded,23663.2,0.01,[fallback-slow] Service temporarily unavailable 
+23663.64,CALL,W2-17,slow_greet,degraded,23663.67,0.03,[fallback-slow] Service temporarily unavailable 
+23663.78,CALL,W10-17,slow_greet,degraded,23663.79,0.01,[fallback-slow] Service temporarily unavailable 
+23664.32,CALL,W14-17,slow_greet,degraded,23664.33,0.01,[fallback-slow] Service temporarily unavailable 
+23665.73,CALL,W4-17,slow_greet,degraded,23665.74,0.01,[fallback-slow] Service temporarily unavailable 
+23691.0,CALL,W6-18,slow_greet,degraded,23691.03,0.02,[fallback-slow] Service temporarily unavailable 
+23691.27,CALL,W7-18,slow_greet,degraded,23691.37,0.1,[fallback-slow] Service temporarily unavailable 
+23691.8,CALL,W3-18,slow_greet,degraded,23691.86,0.05,[fallback-slow] Service temporarily unavailable 
+23692.53,CALL,W5-18,slow_greet,degraded,23692.54,0.01,[fallback-slow] Service temporarily unavailable 
+23693.04,CALL,W11-18,slow_greet,degraded,23693.05,0.01,[fallback-slow] Service temporarily unavailable 
+23693.07,CALL,W0-18,slow_greet,degraded,23693.08,0.01,[fallback-slow] Service temporarily unavailable 
+23693.1,CALL,W1-18,slow_greet,degraded,23693.11,0.01,[fallback-slow] Service temporarily unavailable 
+23693.14,CALL,W15-18,slow_greet,degraded,23693.15,0.01,[fallback-slow] Service temporarily unavailable 
+23694.01,CALL,W13-18,slow_greet,degraded,23694.02,0.01,[fallback-slow] Service temporarily unavailable 
+23694.07,CALL,W12-18,slow_greet,degraded,23694.08,0.01,[fallback-slow] Service temporarily unavailable 
+23694.11,CALL,W8-18,slow_greet,degraded,23694.12,0.01,[fallback-slow] Service temporarily unavailable 
+23694.55,CALL,W14-18,slow_greet,degraded,23694.56,0.01,[fallback-slow] Service temporarily unavailable 
+23694.62,CALL,W10-18,slow_greet,degraded,23694.63,0.01,[fallback-slow] Service temporarily unavailable 
+23694.66,CALL,W2-18,slow_greet,degraded,23694.68,0.01,[fallback-slow] Service temporarily unavailable 
+23694.69,CALL,W9-18,slow_greet,degraded,23694.71,0.01,[fallback-slow] Service temporarily unavailable 
+23696.18,CALL,W4-18,slow_greet,degraded,23696.25,0.07,[fallback-slow] Service temporarily unavailable 
+23717.32,CTRL,C1-2,LOAD_SLOW,OK,24719.9,1002.58,→ v7
+23721.56,CALL,W6-19,slow_greet,degraded,23721.58,0.02,[fallback-slow] Service temporarily unavailable 
+23721.6,CALL,W7-19,slow_greet,degraded,23721.61,0.01,[fallback-slow] Service temporarily unavailable 
+23722.37,CALL,W3-19,slow_greet,degraded,23722.38,0.01,[fallback-slow] Service temporarily unavailable 
+23723.41,CALL,W11-19,slow_greet,degraded,23723.46,0.05,[fallback-slow] Service temporarily unavailable 
+23723.57,CALL,W15-19,slow_greet,degraded,23723.62,0.05,[fallback-slow] Service temporarily unavailable 
+23723.69,CALL,W5-19,slow_greet,degraded,23723.7,0.01,[fallback-slow] Service temporarily unavailable 
+23723.73,CALL,W0-19,slow_greet,degraded,23723.74,0.01,[fallback-slow] Service temporarily unavailable 
+23723.75,CALL,W1-19,slow_greet,degraded,23723.77,0.01,[fallback-slow] Service temporarily unavailable 
+23724.71,CALL,W12-19,slow_greet,degraded,23724.72,0.01,[fallback-slow] Service temporarily unavailable 
+23724.87,CALL,W9-19,slow_greet,degraded,23724.88,0.01,[fallback-slow] Service temporarily unavailable 
+23724.92,CALL,W14-19,slow_greet,degraded,23724.93,0.01,[fallback-slow] Service temporarily unavailable 
+23724.98,CALL,W13-19,slow_greet,degraded,23724.98,0.01,[fallback-slow] Service temporarily unavailable 
+23725.0,CALL,W10-19,slow_greet,degraded,23725.01,0.01,[fallback-slow] Service temporarily unavailable 
+23725.03,CALL,W2-19,slow_greet,degraded,23725.05,0.01,[fallback-slow] Service temporarily unavailable 
+23725.07,CALL,W8-19,slow_greet,degraded,23725.07,0.01,[fallback-slow] Service temporarily unavailable 
+23727.74,CALL,W4-19,slow_greet,degraded,23727.77,0.03,[fallback-slow] Service temporarily unavailable 
+23752.08,CALL,W6-20,slow_greet,degraded,23752.13,0.05,[fallback-slow] Service temporarily unavailable 
+23752.7,CALL,W3-20,slow_greet,degraded,23752.72,0.02,[fallback-slow] Service temporarily unavailable 
+23752.75,CALL,W7-20,slow_greet,degraded,23752.77,0.01,[fallback-slow] Service temporarily unavailable 
+23753.93,CALL,W0-20,slow_greet,degraded,23753.94,0.01,[fallback-slow] Service temporarily unavailable 
+23754.54,CALL,W5-20,slow_greet,degraded,23754.56,0.02,[fallback-slow] Service temporarily unavailable 
+23754.58,CALL,W1-20,slow_greet,degraded,23754.59,0.01,[fallback-slow] Service temporarily unavailable 
+23754.61,CALL,W15-20,slow_greet,degraded,23754.63,0.01,[fallback-slow] Service temporarily unavailable 
+23754.67,CALL,W11-20,slow_greet,degraded,23754.68,0.01,[fallback-slow] Service temporarily unavailable 
+23755.09,CALL,W12-20,slow_greet,degraded,23755.11,0.01,[fallback-slow] Service temporarily unavailable 
+23755.12,CALL,W13-20,slow_greet,degraded,23755.14,0.01,[fallback-slow] Service temporarily unavailable 
+23755.16,CALL,W8-20,slow_greet,degraded,23755.17,0.01,[fallback-slow] Service temporarily unavailable 
+23755.19,CALL,W10-20,slow_greet,degraded,23755.2,0.01,[fallback-slow] Service temporarily unavailable 
+23755.78,CALL,W9-20,slow_greet,degraded,23755.8,0.03,[fallback-slow] Service temporarily unavailable 
+23755.84,CALL,W2-20,slow_greet,degraded,23755.85,0.01,[fallback-slow] Service temporarily unavailable 
+23755.92,CALL,W14-20,slow_greet,degraded,23755.92,0.01,[fallback-slow] Service temporarily unavailable 
+23759.29,CALL,W4-20,slow_greet,degraded,23759.3,0.02,[fallback-slow] Service temporarily unavailable 
+23783.16,CALL,W3-21,slow_greet,degraded,23783.21,0.05,[fallback-slow] Service temporarily unavailable 
+23783.4,CALL,W6-21,slow_greet,degraded,23783.42,0.02,[fallback-slow] Service temporarily unavailable 
+23783.48,CALL,W7-21,slow_greet,degraded,23783.49,0.01,[fallback-slow] Service temporarily unavailable 
+23784.71,CALL,W5-21,slow_greet,degraded,23784.72,0.01,[fallback-slow] Service temporarily unavailable 
+23784.78,CALL,W1-21,slow_greet,degraded,23784.79,0.01,[fallback-slow] Service temporarily unavailable 
+23785.18,CALL,W0-21,slow_greet,degraded,23785.28,0.1,[fallback-slow] Service temporarily unavailable 
+23785.91,CALL,W8-21,slow_greet,degraded,23785.92,0.01,[fallback-slow] Service temporarily unavailable 
+23785.94,CALL,W11-21,slow_greet,degraded,23785.95,0.01,[fallback-slow] Service temporarily unavailable 
+23785.98,CALL,W10-21,slow_greet,degraded,23785.99,0.01,[fallback-slow] Service temporarily unavailable 
+23786.0,CALL,W13-21,slow_greet,degraded,23786.02,0.01,[fallback-slow] Service temporarily unavailable 
+23786.03,CALL,W15-21,slow_greet,degraded,23786.04,0.01,[fallback-slow] Service temporarily unavailable 
+23786.07,CALL,W9-21,slow_greet,degraded,23786.08,0.01,[fallback-slow] Service temporarily unavailable 
+23786.09,CALL,W12-21,slow_greet,degraded,23786.1,0.01,[fallback-slow] Service temporarily unavailable 
+23787.07,CALL,W14-21,slow_greet,degraded,23787.08,0.01,[fallback-slow] Service temporarily unavailable 
+23787.18,CALL,W2-21,slow_greet,degraded,23787.2,0.02,[fallback-slow] Service temporarily unavailable 
+23789.9,CALL,W4-21,slow_greet,degraded,23789.92,0.01,[fallback-slow] Service temporarily unavailable 
+23813.68,CALL,W3-22,slow_greet,degraded,23813.77,0.08,[fallback-slow] Service temporarily unavailable 
+23813.84,CALL,W7-22,slow_greet,degraded,23813.85,0.01,[fallback-slow] Service temporarily unavailable 
+23814.4,CALL,W6-22,slow_greet,degraded,23814.42,0.01,[fallback-slow] Service temporarily unavailable 
+23814.96,CALL,W5-22,slow_greet,degraded,23814.98,0.01,[fallback-slow] Service temporarily unavailable 
+23815.51,CALL,W0-22,slow_greet,degraded,23815.56,0.05,[fallback-slow] Service temporarily unavailable 
+23815.75,CALL,W1-22,slow_greet,degraded,23815.76,0.01,[fallback-slow] Service temporarily unavailable 
+23816.3,CALL,W8-22,slow_greet,degraded,23816.31,0.01,[fallback-slow] Service temporarily unavailable 
+23816.34,CALL,W9-22,slow_greet,degraded,23816.34,0.01,[fallback-slow] Service temporarily unavailable 
+23816.81,CALL,W15-22,slow_greet,degraded,23816.83,0.01,[fallback-slow] Service temporarily unavailable 
+23816.92,CALL,W13-22,slow_greet,degraded,23816.93,0.01,[fallback-slow] Service temporarily unavailable 
+23816.94,CALL,W11-22,slow_greet,degraded,23816.96,0.01,[fallback-slow] Service temporarily unavailable 
+23816.98,CALL,W12-22,slow_greet,degraded,23816.99,0.01,[fallback-slow] Service temporarily unavailable 
+23817.02,CALL,W10-22,slow_greet,degraded,23817.02,0.01,[fallback-slow] Service temporarily unavailable 
+23817.49,CALL,W2-22,slow_greet,degraded,23817.5,0.01,[fallback-slow] Service temporarily unavailable 
+23817.53,CALL,W14-22,slow_greet,degraded,23817.54,0.01,[fallback-slow] Service temporarily unavailable 
+23820.9,CALL,W4-22,slow_greet,degraded,23820.91,0.01,[fallback-slow] Service temporarily unavailable 
+23844.33,CALL,W7-23,slow_greet,degraded,23844.35,0.02,[fallback-slow] Service temporarily unavailable 
+23844.94,CALL,W3-23,slow_greet,degraded,23844.96,0.02,[fallback-slow] Service temporarily unavailable 
+23845.55,CALL,W6-23,slow_greet,degraded,23845.57,0.01,[fallback-slow] Service temporarily unavailable 
+23845.62,CALL,W5-23,slow_greet,degraded,23845.63,0.01,[fallback-slow] Service temporarily unavailable 
+23846.87,CALL,W0-23,slow_greet,degraded,23846.88,0.01,[fallback-slow] Service temporarily unavailable 
+23846.93,CALL,W1-23,slow_greet,degraded,23846.94,0.01,[fallback-slow] Service temporarily unavailable 
+23847.43,CALL,W9-23,slow_greet,degraded,23847.45,0.02,[fallback-slow] Service temporarily unavailable 
+23847.49,CALL,W10-23,slow_greet,degraded,23847.52,0.03,[fallback-slow] Service temporarily unavailable 
+23847.57,CALL,W15-23,slow_greet,degraded,23847.58,0.01,[fallback-slow] Service temporarily unavailable 
+23847.63,CALL,W8-23,slow_greet,degraded,23847.64,0.01,[fallback-slow] Service temporarily unavailable 
+23848.15,CALL,W11-23,slow_greet,degraded,23848.19,0.05,[fallback-slow] Service temporarily unavailable 
+23848.21,CALL,W12-23,slow_greet,degraded,23848.21,0.01,[fallback-slow] Service temporarily unavailable 
+23848.29,CALL,W13-23,slow_greet,degraded,23848.3,0.01,[fallback-slow] Service temporarily unavailable 
+23848.77,CALL,W14-23,slow_greet,degraded,23848.78,0.01,[fallback-slow] Service temporarily unavailable 
+23848.8,CALL,W2-23,slow_greet,degraded,23848.81,0.01,[fallback-slow] Service temporarily unavailable 
+23851.91,CALL,W4-23,slow_greet,degraded,23851.94,0.03,[fallback-slow] Service temporarily unavailable 
+23874.96,CALL,W7-24,slow_greet,degraded,23874.98,0.02,[fallback-slow] Service temporarily unavailable 
+23875.62,CALL,W3-24,slow_greet,degraded,23875.64,0.02,[fallback-slow] Service temporarily unavailable 
+23876.22,CALL,W5-24,slow_greet,degraded,23876.24,0.01,[fallback-slow] Service temporarily unavailable 
+23876.29,CALL,W6-24,slow_greet,degraded,23876.31,0.01,[fallback-slow] Service temporarily unavailable 
+23877.47,CALL,W0-24,slow_greet,degraded,23877.58,0.11,[fallback-slow] Service temporarily unavailable 
+23877.6,CALL,W1-24,slow_greet,degraded,23877.61,0.01,[fallback-slow] Service temporarily unavailable 
+23878.1,CALL,W10-24,slow_greet,degraded,23878.11,0.01,[fallback-slow] Service temporarily unavailable 
+23878.13,CALL,W15-24,slow_greet,degraded,23878.14,0.01,[fallback-slow] Service temporarily unavailable 
+23878.16,CALL,W9-24,slow_greet,degraded,23878.17,0.01,[fallback-slow] Service temporarily unavailable 
+23878.22,CALL,W8-24,slow_greet,degraded,23878.24,0.01,[fallback-slow] Service temporarily unavailable 
+23878.8,CALL,W13-24,slow_greet,degraded,23878.81,0.01,[fallback-slow] Service temporarily unavailable 
+23878.85,CALL,W12-24,slow_greet,degraded,23878.88,0.03,[fallback-slow] Service temporarily unavailable 
+23878.93,CALL,W11-24,slow_greet,degraded,23878.95,0.01,[fallback-slow] Service temporarily unavailable 
+23879.47,CALL,W14-24,slow_greet,degraded,23879.49,0.02,[fallback-slow] Service temporarily unavailable 
+23879.52,CALL,W2-24,slow_greet,degraded,23879.53,0.01,[fallback-slow] Service temporarily unavailable 
+23882.76,CALL,W4-24,slow_greet,degraded,23882.76,0.01,[fallback-slow] Service temporarily unavailable 
+23905.47,CALL,W7-25,slow_greet,degraded,23905.49,0.02,[fallback-slow] Service temporarily unavailable 
+23906.09,CALL,W3-25,slow_greet,degraded,23906.11,0.01,[fallback-slow] Service temporarily unavailable 
+23906.71,CALL,W6-25,slow_greet,degraded,23906.78,0.07,[fallback-slow] Service temporarily unavailable 
+23907.69,CALL,W5-25,slow_greet,degraded,23907.7,0.01,[fallback-slow] Service temporarily unavailable 
+23908.14,CALL,W1-25,slow_greet,degraded,23908.15,0.01,[fallback-slow] Service temporarily unavailable 
+23908.19,CALL,W0-25,slow_greet,degraded,23908.21,0.01,[fallback-slow] Service temporarily unavailable 
+23908.72,CALL,W8-25,slow_greet,degraded,23908.77,0.05,[fallback-slow] Service temporarily unavailable 
+23908.83,CALL,W9-25,slow_greet,degraded,23908.83,0.01,[fallback-slow] Service temporarily unavailable 
+23908.85,CALL,W10-25,slow_greet,degraded,23908.86,0.01,[fallback-slow] Service temporarily unavailable 
+23908.89,CALL,W15-25,slow_greet,degraded,23908.9,0.01,[fallback-slow] Service temporarily unavailable 
+23909.38,CALL,W13-25,slow_greet,degraded,23909.39,0.01,[fallback-slow] Service temporarily unavailable 
+23909.95,CALL,W12-25,slow_greet,degraded,23910.0,0.05,[fallback-slow] Service temporarily unavailable 
+23910.04,CALL,W14-25,slow_greet,degraded,23910.05,0.01,[fallback-slow] Service temporarily unavailable 
+23910.07,CALL,W11-25,slow_greet,degraded,23910.08,0.01,[fallback-slow] Service temporarily unavailable 
+23910.64,CALL,W2-25,slow_greet,degraded,23910.65,0.01,[fallback-slow] Service temporarily unavailable 
+23913.83,CALL,W4-25,slow_greet,degraded,23913.85,0.01,[fallback-slow] Service temporarily unavailable 
+23935.77,CALL,W7-26,slow_greet,degraded,23935.79,0.02,[fallback-slow] Service temporarily unavailable 
+23936.99,CALL,W3-26,slow_greet,degraded,23937.01,0.02,[fallback-slow] Service temporarily unavailable 
+23937.08,CALL,W6-26,slow_greet,degraded,23937.1,0.01,[fallback-slow] Service temporarily unavailable 
+23938.56,CALL,W5-26,slow_greet,degraded,23938.58,0.01,[fallback-slow] Service temporarily unavailable 
+23938.6,CALL,W0-26,slow_greet,degraded,23938.61,0.01,[fallback-slow] Service temporarily unavailable 
+23939.09,CALL,W8-26,slow_greet,degraded,23939.1,0.01,[fallback-slow] Service temporarily unavailable 
+23939.13,CALL,W1-26,slow_greet,degraded,23939.15,0.01,[fallback-slow] Service temporarily unavailable 
+23939.74,CALL,W9-26,slow_greet,degraded,23939.77,0.03,[fallback-slow] Service temporarily unavailable 
+23939.78,CALL,W15-26,slow_greet,degraded,23939.83,0.04,[fallback-slow] Service temporarily unavailable 
+23940.01,CALL,W13-26,slow_greet,degraded,23940.02,0.01,[fallback-slow] Service temporarily unavailable 
+23940.06,CALL,W10-26,slow_greet,degraded,23940.08,0.02,[fallback-slow] Service temporarily unavailable 
+23940.27,CALL,W12-26,slow_greet,degraded,23940.31,0.04,[fallback-slow] Service temporarily unavailable 
+23940.34,CALL,W14-26,slow_greet,degraded,23940.35,0.01,[fallback-slow] Service temporarily unavailable 
+23941.61,CALL,W2-26,slow_greet,degraded,23941.63,0.01,[fallback-slow] Service temporarily unavailable 
+23941.65,CALL,W11-26,slow_greet,degraded,23941.65,0.01,[fallback-slow] Service temporarily unavailable 
+23943.91,CALL,W4-26,slow_greet,degraded,23943.94,0.02,[fallback-slow] Service temporarily unavailable 
+23966.12,CALL,W7-27,slow_greet,degraded,23966.14,0.02,[fallback-slow] Service temporarily unavailable 
+23967.33,CALL,W3-27,slow_greet,degraded,23967.35,0.01,[fallback-slow] Service temporarily unavailable 
+23967.95,CALL,W6-27,slow_greet,degraded,23967.96,0.01,[fallback-slow] Service temporarily unavailable 
+23968.9,CALL,W0-27,slow_greet,degraded,23968.92,0.02,[fallback-slow] Service temporarily unavailable 
+23969.61,CALL,W8-27,slow_greet,degraded,23969.64,0.03,[fallback-slow] Service temporarily unavailable 
+23969.76,CALL,W5-27,slow_greet,degraded,23969.79,0.03,[fallback-slow] Service temporarily unavailable 
+23969.84,CALL,W1-27,slow_greet,degraded,23969.85,0.01,[fallback-slow] Service temporarily unavailable 
+23969.87,CALL,W15-27,slow_greet,degraded,23969.88,0.01,[fallback-slow] Service temporarily unavailable 
+23970.43,CALL,W10-27,slow_greet,degraded,23970.45,0.02,[fallback-slow] Service temporarily unavailable 
+23970.47,CALL,W9-27,slow_greet,degraded,23970.48,0.01,[fallback-slow] Service temporarily unavailable 
+23970.49,CALL,W13-27,slow_greet,degraded,23970.5,0.0,[fallback-slow] Service temporarily unavailable 
+23970.51,CALL,W14-27,slow_greet,degraded,23970.51,0.0,[fallback-slow] Service temporarily unavailable 
+23970.55,CALL,W12-27,slow_greet,degraded,23970.56,0.01,[fallback-slow] Service temporarily unavailable 
+23972.28,CALL,W11-27,slow_greet,degraded,23972.29,0.01,[fallback-slow] Service temporarily unavailable 
+23972.35,CALL,W2-27,slow_greet,degraded,23972.36,0.01,[fallback-slow] Service temporarily unavailable 
+23974.32,CALL,W4-27,slow_greet,degraded,23974.34,0.02,[fallback-slow] Service temporarily unavailable 
+23997.13,CALL,W7-28,slow_greet,degraded,23997.14,0.02,[fallback-slow] Service temporarily unavailable 
+23998.36,CALL,W3-28,slow_greet,degraded,23998.37,0.02,[fallback-slow] Service temporarily unavailable 
+23998.42,CALL,W6-28,slow_greet,degraded,23998.43,0.01,[fallback-slow] Service temporarily unavailable 
+23999.68,CALL,W8-28,slow_greet,degraded,23999.69,0.02,[fallback-slow] Service temporarily unavailable 
+23999.71,CALL,W0-28,slow_greet,degraded,23999.72,0.01,[fallback-slow] Service temporarily unavailable 
+24000.83,CALL,W12-28,slow_greet,degraded,24000.85,0.03,[fallback-slow] Service temporarily unavailable 
+24000.9,CALL,W15-28,slow_greet,degraded,24000.95,0.05,[fallback-slow] Service temporarily unavailable 
+24001.0,CALL,W13-28,slow_greet,degraded,24001.01,0.0,[fallback-slow] Service temporarily unavailable 
+24001.07,CALL,W5-28,slow_greet,degraded,24001.08,0.01,[fallback-slow] Service temporarily unavailable 
+24001.1,CALL,W9-28,slow_greet,degraded,24001.11,0.01,[fallback-slow] Service temporarily unavailable 
+24001.13,CALL,W14-28,slow_greet,degraded,24001.14,0.01,[fallback-slow] Service temporarily unavailable 
+24001.16,CALL,W1-28,slow_greet,degraded,24001.16,0.01,[fallback-slow] Service temporarily unavailable 
+24001.18,CALL,W10-28,slow_greet,degraded,24001.18,0.01,[fallback-slow] Service temporarily unavailable 
+24002.41,CALL,W11-28,slow_greet,degraded,24002.42,0.01,[fallback-slow] Service temporarily unavailable 
+24002.9,CALL,W2-28,slow_greet,degraded,24002.91,0.02,[fallback-slow] Service temporarily unavailable 
+24004.98,CALL,W4-28,slow_greet,degraded,24005.09,0.11,[fallback-slow] Service temporarily unavailable 
+24027.49,CALL,W7-29,slow_greet,degraded,24027.52,0.03,[fallback-slow] Service temporarily unavailable 
+24028.96,CALL,W3-29,slow_greet,degraded,24029.02,0.06,[fallback-slow] Service temporarily unavailable 
+24029.54,CALL,W6-29,slow_greet,degraded,24029.55,0.01,[fallback-slow] Service temporarily unavailable 
+24030.16,CALL,W0-29,slow_greet,degraded,24030.18,0.01,[fallback-slow] Service temporarily unavailable 
+24030.71,CALL,W8-29,slow_greet,degraded,24030.72,0.01,[fallback-slow] Service temporarily unavailable 
+24031.48,CALL,W15-29,slow_greet,degraded,24031.49,0.01,[fallback-slow] Service temporarily unavailable 
+24031.99,CALL,W12-29,slow_greet,degraded,24032.01,0.02,[fallback-slow] Service temporarily unavailable 
+24032.03,CALL,W5-29,slow_greet,degraded,24032.04,0.01,[fallback-slow] Service temporarily unavailable 
+24032.06,CALL,W9-29,slow_greet,degraded,24032.07,0.01,[fallback-slow] Service temporarily unavailable 
+24032.09,CALL,W13-29,slow_greet,degraded,24032.1,0.01,[fallback-slow] Service temporarily unavailable 
+24032.11,CALL,W14-29,slow_greet,degraded,24032.12,0.01,[fallback-slow] Service temporarily unavailable 
+24032.15,CALL,W10-29,slow_greet,degraded,24032.16,0.01,[fallback-slow] Service temporarily unavailable 
+24032.18,CALL,W1-29,slow_greet,degraded,24032.18,0.01,[fallback-slow] Service temporarily unavailable 
+24033.37,CALL,W11-29,slow_greet,degraded,24033.38,0.01,[fallback-slow] Service temporarily unavailable 
+24033.81,CALL,W2-29,slow_greet,degraded,24033.82,0.01,[fallback-slow] Service temporarily unavailable 
+24035.97,CALL,W4-29,slow_greet,degraded,24035.98,0.01,[fallback-slow] Service temporarily unavailable 
+24057.89,CALL,W7-30,slow_greet,degraded,24057.91,0.02,[fallback-slow] Service temporarily unavailable 
+24060.05,CALL,W6-30,slow_greet,degraded,24060.07,0.01,[fallback-slow] Service temporarily unavailable 
+24060.09,CALL,W3-30,slow_greet,degraded,24060.1,0.01,[fallback-slow] Service temporarily unavailable 
+24061.12,CALL,W8-30,slow_greet,degraded,24061.16,0.03,[fallback-slow] Service temporarily unavailable 
+24061.46,CALL,W0-30,slow_greet,degraded,24061.48,0.01,[fallback-slow] Service temporarily unavailable 
+24062.52,CALL,W10-30,slow_greet,degraded,24062.55,0.03,[fallback-slow] Service temporarily unavailable 
+24062.6,CALL,W15-30,slow_greet,degraded,24062.61,0.01,[fallback-slow] Service temporarily unavailable 
+24062.65,CALL,W12-30,slow_greet,degraded,24062.66,0.01,[fallback-slow] Service temporarily unavailable 
+24062.67,CALL,W9-30,slow_greet,degraded,24062.69,0.01,[fallback-slow] Service temporarily unavailable 
+24062.71,CALL,W5-30,slow_greet,degraded,24062.72,0.01,[fallback-slow] Service temporarily unavailable 
+24063.09,CALL,W1-30,slow_greet,degraded,24063.12,0.04,[fallback-slow] Service temporarily unavailable 
+24063.14,CALL,W13-30,slow_greet,degraded,24063.15,0.01,[fallback-slow] Service temporarily unavailable 
+24063.19,CALL,W14-30,slow_greet,degraded,24063.19,0.01,[fallback-slow] Service temporarily unavailable 
+24064.43,CALL,W11-30,slow_greet,degraded,24064.44,0.01,[fallback-slow] Service temporarily unavailable 
+24065.08,CALL,W2-30,slow_greet,degraded,24065.09,0.01,[fallback-slow] Service temporarily unavailable 
+24066.25,CALL,W4-30,slow_greet,degraded,24066.28,0.03,[fallback-slow] Service temporarily unavailable 
+24088.43,CALL,W7-31,slow_greet,degraded,24088.45,0.02,[fallback-slow] Service temporarily unavailable 
+24090.41,CALL,W3-31,slow_greet,degraded,24090.42,0.01,[fallback-slow] Service temporarily unavailable 
+24090.98,CALL,W6-31,slow_greet,degraded,24091.0,0.01,[fallback-slow] Service temporarily unavailable 
+24091.69,CALL,W0-31,slow_greet,degraded,24091.71,0.02,[fallback-slow] Service temporarily unavailable 
+24091.74,CALL,W8-31,slow_greet,degraded,24091.75,0.01,[fallback-slow] Service temporarily unavailable 
+24092.93,CALL,W5-31,slow_greet,degraded,24092.95,0.01,[fallback-slow] Service temporarily unavailable 
+24093.41,CALL,W1-31,slow_greet,degraded,24093.47,0.07,[fallback-slow] Service temporarily unavailable 
+24093.5,CALL,W13-31,slow_greet,degraded,24093.51,0.01,[fallback-slow] Service temporarily unavailable 
+24093.53,CALL,W10-31,slow_greet,degraded,24093.53,0.01,[fallback-slow] Service temporarily unavailable 
+24093.57,CALL,W9-31,slow_greet,degraded,24093.58,0.01,[fallback-slow] Service temporarily unavailable 
+24093.61,CALL,W15-31,slow_greet,degraded,24093.62,0.01,[fallback-slow] Service temporarily unavailable 
+24093.64,CALL,W12-31,slow_greet,degraded,24093.65,0.01,[fallback-slow] Service temporarily unavailable 
+24093.97,CALL,W14-31,slow_greet,degraded,24093.99,0.02,[fallback-slow] Service temporarily unavailable 
+24095.38,CALL,W11-31,slow_greet,degraded,24095.43,0.05,[fallback-slow] Service temporarily unavailable 
+24096.06,CALL,W2-31,slow_greet,degraded,24096.08,0.02,[fallback-slow] Service temporarily unavailable 
+24097.38,CALL,W4-31,slow_greet,degraded,24097.4,0.01,[fallback-slow] Service temporarily unavailable 
+24119.12,CALL,W7-32,slow_greet,degraded,24119.14,0.02,[fallback-slow] Service temporarily unavailable 
+24121.02,CALL,W3-32,slow_greet,degraded,24121.04,0.01,[fallback-slow] Service temporarily unavailable 
+24121.68,CALL,W6-32,slow_greet,degraded,24121.71,0.03,[fallback-slow] Service temporarily unavailable 
+24122.29,CALL,W8-32,slow_greet,degraded,24122.33,0.04,[fallback-slow] Service temporarily unavailable 
+24122.39,CALL,W0-32,slow_greet,degraded,24122.4,0.01,[fallback-slow] Service temporarily unavailable 
+24123.61,CALL,W5-32,slow_greet,degraded,24123.63,0.01,[fallback-slow] Service temporarily unavailable 
+24124.24,CALL,W15-32,slow_greet,degraded,24124.28,0.04,[fallback-slow] Service temporarily unavailable 
+24124.32,CALL,W12-32,slow_greet,degraded,24124.33,0.01,[fallback-slow] Service temporarily unavailable 
+24124.35,CALL,W13-32,slow_greet,degraded,24124.37,0.01,[fallback-slow] Service temporarily unavailable 
+24124.39,CALL,W9-32,slow_greet,degraded,24124.4,0.01,[fallback-slow] Service temporarily unavailable 
+24124.42,CALL,W1-32,slow_greet,degraded,24124.42,0.01,[fallback-slow] Service temporarily unavailable 
+24124.44,CALL,W10-32,slow_greet,degraded,24124.44,0.01,[fallback-slow] Service temporarily unavailable 
+24124.77,CALL,W14-32,slow_greet,degraded,24124.82,0.05,[fallback-slow] Service temporarily unavailable 
+24126.26,CALL,W11-32,slow_greet,degraded,24126.27,0.01,[fallback-slow] Service temporarily unavailable 
+24126.96,CALL,W2-32,slow_greet,degraded,24126.99,0.03,[fallback-slow] Service temporarily unavailable 
+24128.4,CALL,W4-32,slow_greet,degraded,24128.41,0.01,[fallback-slow] Service temporarily unavailable 
+24150.66,CALL,W7-33,slow_greet,degraded,24150.71,0.04,[fallback-slow] Service temporarily unavailable 
+24151.53,CALL,W3-33,slow_greet,degraded,24151.55,0.02,[fallback-slow] Service temporarily unavailable 
+24152.5,CALL,W6-33,slow_greet,degraded,24152.54,0.04,[fallback-slow] Service temporarily unavailable 
+24153.05,CALL,W8-33,slow_greet,degraded,24153.08,0.03,[fallback-slow] Service temporarily unavailable 
+24153.14,CALL,W0-33,slow_greet,degraded,24153.14,0.01,[fallback-slow] Service temporarily unavailable 
+24154.33,CALL,W5-33,slow_greet,degraded,24154.38,0.05,[fallback-slow] Service temporarily unavailable 
+24155.27,CALL,W9-33,slow_greet,degraded,24155.28,0.01,[fallback-slow] Service temporarily unavailable 
+24155.3,CALL,W13-33,slow_greet,degraded,24155.31,0.01,[fallback-slow] Service temporarily unavailable 
+24155.33,CALL,W12-33,slow_greet,degraded,24155.33,0.01,[fallback-slow] Service temporarily unavailable 
+24155.35,CALL,W15-33,slow_greet,degraded,24155.35,0.01,[fallback-slow] Service temporarily unavailable 
+24155.4,CALL,W1-33,slow_greet,degraded,24155.41,0.01,[fallback-slow] Service temporarily unavailable 
+24155.44,CALL,W10-33,slow_greet,degraded,24155.45,0.01,[fallback-slow] Service temporarily unavailable 
+24155.82,CALL,W14-33,slow_greet,degraded,24155.83,0.01,[fallback-slow] Service temporarily unavailable 
+24157.36,CALL,W11-33,slow_greet,degraded,24157.37,0.01,[fallback-slow] Service temporarily unavailable 
+24157.88,CALL,W2-33,slow_greet,degraded,24157.92,0.04,[fallback-slow] Service temporarily unavailable 
+24159.49,CALL,W4-33,slow_greet,degraded,24159.51,0.03,[fallback-slow] Service temporarily unavailable 
+24181.19,CALL,W7-34,slow_greet,degraded,24181.3,0.1,[fallback-slow] Service temporarily unavailable 
+24181.91,CALL,W3-34,slow_greet,degraded,24181.92,0.01,[fallback-slow] Service temporarily unavailable 
+24182.69,CALL,W6-34,slow_greet,degraded,24182.7,0.01,[fallback-slow] Service temporarily unavailable 
+24183.19,CALL,W8-34,slow_greet,degraded,24183.2,0.01,[fallback-slow] Service temporarily unavailable 
+24183.22,CALL,W0-34,slow_greet,degraded,24183.24,0.01,[fallback-slow] Service temporarily unavailable 
+24184.44,CALL,W5-34,slow_greet,degraded,24184.45,0.01,[fallback-slow] Service temporarily unavailable 
+24185.85,CALL,W1-34,slow_greet,degraded,24185.86,0.01,[fallback-slow] Service temporarily unavailable 
+24185.88,CALL,W14-34,slow_greet,degraded,24185.89,0.01,[fallback-slow] Service temporarily unavailable 
+24185.92,CALL,W13-34,slow_greet,degraded,24185.93,0.01,[fallback-slow] Service temporarily unavailable 
+24186.42,CALL,W15-34,slow_greet,degraded,24186.43,0.01,[fallback-slow] Service temporarily unavailable 
+24186.46,CALL,W9-34,slow_greet,degraded,24186.47,0.01,[fallback-slow] Service temporarily unavailable 
+24186.5,CALL,W10-34,slow_greet,degraded,24186.51,0.01,[fallback-slow] Service temporarily unavailable 
+24186.53,CALL,W12-34,slow_greet,degraded,24186.54,0.01,[fallback-slow] Service temporarily unavailable 
+24188.47,CALL,W11-34,slow_greet,degraded,24188.48,0.01,[fallback-slow] Service temporarily unavailable 
+24189.07,CALL,W2-34,slow_greet,degraded,24189.08,0.01,[fallback-slow] Service temporarily unavailable 
+24190.25,CALL,W4-34,slow_greet,degraded,24190.29,0.04,[fallback-slow] Service temporarily unavailable 
+24212.37,CALL,W7-35,slow_greet,degraded,24212.39,0.02,[fallback-slow] Service temporarily unavailable 
+24212.46,CALL,W3-35,slow_greet,degraded,24212.47,0.01,[fallback-slow] Service temporarily unavailable 
+24213.61,CALL,W8-35,slow_greet,degraded,24213.66,0.05,[fallback-slow] Service temporarily unavailable 
+24213.69,CALL,W6-35,slow_greet,degraded,24213.72,0.02,[fallback-slow] Service temporarily unavailable 
+24213.87,CALL,W0-35,slow_greet,degraded,24213.88,0.01,[fallback-slow] Service temporarily unavailable 
+24214.99,CALL,W5-35,slow_greet,degraded,24215.0,0.01,[fallback-slow] Service temporarily unavailable 
+24216.06,CALL,W1-35,slow_greet,degraded,24216.09,0.02,[fallback-slow] Service temporarily unavailable 
+24216.24,CALL,W14-35,slow_greet,degraded,24216.25,0.01,[fallback-slow] Service temporarily unavailable 
+24216.78,CALL,W13-35,slow_greet,degraded,24216.79,0.0,[fallback-slow] Service temporarily unavailable 
+24217.29,CALL,W10-35,slow_greet,degraded,24217.41,0.12,[fallback-slow] Service temporarily unavailable 
+24217.51,CALL,W15-35,slow_greet,degraded,24217.55,0.03,[fallback-slow] Service temporarily unavailable 
+24217.73,CALL,W9-35,slow_greet,degraded,24217.76,0.03,[fallback-slow] Service temporarily unavailable 
+24218.06,CALL,W12-35,slow_greet,degraded,24218.13,0.07,[fallback-slow] Service temporarily unavailable 
+24219.32,CALL,W2-35,slow_greet,degraded,24219.33,0.01,[fallback-slow] Service temporarily unavailable 
+24219.38,CALL,W11-35,slow_greet,degraded,24219.39,0.01,[fallback-slow] Service temporarily unavailable 
+24220.93,CALL,W4-35,slow_greet,degraded,24220.94,0.01,[fallback-slow] Service temporarily unavailable 
+24243.03,CALL,W3-36,slow_greet,degraded,24243.05,0.02,[fallback-slow] Service temporarily unavailable 
+24243.14,CALL,W7-36,slow_greet,degraded,24243.15,0.01,[fallback-slow] Service temporarily unavailable 
+24244.36,CALL,W0-36,slow_greet,degraded,24244.38,0.03,[fallback-slow] Service temporarily unavailable 
+24244.43,CALL,W6-36,slow_greet,degraded,24244.45,0.01,[fallback-slow] Service temporarily unavailable 
+24244.5,CALL,W8-36,slow_greet,degraded,24244.51,0.01,[fallback-slow] Service temporarily unavailable 
+24246.51,CALL,W5-36,slow_greet,degraded,24246.52,0.01,[fallback-slow] Service temporarily unavailable 
+24246.58,CALL,W14-36,slow_greet,degraded,24246.6,0.02,[fallback-slow] Service temporarily unavailable 
+24247.23,CALL,W13-36,slow_greet,degraded,24247.24,0.01,[fallback-slow] Service temporarily unavailable 
+24247.28,CALL,W1-36,slow_greet,degraded,24247.29,0.01,[fallback-slow] Service temporarily unavailable 
+24247.82,CALL,W15-36,slow_greet,degraded,24247.83,0.01,[fallback-slow] Service temporarily unavailable 
+24247.85,CALL,W10-36,slow_greet,degraded,24247.86,0.01,[fallback-slow] Service temporarily unavailable 
+24248.33,CALL,W9-36,slow_greet,degraded,24248.34,0.01,[fallback-slow] Service temporarily unavailable 
+24249.07,CALL,W12-36,slow_greet,degraded,24249.07,0.01,[fallback-slow] Service temporarily unavailable 
+24250.27,CALL,W11-36,slow_greet,degraded,24250.28,0.02,[fallback-slow] Service temporarily unavailable 
+24250.3,CALL,W2-36,slow_greet,degraded,24250.31,0.01,[fallback-slow] Service temporarily unavailable 
+24252.2,CALL,W4-36,slow_greet,degraded,24252.21,0.01,[fallback-slow] Service temporarily unavailable 
+24274.32,CALL,W7-37,slow_greet,degraded,24274.38,0.06,[fallback-slow] Service temporarily unavailable 
+24274.55,CALL,W6-37,slow_greet,degraded,24274.57,0.01,[fallback-slow] Service temporarily unavailable 
+24274.59,CALL,W3-37,slow_greet,degraded,24274.6,0.01,[fallback-slow] Service temporarily unavailable 
+24274.62,CALL,W8-37,slow_greet,degraded,24274.63,0.01,[fallback-slow] Service temporarily unavailable 
+24275.68,CALL,W0-37,slow_greet,degraded,24275.73,0.06,[fallback-slow] Service temporarily unavailable 
+24277.53,CALL,W5-37,slow_greet,degraded,24277.55,0.02,[fallback-slow] Service temporarily unavailable 
+24277.62,CALL,W14-37,slow_greet,degraded,24277.64,0.02,[fallback-slow] Service temporarily unavailable 
+24277.66,CALL,W13-37,slow_greet,degraded,24277.67,0.01,[fallback-slow] Service temporarily unavailable 
+24278.33,CALL,W1-37,slow_greet,degraded,24278.34,0.01,[fallback-slow] Service temporarily unavailable 
+24278.93,CALL,W10-37,slow_greet,degraded,24278.94,0.01,[fallback-slow] Service temporarily unavailable 
+24278.96,CALL,W9-37,slow_greet,degraded,24278.97,0.01,[fallback-slow] Service temporarily unavailable 
+24279.02,CALL,W15-37,slow_greet,degraded,24279.03,0.01,[fallback-slow] Service temporarily unavailable 
+24280.16,CALL,W12-37,slow_greet,degraded,24280.26,0.09,[fallback-slow] Service temporarily unavailable 
+24281.38,CALL,W2-37,slow_greet,degraded,24281.39,0.01,[fallback-slow] Service temporarily unavailable 
+24281.44,CALL,W11-37,slow_greet,degraded,24281.45,0.01,[fallback-slow] Service temporarily unavailable 
+24283.36,CALL,W4-37,slow_greet,degraded,24283.37,0.01,[fallback-slow] Service temporarily unavailable 
+24304.64,CALL,W6-38,slow_greet,degraded,24304.65,0.02,[fallback-slow] Service temporarily unavailable 
+24304.71,CALL,W8-38,slow_greet,degraded,24304.73,0.01,[fallback-slow] Service temporarily unavailable 
+24304.77,CALL,W7-38,slow_greet,degraded,24304.78,0.01,[fallback-slow] Service temporarily unavailable 
+24305.23,CALL,W3-38,slow_greet,degraded,24305.24,0.01,[fallback-slow] Service temporarily unavailable 
+24306.13,CALL,W0-38,slow_greet,degraded,24306.14,0.01,[fallback-slow] Service temporarily unavailable 
+24308.3,CALL,W14-38,slow_greet,degraded,24308.31,0.01,[fallback-slow] Service temporarily unavailable 
+24308.89,CALL,W13-38,slow_greet,degraded,24308.9,0.01,[fallback-slow] Service temporarily unavailable 
+24308.93,CALL,W1-38,slow_greet,degraded,24308.94,0.01,[fallback-slow] Service temporarily unavailable 
+24308.96,CALL,W5-38,slow_greet,degraded,24308.97,0.01,[fallback-slow] Service temporarily unavailable 
+24309.34,CALL,W15-38,slow_greet,degraded,24309.4,0.06,[fallback-slow] Service temporarily unavailable 
+24309.51,CALL,W10-38,slow_greet,degraded,24309.52,0.01,[fallback-slow] Service temporarily unavailable 
+24309.54,CALL,W9-38,slow_greet,degraded,24309.55,0.01,[fallback-slow] Service temporarily unavailable 
+24310.75,CALL,W12-38,slow_greet,degraded,24310.77,0.01,[fallback-slow] Service temporarily unavailable 
+24311.93,CALL,W11-38,slow_greet,degraded,24311.94,0.01,[fallback-slow] Service temporarily unavailable 
+24312.5,CALL,W2-38,slow_greet,degraded,24312.52,0.01,[fallback-slow] Service temporarily unavailable 
+24314.46,CALL,W4-38,slow_greet,degraded,24314.47,0.01,[fallback-slow] Service temporarily unavailable 
+24335.6,CALL,W6-39,slow_greet,degraded,24335.62,0.02,[fallback-slow] Service temporarily unavailable 
+24335.65,CALL,W8-39,slow_greet,degraded,24335.67,0.01,[fallback-slow] Service temporarily unavailable 
+24335.7,CALL,W7-39,slow_greet,degraded,24335.71,0.01,[fallback-slow] Service temporarily unavailable 
+24336.14,CALL,W3-39,slow_greet,degraded,24336.15,0.01,[fallback-slow] Service temporarily unavailable 
+24337.13,CALL,W0-39,slow_greet,degraded,24337.14,0.01,[fallback-slow] Service temporarily unavailable 
+24339.04,CALL,W14-39,slow_greet,degraded,24339.05,0.01,[fallback-slow] Service temporarily unavailable 
+24339.59,CALL,W5-39,slow_greet,degraded,24339.65,0.06,[fallback-slow] Service temporarily unavailable 
+24339.72,CALL,W15-39,slow_greet,degraded,24339.73,0.01,[fallback-slow] Service temporarily unavailable 
+24339.77,CALL,W10-39,slow_greet,degraded,24339.78,0.01,[fallback-slow] Service temporarily unavailable 
+24339.8,CALL,W1-39,slow_greet,degraded,24339.82,0.01,[fallback-slow] Service temporarily unavailable 
+24339.86,CALL,W13-39,slow_greet,degraded,24339.87,0.01,[fallback-slow] Service temporarily unavailable 
+24339.88,CALL,W9-39,slow_greet,degraded,24339.89,0.01,[fallback-slow] Service temporarily unavailable 
+24341.75,CALL,W12-39,slow_greet,degraded,24341.76,0.01,[fallback-slow] Service temporarily unavailable 
+24342.38,CALL,W11-39,slow_greet,degraded,24342.4,0.01,[fallback-slow] Service temporarily unavailable 
+24343.71,CALL,W2-39,slow_greet,degraded,24343.72,0.02,[fallback-slow] Service temporarily unavailable 
+24345.91,CALL,W4-39,slow_greet,degraded,24345.92,0.01,[fallback-slow] Service temporarily unavailable 
+24366.13,CALL,W8-40,slow_greet,degraded,24366.15,0.02,[fallback-slow] Service temporarily unavailable 
+24366.2,CALL,W3-40,slow_greet,degraded,24366.21,0.01,[fallback-slow] Service temporarily unavailable 
+24366.68,CALL,W7-40,slow_greet,degraded,24366.69,0.01,[fallback-slow] Service temporarily unavailable 
+24366.77,CALL,W6-40,slow_greet,degraded,24366.78,0.01,[fallback-slow] Service temporarily unavailable 
+24368.09,CALL,W0-40,slow_greet,degraded,24368.1,0.01,[fallback-slow] Service temporarily unavailable 
+24369.7,CALL,W14-40,slow_greet,degraded,24369.73,0.03,[fallback-slow] Service temporarily unavailable 
+24370.55,CALL,W5-40,slow_greet,degraded,24370.59,0.03,[fallback-slow] Service temporarily unavailable 
+24370.68,CALL,W1-40,slow_greet,degraded,24370.71,0.04,[fallback-slow] Service temporarily unavailable 
+24370.73,CALL,W10-40,slow_greet,degraded,24370.75,0.01,[fallback-slow] Service temporarily unavailable 
+24370.79,CALL,W9-40,slow_greet,degraded,24370.8,0.01,[fallback-slow] Service temporarily unavailable 
+24370.82,CALL,W15-40,slow_greet,degraded,24370.83,0.01,[fallback-slow] Service temporarily unavailable 
+24370.86,CALL,W13-40,slow_greet,degraded,24370.87,0.01,[fallback-slow] Service temporarily unavailable 
+24372.7,CALL,W12-40,slow_greet,degraded,24372.73,0.03,[fallback-slow] Service temporarily unavailable 
+24372.8,CALL,W11-40,slow_greet,degraded,24372.81,0.01,[fallback-slow] Service temporarily unavailable 
+24374.57,CALL,W2-40,slow_greet,degraded,24374.75,0.18,[fallback-slow] Service temporarily unavailable 
+24376.91,CALL,W4-40,slow_greet,degraded,24376.93,0.03,[fallback-slow] Service temporarily unavailable 
+24396.81,CALL,W7-41,slow_greet,degraded,24396.82,0.02,[fallback-slow] Service temporarily unavailable 
+24397.22,CALL,W6-41,slow_greet,degraded,24397.26,0.04,[fallback-slow] Service temporarily unavailable 
+24397.29,CALL,W3-41,slow_greet,degraded,24397.3,0.01,[fallback-slow] Service temporarily unavailable 
+24397.32,CALL,W8-41,slow_greet,degraded,24397.33,0.01,[fallback-slow] Service temporarily unavailable 
+24398.9,CALL,W0-41,slow_greet,degraded,24398.91,0.01,[fallback-slow] Service temporarily unavailable 
+24400.62,CALL,W14-41,slow_greet,degraded,24400.63,0.01,[fallback-slow] Service temporarily unavailable 
+24400.66,CALL,W5-41,slow_greet,degraded,24400.67,0.01,[fallback-slow] Service temporarily unavailable 
+24401.19,CALL,W15-41,slow_greet,degraded,24401.2,0.01,[fallback-slow] Service temporarily unavailable 
+24401.26,CALL,W10-41,slow_greet,degraded,24401.27,0.01,[fallback-slow] Service temporarily unavailable 
+24401.73,CALL,W9-41,slow_greet,degraded,24401.8,0.07,[fallback-slow] Service temporarily unavailable 
+24401.82,CALL,W13-41,slow_greet,degraded,24401.83,0.0,[fallback-slow] Service temporarily unavailable 
+24401.85,CALL,W1-41,slow_greet,degraded,24401.86,0.01,[fallback-slow] Service temporarily unavailable 
+24403.3,CALL,W12-41,slow_greet,degraded,24403.31,0.01,[fallback-slow] Service temporarily unavailable 
+24403.87,CALL,W11-41,slow_greet,degraded,24403.88,0.01,[fallback-slow] Service temporarily unavailable 
+24405.09,CALL,W2-41,slow_greet,degraded,24405.1,0.01,[fallback-slow] Service temporarily unavailable 
+24407.8,CALL,W4-41,slow_greet,degraded,24407.81,0.01,[fallback-slow] Service temporarily unavailable 
+24420.8,CTRL,C0-4,LOAD_SLOW,OK,25423.57,1002.77,→ v8
+24427.74,CALL,W7-42,slow_greet,degraded,24427.77,0.03,[fallback-slow] Service temporarily unavailable 
+24427.92,CALL,W6-42,slow_greet,degraded,24427.98,0.06,[fallback-slow] Service temporarily unavailable 
+24428.51,CALL,W8-42,slow_greet,degraded,24428.55,0.05,[fallback-slow] Service temporarily unavailable 
+24428.59,CALL,W3-42,slow_greet,degraded,24428.6,0.0,[fallback-slow] Service temporarily unavailable 
+24429.21,CALL,W0-42,slow_greet,degraded,24429.23,0.01,[fallback-slow] Service temporarily unavailable 
+24430.86,CALL,W5-42,slow_greet,degraded,24430.88,0.02,[fallback-slow] Service temporarily unavailable 
+24432.29,CALL,W14-42,slow_greet,degraded,24432.3,0.01,[fallback-slow] Service temporarily unavailable 
+24432.31,CALL,W10-42,slow_greet,degraded,24432.33,0.01,[fallback-slow] Service temporarily unavailable 
+24432.35,CALL,W13-42,slow_greet,degraded,24432.36,0.01,[fallback-slow] Service temporarily unavailable 
+24432.37,CALL,W1-42,slow_greet,degraded,24432.38,0.01,[fallback-slow] Service temporarily unavailable 
+24432.42,CALL,W15-42,slow_greet,degraded,24432.44,0.01,[fallback-slow] Service temporarily unavailable 
+24432.47,CALL,W9-42,slow_greet,degraded,24432.48,0.01,[fallback-slow] Service temporarily unavailable 
+24433.55,CALL,W12-42,slow_greet,degraded,24433.62,0.07,[fallback-slow] Service temporarily unavailable 
+24435.39,CALL,W2-42,slow_greet,degraded,24435.4,0.01,[fallback-slow] Service temporarily unavailable 
+24435.43,CALL,W11-42,slow_greet,degraded,24435.44,0.01,[fallback-slow] Service temporarily unavailable 
+24438.59,CALL,W4-42,slow_greet,degraded,24438.61,0.01,[fallback-slow] Service temporarily unavailable 
+24458.66,CALL,W3-43,slow_greet,degraded,24458.71,0.06,[fallback-slow] Service temporarily unavailable 
+24459.02,CALL,W7-43,slow_greet,degraded,24459.04,0.01,[fallback-slow] Service temporarily unavailable 
+24459.05,CALL,W6-43,slow_greet,degraded,24459.07,0.01,[fallback-slow] Service temporarily unavailable 
+24459.55,CALL,W8-43,slow_greet,degraded,24459.56,0.01,[fallback-slow] Service temporarily unavailable 
+24459.58,CALL,W0-43,slow_greet,degraded,24459.59,0.01,[fallback-slow] Service temporarily unavailable 
+24461.43,CALL,W5-43,slow_greet,degraded,24461.46,0.03,[fallback-slow] Service temporarily unavailable 
+24462.69,CALL,W1-43,slow_greet,degraded,24462.7,0.01,[fallback-slow] Service temporarily unavailable 
+24462.73,CALL,W14-43,slow_greet,degraded,24462.74,0.01,[fallback-slow] Service temporarily unavailable 
+24462.77,CALL,W10-43,slow_greet,degraded,24462.79,0.01,[fallback-slow] Service temporarily unavailable 
+24463.16,CALL,W13-43,slow_greet,degraded,24463.18,0.02,[fallback-slow] Service temporarily unavailable 
+24463.2,CALL,W9-43,slow_greet,degraded,24463.22,0.01,[fallback-slow] Service temporarily unavailable 
+24463.23,CALL,W15-43,slow_greet,degraded,24463.24,0.01,[fallback-slow] Service temporarily unavailable 
+24463.81,CALL,W12-43,slow_greet,degraded,24463.83,0.01,[fallback-slow] Service temporarily unavailable 
+24466.03,CALL,W2-43,slow_greet,degraded,24466.03,0.01,[fallback-slow] Service temporarily unavailable 
+24466.51,CALL,W11-43,slow_greet,degraded,24466.54,0.04,[fallback-slow] Service temporarily unavailable 
+24469.26,CALL,W4-43,slow_greet,degraded,24469.33,0.07,[fallback-slow] Service temporarily unavailable 
+24489.14,CALL,W3-44,slow_greet,degraded,24489.16,0.02,[fallback-slow] Service temporarily unavailable 
+24489.18,CALL,W7-44,slow_greet,degraded,24489.19,0.01,[fallback-slow] Service temporarily unavailable 
+24489.21,CALL,W6-44,slow_greet,degraded,24489.22,0.01,[fallback-slow] Service temporarily unavailable 
+24490.38,CALL,W0-44,slow_greet,degraded,24490.39,0.01,[fallback-slow] Service temporarily unavailable 
+24490.55,CALL,W8-44,slow_greet,degraded,24490.58,0.03,[fallback-slow] Service temporarily unavailable 
+24491.94,CALL,W5-44,slow_greet,degraded,24491.95,0.01,[fallback-slow] Service temporarily unavailable 
+24493.4,CALL,W13-44,slow_greet,degraded,24493.41,0.01,[fallback-slow] Service temporarily unavailable 
+24493.42,CALL,W1-44,slow_greet,degraded,24493.44,0.01,[fallback-slow] Service temporarily unavailable 
+24493.46,CALL,W15-44,slow_greet,degraded,24493.47,0.01,[fallback-slow] Service temporarily unavailable 
+24493.49,CALL,W10-44,slow_greet,degraded,24493.5,0.01,[fallback-slow] Service temporarily unavailable 
+24493.93,CALL,W14-44,slow_greet,degraded,24493.95,0.02,[fallback-slow] Service temporarily unavailable 
+24494.12,CALL,W9-44,slow_greet,degraded,24494.18,0.06,[fallback-slow] Service temporarily unavailable 
+24494.32,CALL,W12-44,slow_greet,degraded,24494.34,0.02,[fallback-slow] Service temporarily unavailable 
+24496.92,CALL,W2-44,slow_greet,degraded,24496.92,0.01,[fallback-slow] Service temporarily unavailable 
+24496.98,CALL,W11-44,slow_greet,degraded,24496.99,0.01,[fallback-slow] Service temporarily unavailable 
+24499.5,CALL,W4-44,slow_greet,degraded,24499.53,0.02,[fallback-slow] Service temporarily unavailable 
+24519.63,CALL,W6-45,slow_greet,degraded,24519.64,0.02,[fallback-slow] Service temporarily unavailable 
+24520.28,CALL,W7-45,slow_greet,degraded,24520.3,0.01,[fallback-slow] Service temporarily unavailable 
+24520.33,CALL,W3-45,slow_greet,degraded,24520.34,0.01,[fallback-slow] Service temporarily unavailable 
+24521.65,CALL,W8-45,slow_greet,degraded,24521.66,0.01,[fallback-slow] Service temporarily unavailable 
+24521.73,CALL,W0-45,slow_greet,degraded,24521.74,0.01,[fallback-slow] Service temporarily unavailable 
+24522.22,CALL,W5-45,slow_greet,degraded,24522.26,0.04,[fallback-slow] Service temporarily unavailable 
+24523.56,CALL,W1-45,slow_greet,degraded,24523.57,0.01,[fallback-slow] Service temporarily unavailable 
+24524.09,CALL,W13-45,slow_greet,degraded,24524.18,0.09,[fallback-slow] Service temporarily unavailable 
+24524.25,CALL,W10-45,slow_greet,degraded,24524.26,0.01,[fallback-slow] Service temporarily unavailable 
+24524.28,CALL,W15-45,slow_greet,degraded,24524.29,0.01,[fallback-slow] Service temporarily unavailable 
+24524.82,CALL,W9-45,slow_greet,degraded,24524.84,0.01,[fallback-slow] Service temporarily unavailable 
+24524.85,CALL,W14-45,slow_greet,degraded,24524.86,0.01,[fallback-slow] Service temporarily unavailable 
+24525.52,CALL,W12-45,slow_greet,degraded,24525.54,0.01,[fallback-slow] Service temporarily unavailable 
+24527.48,CALL,W11-45,slow_greet,degraded,24527.52,0.04,[fallback-slow] Service temporarily unavailable 
+24527.54,CALL,W2-45,slow_greet,degraded,24527.55,0.01,[fallback-slow] Service temporarily unavailable 
+24530.65,CALL,W4-45,slow_greet,degraded,24530.7,0.05,[fallback-slow] Service temporarily unavailable 
+24550.22,CALL,W6-46,slow_greet,degraded,24550.29,0.07,[fallback-slow] Service temporarily unavailable 
+24550.45,CALL,W7-46,slow_greet,degraded,24550.46,0.01,[fallback-slow] Service temporarily unavailable 
+24550.95,CALL,W3-46,slow_greet,degraded,24550.97,0.02,[fallback-slow] Service temporarily unavailable 
+24552.27,CALL,W0-46,slow_greet,degraded,24552.29,0.01,[fallback-slow] Service temporarily unavailable 
+24552.33,CALL,W5-46,slow_greet,degraded,24552.34,0.01,[fallback-slow] Service temporarily unavailable 
+24553.01,CALL,W8-46,slow_greet,degraded,24553.03,0.02,[fallback-slow] Service temporarily unavailable 
+24554.39,CALL,W1-46,slow_greet,degraded,24554.42,0.02,[fallback-slow] Service temporarily unavailable 
+24554.56,CALL,W10-46,slow_greet,degraded,24554.58,0.02,[fallback-slow] Service temporarily unavailable 
+24554.7,CALL,W15-46,slow_greet,degraded,24554.76,0.06,[fallback-slow] Service temporarily unavailable 
+24554.81,CALL,W13-46,slow_greet,degraded,24554.82,0.01,[fallback-slow] Service temporarily unavailable 
+24555.33,CALL,W14-46,slow_greet,degraded,24555.34,0.01,[fallback-slow] Service temporarily unavailable 
+24556.17,CALL,W12-46,slow_greet,degraded,24556.18,0.01,[fallback-slow] Service temporarily unavailable 
+24556.23,CALL,W9-46,slow_greet,degraded,24556.24,0.01,[fallback-slow] Service temporarily unavailable 
+24557.96,CALL,W2-46,slow_greet,degraded,24557.97,0.01,[fallback-slow] Service temporarily unavailable 
+24558.76,CALL,W11-46,slow_greet,degraded,24558.77,0.01,[fallback-slow] Service temporarily unavailable 
+24561.06,CALL,W4-46,slow_greet,degraded,24561.07,0.01,[fallback-slow] Service temporarily unavailable 
+24581.52,CALL,W6-47,slow_greet,degraded,24581.54,0.02,[fallback-slow] Service temporarily unavailable 
+24581.58,CALL,W7-47,slow_greet,degraded,24581.6,0.01,[fallback-slow] Service temporarily unavailable 
+24582.04,CALL,W3-47,slow_greet,degraded,24582.06,0.02,[fallback-slow] Service temporarily unavailable 
+24583.32,CALL,W5-47,slow_greet,degraded,24583.34,0.01,[fallback-slow] Service temporarily unavailable 
+24583.35,CALL,W0-47,slow_greet,degraded,24583.37,0.01,[fallback-slow] Service temporarily unavailable 
+24583.9,CALL,W8-47,slow_greet,degraded,24583.93,0.04,[fallback-slow] Service temporarily unavailable 
+24585.26,CALL,W13-47,slow_greet,degraded,24585.28,0.01,[fallback-slow] Service temporarily unavailable 
+24585.29,CALL,W10-47,slow_greet,degraded,24585.3,0.01,[fallback-slow] Service temporarily unavailable 
+24585.32,CALL,W1-47,slow_greet,degraded,24585.34,0.01,[fallback-slow] Service temporarily unavailable 
+24585.38,CALL,W15-47,slow_greet,degraded,24585.39,0.01,[fallback-slow] Service temporarily unavailable 
+24585.77,CALL,W14-47,slow_greet,degraded,24585.81,0.04,[fallback-slow] Service temporarily unavailable 
+24586.51,CALL,W12-47,slow_greet,degraded,24586.52,0.01,[fallback-slow] Service temporarily unavailable 
+24586.57,CALL,W9-47,slow_greet,degraded,24586.58,0.01,[fallback-slow] Service temporarily unavailable 
+24588.37,CALL,W2-47,slow_greet,degraded,24588.38,0.01,[fallback-slow] Service temporarily unavailable 
+24589.22,CALL,W11-47,slow_greet,degraded,24589.23,0.01,[fallback-slow] Service temporarily unavailable 
+24592.04,CALL,W4-47,slow_greet,degraded,24592.07,0.03,[fallback-slow] Service temporarily unavailable 
+24611.58,CALL,W6-48,slow_greet,degraded,24611.62,0.04,[fallback-slow] Service temporarily unavailable 
+24611.68,CALL,W7-48,slow_greet,degraded,24611.69,0.01,[fallback-slow] Service temporarily unavailable 
+24612.23,CALL,W3-48,slow_greet,degraded,24612.25,0.02,[fallback-slow] Service temporarily unavailable 
+24613.78,CALL,W5-48,slow_greet,degraded,24613.79,0.01,[fallback-slow] Service temporarily unavailable 
+24614.34,CALL,W0-48,slow_greet,degraded,24614.35,0.01,[fallback-slow] Service temporarily unavailable 
+24614.43,CALL,W8-48,slow_greet,degraded,24614.44,0.01,[fallback-slow] Service temporarily unavailable 
+24615.48,CALL,W10-48,slow_greet,degraded,24615.55,0.07,[fallback-slow] Service temporarily unavailable 
+24615.75,CALL,W15-48,slow_greet,degraded,24615.76,0.01,[fallback-slow] Service temporarily unavailable 
+24616.32,CALL,W13-48,slow_greet,degraded,24616.33,0.01,[fallback-slow] Service temporarily unavailable 
+24616.34,CALL,W1-48,slow_greet,degraded,24616.36,0.01,[fallback-slow] Service temporarily unavailable 
+24616.92,CALL,W12-48,slow_greet,degraded,24616.93,0.01,[fallback-slow] Service temporarily unavailable 
+24617.0,CALL,W14-48,slow_greet,degraded,24617.01,0.01,[fallback-slow] Service temporarily unavailable 
+24617.66,CALL,W9-48,slow_greet,degraded,24617.67,0.01,[fallback-slow] Service temporarily unavailable 
+24619.47,CALL,W2-48,slow_greet,degraded,24619.48,0.01,[fallback-slow] Service temporarily unavailable 
+24619.51,CALL,W11-48,slow_greet,degraded,24619.52,0.01,[fallback-slow] Service temporarily unavailable 
+24622.55,CALL,W4-48,slow_greet,degraded,24622.58,0.03,[fallback-slow] Service temporarily unavailable 
+24641.8,CALL,W7-49,slow_greet,degraded,24641.86,0.07,[fallback-slow] Service temporarily unavailable 
+24642.38,CALL,W6-49,slow_greet,degraded,24642.4,0.01,[fallback-slow] Service temporarily unavailable 
+24643.15,CALL,W3-49,slow_greet,degraded,24643.16,0.01,[fallback-slow] Service temporarily unavailable 
+24644.37,CALL,W0-49,slow_greet,degraded,24644.38,0.01,[fallback-slow] Service temporarily unavailable 
+24644.4,CALL,W5-49,slow_greet,degraded,24644.41,0.01,[fallback-slow] Service temporarily unavailable 
+24644.91,CALL,W8-49,slow_greet,degraded,24644.93,0.02,[fallback-slow] Service temporarily unavailable 
+24645.82,CALL,W15-49,slow_greet,degraded,24645.83,0.01,[fallback-slow] Service temporarily unavailable 
+24645.86,CALL,W10-49,slow_greet,degraded,24645.87,0.01,[fallback-slow] Service temporarily unavailable 
+24646.99,CALL,W1-49,slow_greet,degraded,24647.02,0.03,[fallback-slow] Service temporarily unavailable 
+24647.22,CALL,W13-49,slow_greet,degraded,24647.23,0.01,[fallback-slow] Service temporarily unavailable 
+24647.82,CALL,W12-49,slow_greet,degraded,24647.86,0.04,[fallback-slow] Service temporarily unavailable 
+24647.91,CALL,W9-49,slow_greet,degraded,24647.97,0.06,[fallback-slow] Service temporarily unavailable 
+24647.99,CALL,W14-49,slow_greet,degraded,24648.0,0.01,[fallback-slow] Service temporarily unavailable 
+24649.8,CALL,W2-49,slow_greet,degraded,24649.82,0.02,[fallback-slow] Service temporarily unavailable 
+24650.36,CALL,W11-49,slow_greet,degraded,24650.37,0.01,[fallback-slow] Service temporarily unavailable 
+24654.04,CALL,W4-49,slow_greet,degraded,24654.08,0.03,[fallback-slow] Service temporarily unavailable 
+24672.1,CALL,W7-50,slow_greet,degraded,24672.12,0.02,[fallback-slow] Service temporarily unavailable 
+24672.81,CALL,W6-50,slow_greet,degraded,24672.83,0.02,[fallback-slow] Service temporarily unavailable 
+24673.91,CALL,W3-50,slow_greet,degraded,24673.96,0.05,[fallback-slow] Service temporarily unavailable 
+24674.6,CALL,W5-50,slow_greet,degraded,24674.63,0.03,[fallback-slow] Service temporarily unavailable 
+24675.24,CALL,W8-50,slow_greet,degraded,24675.27,0.02,[fallback-slow] Service temporarily unavailable 
+24675.39,CALL,W0-50,slow_greet,degraded,24675.42,0.02,[fallback-slow] Service temporarily unavailable 
+24676.51,CALL,W10-50,slow_greet,degraded,24676.52,0.01,[fallback-slow] Service temporarily unavailable 
+24677.32,CALL,W15-50,slow_greet,degraded,24677.33,0.01,[fallback-slow] Service temporarily unavailable 
+24677.79,CALL,W13-50,slow_greet,degraded,24677.81,0.03,[fallback-slow] Service temporarily unavailable 
+24677.85,CALL,W1-50,slow_greet,degraded,24680.11,2.27,[fallback-slow] Service temporarily unavailable 
+24680.2,CALL,W12-50,slow_greet,degraded,24680.21,0.02,[fallback-slow] Service temporarily unavailable 
+24680.27,CALL,W14-50,slow_greet,degraded,24680.28,0.01,[fallback-slow] Service temporarily unavailable 
+24680.31,CALL,W9-50,slow_greet,degraded,24680.32,0.01,[fallback-slow] Service temporarily unavailable 
+24680.4,CALL,W2-50,slow_greet,degraded,24680.41,0.01,[fallback-slow] Service temporarily unavailable 
+24682.53,CALL,W11-50,slow_greet,degraded,24682.54,0.01,[fallback-slow] Service temporarily unavailable 
+24684.55,CALL,W4-50,slow_greet,degraded,24684.56,0.01,[fallback-slow] Service temporarily unavailable 
+24702.66,CALL,W7-51,slow_greet,degraded,24702.68,0.02,[fallback-slow] Service temporarily unavailable 
+24703.14,CALL,W6-51,slow_greet,degraded,24703.17,0.03,[fallback-slow] Service temporarily unavailable 
+24704.88,CALL,W3-51,slow_greet,degraded,24704.89,0.01,[fallback-slow] Service temporarily unavailable 
+24704.98,CALL,W5-51,slow_greet,degraded,24704.99,0.01,[fallback-slow] Service temporarily unavailable 
+24705.48,CALL,W8-51,slow_greet,degraded,24705.49,0.01,[fallback-slow] Service temporarily unavailable 
+24705.92,CALL,W0-51,slow_greet,degraded,24705.97,0.05,[fallback-slow] Service temporarily unavailable 
+24708.31,CALL,W10-51,slow_greet,degraded,24708.34,0.03,[fallback-slow] Service temporarily unavailable 
+24708.56,CALL,W15-51,slow_greet,degraded,24708.6,0.04,[fallback-slow] Service temporarily unavailable 
+24709.53,CALL,W13-51,slow_greet,degraded,24709.54,0.01,[fallback-slow] Service temporarily unavailable 
+24710.53,CALL,W2-51,slow_greet,degraded,24710.56,0.03,[fallback-slow] Service temporarily unavailable 
+24710.8,CALL,W14-51,slow_greet,degraded,24710.82,0.01,[fallback-slow] Service temporarily unavailable 
+24710.83,CALL,W12-51,slow_greet,degraded,24710.84,0.01,[fallback-slow] Service temporarily unavailable 
+24710.86,CALL,W9-51,slow_greet,degraded,24710.87,0.01,[fallback-slow] Service temporarily unavailable 
+24711.3,CALL,W1-51,slow_greet,degraded,24711.32,0.01,[fallback-slow] Service temporarily unavailable 
+24712.77,CALL,W11-51,slow_greet,degraded,24712.78,0.01,[fallback-slow] Service temporarily unavailable 
+24714.65,CALL,W4-51,slow_greet,degraded,24714.66,0.01,[fallback-slow] Service temporarily unavailable 
+24733.22,CALL,W7-52,slow_greet,slow-init,26733.5,2000.28,"Slow hello, W7-52! (from slow-init plugin)"
+24733.99,CALL,W6-52,slow_greet,slow-init,26734.45,2000.46,"Slow hello, W6-52! (from slow-init plugin)"
+24735.19,CALL,W3-52,slow_greet,slow-init,26735.91,2000.72,"Slow hello, W3-52! (from slow-init plugin)"
+24735.22,CALL,W5-52,slow_greet,slow-init,26735.87,2000.65,"Slow hello, W5-52! (from slow-init plugin)"
+24735.69,CALL,W8-52,slow_greet,slow-init,26735.93,2000.25,"Slow hello, W8-52! (from slow-init plugin)"
+24736.23,CALL,W0-52,slow_greet,slow-init,26736.51,2000.28,"Slow hello, W0-52! (from slow-init plugin)"
+24739.37,CALL,W15-52,slow_greet,slow-init,26739.77,2000.41,"Slow hello, W15-52! (from slow-init plugin)"
+24739.43,CALL,W10-52,slow_greet,slow-init,26739.84,2000.41,"Slow hello, W10-52! (from slow-init plugin)"
+24739.66,CALL,W13-52,slow_greet,slow-init,26739.91,2000.24,"Slow hello, W13-52! (from slow-init plugin)"
+24740.77,CALL,W2-52,slow_greet,slow-init,26740.98,2000.2,"Slow hello, W2-52! (from slow-init plugin)"
+24741.31,CALL,W12-52,slow_greet,slow-init,26741.64,2000.33,"Slow hello, W12-52! (from slow-init plugin)"
+24741.42,CALL,W14-52,slow_greet,slow-init,26741.67,2000.25,"Slow hello, W14-52! (from slow-init plugin)"
+24741.94,CALL,W1-52,slow_greet,slow-init,26742.61,2000.67,"Slow hello, W1-52! (from slow-init plugin)"
+24741.97,CALL,W9-52,slow_greet,slow-init,26742.31,2000.35,"Slow hello, W9-52! (from slow-init plugin)"
+24744.47,CALL,W11-52,slow_greet,slow-init,26745.13,2000.66,"Slow hello, W11-52! (from slow-init plugin)"
+24745.52,CALL,W4-52,slow_greet,slow-init,26745.64,2000.12,"Slow hello, W4-52! (from slow-init plugin)"
+25840.16,CTRL,C1-3,LOAD_SLOW,OK,26843.33,1003.17,→ v9
+26764.38,CALL,W7-53,slow_greet,slow-init,28764.75,2000.38,"Slow hello, W7-53! (from slow-init plugin)"
+26765.34,CALL,W6-53,slow_greet,slow-init,28765.78,2000.44,"Slow hello, W6-53! (from slow-init plugin)"
+26766.21,CALL,W8-53,slow_greet,slow-init,28766.45,2000.24,"Slow hello, W8-53! (from slow-init plugin)"
+26766.91,CALL,W0-53,slow_greet,slow-init,28767.03,2000.12,"Slow hello, W0-53! (from slow-init plugin)"
+26767.0,CALL,W3-53,slow_greet,slow-init,28767.59,2000.59,"Slow hello, W3-53! (from slow-init plugin)"
+26767.03,CALL,W5-53,slow_greet,slow-init,28767.62,2000.59,"Slow hello, W5-53! (from slow-init plugin)"
+26770.66,CALL,W10-53,slow_greet,slow-init,28771.19,2000.52,"Slow hello, W10-53! (from slow-init plugin)"
+26770.71,CALL,W13-53,slow_greet,slow-init,28771.14,2000.43,"Slow hello, W13-53! (from slow-init plugin)"
+26770.77,CALL,W15-53,slow_greet,slow-init,28771.23,2000.46,"Slow hello, W15-53! (from slow-init plugin)"
+26771.22,CALL,W2-53,slow_greet,slow-init,28771.83,2000.61,"Slow hello, W2-53! (from slow-init plugin)"
+26771.78,CALL,W14-53,slow_greet,slow-init,28772.62,2000.84,"Slow hello, W14-53! (from slow-init plugin)"
+26772.01,CALL,W12-53,slow_greet,slow-init,28772.56,2000.55,"Slow hello, W12-53! (from slow-init plugin)"
+26773.23,CALL,W1-53,slow_greet,slow-init,28774.07,2000.84,"Slow hello, W1-53! (from slow-init plugin)"
+26773.31,CALL,W9-53,slow_greet,slow-init,28774.31,2000.99,"Slow hello, W9-53! (from slow-init plugin)"
+26775.51,CALL,W11-53,slow_greet,slow-init,28776.1,2000.59,"Slow hello, W11-53! (from slow-init plugin)"
+26776.92,CALL,W4-53,slow_greet,slow-init,28777.27,2000.35,"Slow hello, W4-53! (from slow-init plugin)"
+26933.14,CTRL,C0-5,RELOAD_V2,OK,26934.36,1.23,→ v10
+28430.72,CTRL,C1-4,UNLOAD,OK,28430.99,0.27,unload=True
+28662.32,CTRL,C0-6,REPLACE_V3,OK,28664.91,2.58,→ v11
+28795.29,CALL,W7-54,slow_greet,v3,30295.82,1500.53,"Slow hiya, W7-54! Long time no see! (from greete"
+28796.72,CALL,W6-54,slow_greet,v3,30297.16,1500.44,"Slow hiya, W6-54! Long time no see! (from greete"
+28797.34,CALL,W8-54,slow_greet,v3,30297.73,1500.39,"Slow hiya, W8-54! Long time no see! (from greete"
+28797.99,CALL,W0-54,slow_greet,v3,30298.4,1500.42,"Slow hiya, W0-54! Long time no see! (from greete"
+28798.08,CALL,W5-54,slow_greet,v3,30298.27,1500.19,"Slow hiya, W5-54! Long time no see! (from greete"
+28798.57,CALL,W3-54,slow_greet,v3,30299.05,1500.48,"Slow hiya, W3-54! Long time no see! (from greete"
+28801.57,CALL,W15-54,slow_greet,v3,30302.05,1500.48,"Slow hiya, W15-54! Long time no see! (from greet"
+28801.72,CALL,W13-54,slow_greet,v3,30302.08,1500.36,"Slow hiya, W13-54! Long time no see! (from greet"
+28801.75,CALL,W10-54,slow_greet,v3,30302.02,1500.27,"Slow hiya, W10-54! Long time no see! (from greet"
+28802.75,CALL,W2-54,slow_greet,v3,30303.36,1500.61,"Slow hiya, W2-54! Long time no see! (from greete"
+28803.06,CALL,W12-54,slow_greet,v3,30303.57,1500.52,"Slow hiya, W12-54! Long time no see! (from greet"
+28803.18,CALL,W14-54,slow_greet,v3,30303.6,1500.41,"Slow hiya, W14-54! Long time no see! (from greet"
+28804.43,CALL,W1-54,slow_greet,v3,30305.07,1500.64,"Slow hiya, W1-54! Long time no see! (from greete"
+28804.48,CALL,W9-54,slow_greet,v3,30305.12,1500.64,"Slow hiya, W9-54! Long time no see! (from greete"
+28806.98,CALL,W11-54,slow_greet,v3,30307.91,1500.93,"Slow hiya, W11-54! Long time no see! (from greet"
+28808.17,CALL,W4-54,slow_greet,v3,30308.53,1500.36,"Slow hiya, W4-54! Long time no see! (from greete"
+29819.79,CTRL,C1-5,LOAD_SLOW,OK,30822.74,1002.95,→ v12
+30298.95,CTRL,C0-7,REPLACE_V1,OK,30300.15,1.2,→ v13
+30326.45,CALL,W7-55,slow_greet,v1,32326.62,2000.17,"Slow hello, W7-55! (from greeter v1.0)"
+30327.81,CALL,W8-55,slow_greet,v1,32328.4,2000.59,"Slow hello, W8-55! (from greeter v1.0)"
+30328.46,CALL,W6-55,slow_greet,v1,32328.96,2000.5,"Slow hello, W6-55! (from greeter v1.0)"
+30329.07,CALL,W5-55,slow_greet,v1,32329.58,2000.52,"Slow hello, W5-55! (from greeter v1.0)"
+30329.09,CALL,W0-55,slow_greet,v1,32329.47,2000.37,"Slow hello, W0-55! (from greeter v1.0)"
+30330.24,CALL,W3-55,slow_greet,v1,32330.7,2000.46,"Slow hello, W3-55! (from greeter v1.0)"
+30332.71,CALL,W13-55,slow_greet,v1,32333.03,2000.33,"Slow hello, W13-55! (from greeter v1.0)"
+30332.74,CALL,W10-55,slow_greet,v1,32333.01,2000.27,"Slow hello, W10-55! (from greeter v1.0)"
+30333.26,CALL,W15-55,slow_greet,v1,32333.55,2000.29,"Slow hello, W15-55! (from greeter v1.0)"
+30333.76,CALL,W12-55,slow_greet,v1,32334.04,2000.28,"Slow hello, W12-55! (from greeter v1.0)"
+30334.5,CALL,W14-55,slow_greet,v1,32334.86,2000.36,"Slow hello, W14-55! (from greeter v1.0)"
+30334.61,CALL,W2-55,slow_greet,v1,32334.88,2000.27,"Slow hello, W2-55! (from greeter v1.0)"
+30335.65,CALL,W1-55,slow_greet,v1,32335.99,2000.34,"Slow hello, W1-55! (from greeter v1.0)"
+30335.74,CALL,W9-55,slow_greet,v1,32336.03,2000.29,"Slow hello, W9-55! (from greeter v1.0)"
+30338.28,CALL,W11-55,slow_greet,v1,32338.59,2000.31,"Slow hello, W11-55! (from greeter v1.0)"
+30338.84,CALL,W4-55,slow_greet,v1,32339.06,2000.22,"Slow hello, W4-55! (from greeter v1.0)"
+32078.42,CTRL,C0-8,REPLACE_V1,OK,32079.65,1.22,→ v14
+32110.42,CTRL,C1-6,REPLACE_V2,OK,32111.47,1.05,→ v15
+32357.49,CALL,W7-56,slow_greet,v2,34358.34,2000.85,"Slow hey, W7-56! Welcome back! (from greeter v2."
+32359.3,CALL,W6-56,slow_greet,v2,34359.84,2000.54,"Slow hey, W6-56! Welcome back! (from greeter v2."
+32359.75,CALL,W8-56,slow_greet,v2,34359.93,2000.18,"Slow hey, W8-56! Welcome back! (from greeter v2."
+32359.8,CALL,W0-56,slow_greet,v2,34359.96,2000.17,"Slow hey, W0-56! Welcome back! (from greeter v2."
+32360.47,CALL,W5-56,slow_greet,v2,34360.94,2000.46,"Slow hey, W5-56! Welcome back! (from greeter v2."
+32361.55,CALL,W3-56,slow_greet,v2,34361.86,2000.31,"Slow hey, W3-56! Welcome back! (from greeter v2."
+32364.04,CALL,W13-56,slow_greet,v2,34364.61,2000.57,"Slow hey, W13-56! Welcome back! (from greeter v2"
+32364.12,CALL,W15-56,slow_greet,v2,34364.54,2000.43,"Slow hey, W15-56! Welcome back! (from greeter v2"
+32364.14,CALL,W10-56,slow_greet,v2,34364.82,2000.69,"Slow hey, W10-56! Welcome back! (from greeter v2"
+32364.59,CALL,W12-56,slow_greet,v2,34364.88,2000.29,"Slow hey, W12-56! Welcome back! (from greeter v2"
+32365.23,CALL,W2-56,slow_greet,v2,34365.35,2000.12,"Slow hey, W2-56! Welcome back! (from greeter v2."
+32365.33,CALL,W14-56,slow_greet,v2,34366.11,2000.78,"Slow hey, W14-56! Welcome back! (from greeter v2"
+32366.5,CALL,W1-56,slow_greet,v2,34366.75,2000.26,"Slow hey, W1-56! Welcome back! (from greeter v2."
+32366.61,CALL,W9-56,slow_greet,v2,34366.79,2000.18,"Slow hey, W9-56! Welcome back! (from greeter v2."
+32368.96,CALL,W11-56,slow_greet,v2,34369.1,2000.14,"Slow hey, W11-56! Welcome back! (from greeter v2"
+32370.06,CALL,W4-56,slow_greet,v2,34370.36,2000.3,"Slow hey, W4-56! Welcome back! (from greeter v2."
+33072.82,CTRL,C1-7,REPLACE_V3,OK,33073.99,1.16,→ v16
+33197.46,CTRL,C0-9,REPLACE_V2,OK,33198.49,1.03,→ v17
+34016.7,CTRL,C1-8,LOAD_SLOW,OK,35019.11,1002.41,→ v18
+34389.55,CALL,W7-57,slow_greet,v2,36389.65,2000.09,"Slow hey, W7-57! Welcome back! (from greeter v2."
+34390.04,CALL,W8-57,slow_greet,v2,36390.26,2000.21,"Slow hey, W8-57! Welcome back! (from greeter v2."
+34390.09,CALL,W0-57,slow_greet,v2,36390.29,2000.2,"Slow hey, W0-57! Welcome back! (from greeter v2."
+34390.76,CALL,W6-57,slow_greet,v2,36391.3,2000.54,"Slow hey, W6-57! Welcome back! (from greeter v2."
+34391.92,CALL,W5-57,slow_greet,v2,36392.05,2000.13,"Slow hey, W5-57! Welcome back! (from greeter v2."
+34393.02,CALL,W3-57,slow_greet,v2,36393.23,2000.21,"Slow hey, W3-57! Welcome back! (from greeter v2."
+34395.68,CALL,W15-57,slow_greet,v2,36396.29,2000.61,"Slow hey, W15-57! Welcome back! (from greeter v2"
+34395.72,CALL,W10-57,slow_greet,v2,36396.33,2000.61,"Slow hey, W10-57! Welcome back! (from greeter v2"
+34395.75,CALL,W13-57,slow_greet,v2,36396.38,2000.63,"Slow hey, W13-57! Welcome back! (from greeter v2"
+34395.77,CALL,W12-57,slow_greet,v2,36396.35,2000.58,"Slow hey, W12-57! Welcome back! (from greeter v2"
+34396.31,CALL,W2-57,slow_greet,v2,36396.78,2000.47,"Slow hey, W2-57! Welcome back! (from greeter v2."
+34396.81,CALL,W14-57,slow_greet,v2,36396.95,2000.15,"Slow hey, W14-57! Welcome back! (from greeter v2"
+34397.43,CALL,W9-57,slow_greet,v2,36397.61,2000.18,"Slow hey, W9-57! Welcome back! (from greeter v2."
+34397.47,CALL,W1-57,slow_greet,v2,36397.66,2000.19,"Slow hey, W1-57! Welcome back! (from greeter v2."
+34399.69,CALL,W11-57,slow_greet,v2,36399.91,2000.22,"Slow hey, W11-57! Welcome back! (from greeter v2"
+34401.3,CALL,W4-57,slow_greet,v2,36401.79,2000.49,"Slow hey, W4-57! Welcome back! (from greeter v2."
+34851.56,CTRL,C0-10,RELOAD_V2,OK,34852.66,1.1,→ v19
+35999.48,CTRL,C1-9,REPLACE_V3,OK,36000.58,1.1,→ v20
+36298.33,CTRL,C0-11,REPLACE_V2,OK,36299.33,1.0,→ v21
+36420.03,CALL,W7-58,slow_greet,v2,38421.18,2001.15,"Slow hey, W7-58! Welcome back! (from greeter v2."
+36420.56,CALL,W0-58,slow_greet,v2,38421.06,2000.49,"Slow hey, W0-58! Welcome back! (from greeter v2."
+36420.59,CALL,W8-58,slow_greet,v2,38421.22,2000.63,"Slow hey, W8-58! Welcome back! (from greeter v2."
+36422.54,CALL,W5-58,slow_greet,v2,38423.11,2000.57,"Slow hey, W5-58! Welcome back! (from greeter v2."
+36422.69,CALL,W6-58,slow_greet,v2,38423.15,2000.46,"Slow hey, W6-58! Welcome back! (from greeter v2."
+36423.76,CALL,W3-58,slow_greet,v2,38423.99,2000.23,"Slow hey, W3-58! Welcome back! (from greeter v2."
+36427.42,CALL,W12-58,slow_greet,v2,38427.96,2000.53,"Slow hey, W12-58! Welcome back! (from greeter v2"
+36427.49,CALL,W13-58,slow_greet,v2,38427.83,2000.33,"Slow hey, W13-58! Welcome back! (from greeter v2"
+36427.52,CALL,W2-58,slow_greet,v2,38428.02,2000.5,"Slow hey, W2-58! Welcome back! (from greeter v2."
+36427.55,CALL,W10-58,slow_greet,v2,38427.99,2000.43,"Slow hey, W10-58! Welcome back! (from greeter v2"
+36427.57,CALL,W15-58,slow_greet,v2,38428.07,2000.5,"Slow hey, W15-58! Welcome back! (from greeter v2"
+36427.6,CALL,W14-58,slow_greet,v2,38428.04,2000.45,"Slow hey, W14-58! Welcome back! (from greeter v2"
+36427.98,CALL,W9-58,slow_greet,v2,38428.48,2000.5,"Slow hey, W9-58! Welcome back! (from greeter v2."
+36429.17,CALL,W1-58,slow_greet,v2,38429.45,2000.28,"Slow hey, W1-58! Welcome back! (from greeter v2."
+36430.52,CALL,W11-58,slow_greet,v2,38430.82,2000.3,"Slow hey, W11-58! Welcome back! (from greeter v2"
+36432.56,CALL,W4-58,slow_greet,v2,38433.24,2000.69,"Slow hey, W4-58! Welcome back! (from greeter v2."
+36916.6,CTRL,C1-10,UNLOAD,OK,36916.87,0.27,unload=True
+38278.54,CTRL,C0-12,REPLACE_V2,OK,38279.32,0.78,→ v22
+38451.67,CALL,W0-59,slow_greet,v2,40452.28,2000.61,"Slow hey, W0-59! Welcome back! (from greeter v2."
+38451.74,CALL,W7-59,slow_greet,v2,40452.32,2000.58,"Slow hey, W7-59! Welcome back! (from greeter v2."
+38452.32,CALL,W8-59,slow_greet,v2,40452.82,2000.51,"Slow hey, W8-59! Welcome back! (from greeter v2."
+38454.37,CALL,W6-59,slow_greet,v2,40454.53,2000.16,"Slow hey, W6-59! Welcome back! (from greeter v2."
+38454.43,CALL,W5-59,slow_greet,v2,40454.64,2000.21,"Slow hey, W5-59! Welcome back! (from greeter v2."
+38455.02,CALL,W3-59,slow_greet,v2,40455.15,2000.13,"Slow hey, W3-59! Welcome back! (from greeter v2."
+38458.49,CALL,W13-59,slow_greet,v2,40458.99,2000.5,"Slow hey, W13-59! Welcome back! (from greeter v2"
+38458.97,CALL,W14-59,slow_greet,v2,40459.63,2000.66,"Slow hey, W14-59! Welcome back! (from greeter v2"
+38459.02,CALL,W12-59,slow_greet,v2,40459.6,2000.58,"Slow hey, W12-59! Welcome back! (from greeter v2"
+38459.05,CALL,W2-59,slow_greet,v2,40459.67,2000.62,"Slow hey, W2-59! Welcome back! (from greeter v2."
+38459.09,CALL,W10-59,slow_greet,v2,40459.69,2000.6,"Slow hey, W10-59! Welcome back! (from greeter v2"
+38459.11,CALL,W15-59,slow_greet,v2,40459.52,2000.41,"Slow hey, W15-59! Welcome back! (from greeter v2"
+38459.58,CALL,W1-59,slow_greet,v2,40460.12,2000.54,"Slow hey, W1-59! Welcome back! (from greeter v2."
+38459.6,CALL,W9-59,slow_greet,v2,40460.16,2000.56,"Slow hey, W9-59! Welcome back! (from greeter v2."
+38461.09,CALL,W11-59,slow_greet,v2,40461.19,2000.1,"Slow hey, W11-59! Welcome back! (from greeter v2"
+38463.68,CALL,W4-59,slow_greet,v2,40463.86,2000.18,"Slow hey, W4-59! Welcome back! (from greeter v2."
+38959.04,CTRL,C1-11,RELOAD_V2,OK,38960.04,1.0,→ v23
+39859.53,CTRL,C1-12,RELOAD_V2,OK,39860.59,1.06,→ v24
+39893.23,CTRL,C0-13,REPLACE_V2,OK,39894.23,1.0,→ v25
+40482.96,CALL,W7-60,slow_greet,v2,42483.46,2000.5,"Slow hey, W7-60! Welcome back! (from greeter v2."
+40483.03,CALL,W0-60,slow_greet,v2,42483.42,2000.38,"Slow hey, W0-60! Welcome back! (from greeter v2."
+40483.54,CALL,W8-60,slow_greet,v2,42484.45,2000.91,"Slow hey, W8-60! Welcome back! (from greeter v2."
+40485.54,CALL,W3-60,slow_greet,v2,42486.13,2000.6,"Slow hey, W3-60! Welcome back! (from greeter v2."
+40485.58,CALL,W6-60,slow_greet,v2,42486.16,2000.58,"Slow hey, W6-60! Welcome back! (from greeter v2."
+40485.62,CALL,W5-60,slow_greet,v2,42486.19,2000.57,"Slow hey, W5-60! Welcome back! (from greeter v2."
+40489.84,CALL,W14-60,slow_greet,v2,42490.33,2000.5,"Slow hey, W14-60! Welcome back! (from greeter v2"
+40489.89,CALL,W2-60,slow_greet,v2,42490.36,2000.47,"Slow hey, W2-60! Welcome back! (from greeter v2."
+40489.96,CALL,W13-60,slow_greet,v2,42490.02,2000.06,"Slow hey, W13-60! Welcome back! (from greeter v2"
+40490.0,CALL,W10-60,slow_greet,v2,42490.13,2000.12,"Slow hey, W10-60! Welcome back! (from greeter v2"
+40490.02,CALL,W12-60,slow_greet,v2,42490.29,2000.27,"Slow hey, W12-60! Welcome back! (from greeter v2"
+40490.5,CALL,W15-60,slow_greet,v2,42490.82,2000.32,"Slow hey, W15-60! Welcome back! (from greeter v2"
+40491.04,CALL,W1-60,slow_greet,v2,42491.54,2000.5,"Slow hey, W1-60! Welcome back! (from greeter v2."
+40491.62,CALL,W9-60,slow_greet,v2,42492.02,2000.4,"Slow hey, W9-60! Welcome back! (from greeter v2."
+40491.67,CALL,W11-60,slow_greet,v2,42492.05,2000.38,"Slow hey, W11-60! Welcome back! (from greeter v2"
+40494.72,CALL,W4-60,slow_greet,v2,42495.14,2000.42,"Slow hey, W4-60! Welcome back! (from greeter v2."
+40987.53,CTRL,C1-13,REPLACE_V1,OK,40988.66,1.13,→ v26
+42080.9,CTRL,C0-14,REPLACE_V3,OK,42081.94,1.04,→ v27
+42514.63,CALL,W0-61,slow_greet,v3,44014.8,1500.17,"Slow hiya, W0-61! Long time no see! (from greete"
+42514.7,CALL,W7-61,slow_greet,v3,44015.78,1501.08,"Slow hiya, W7-61! Long time no see! (from greete"
+42514.74,CALL,W8-61,slow_greet,v3,44015.86,1501.12,"Slow hiya, W8-61! Long time no see! (from greete"
+42516.73,CALL,W6-61,slow_greet,v3,44017.17,1500.43,"Slow hiya, W6-61! Long time no see! (from greete"
+42517.3,CALL,W5-61,slow_greet,v3,44017.67,1500.37,"Slow hiya, W5-61! Long time no see! (from greete"
+42517.38,CALL,W3-61,slow_greet,v3,44017.71,1500.33,"Slow hiya, W3-61! Long time no see! (from greete"
+42520.84,CALL,W15-61,slow_greet,v3,44021.28,1500.44,"Slow hiya, W15-61! Long time no see! (from greet"
+42520.88,CALL,W14-61,slow_greet,v3,44021.16,1500.29,"Slow hiya, W14-61! Long time no see! (from greet"
+42520.91,CALL,W13-61,slow_greet,v3,44021.25,1500.34,"Slow hiya, W13-61! Long time no see! (from greet"
+42520.93,CALL,W10-61,slow_greet,v3,44021.21,1500.28,"Slow hiya, W10-61! Long time no see! (from greet"
+42521.42,CALL,W12-61,slow_greet,v3,44021.8,1500.38,"Slow hiya, W12-61! Long time no see! (from greet"
+42521.45,CALL,W2-61,slow_greet,v3,44021.72,1500.27,"Slow hiya, W2-61! Long time no see! (from greete"
+42522.05,CALL,W1-61,slow_greet,v3,44022.28,1500.23,"Slow hiya, W1-61! Long time no see! (from greete"
+42522.62,CALL,W9-61,slow_greet,v3,44023.09,1500.47,"Slow hiya, W9-61! Long time no see! (from greete"
+42522.64,CALL,W11-61,slow_greet,v3,44023.17,1500.52,"Slow hiya, W11-61! Long time no see! (from greet"
+42525.31,CALL,W4-61,slow_greet,v3,44025.75,1500.44,"Slow hiya, W4-61! Long time no see! (from greete"
+43006.2,CTRL,C1-14,RELOAD_V2,OK,43007.22,1.02,→ v28
+43285.77,CTRL,C0-15,REPLACE_V1,OK,43287.31,1.54,→ v29
+44044.87,CALL,W0-62,slow_greet,v1,46045.12,2000.26,"Slow hello, W0-62! (from greeter v1.0)"
+44046.25,CALL,W8-62,slow_greet,v1,46046.75,2000.5,"Slow hello, W8-62! (from greeter v1.0)"
+44046.29,CALL,W7-62,slow_greet,v1,46046.79,2000.51,"Slow hello, W7-62! (from greeter v1.0)"
+44047.33,CALL,W6-62,slow_greet,v1,46047.82,2000.49,"Slow hello, W6-62! (from greeter v1.0)"
+44048.63,CALL,W5-62,slow_greet,v1,46048.98,2000.34,"Slow hello, W5-62! (from greeter v1.0)"
+44048.71,CALL,W3-62,slow_greet,v1,46048.93,2000.22,"Slow hello, W3-62! (from greeter v1.0)"
+44051.24,CALL,W14-62,slow_greet,v1,46051.49,2000.25,"Slow hello, W14-62! (from greeter v1.0)"
+44051.31,CALL,W13-62,slow_greet,v1,46051.6,2000.29,"Slow hello, W13-62! (from greeter v1.0)"
+44051.81,CALL,W10-62,slow_greet,v1,46052.13,2000.32,"Slow hello, W10-62! (from greeter v1.0)"
+44052.33,CALL,W15-62,slow_greet,v1,46052.69,2000.37,"Slow hello, W15-62! (from greeter v1.0)"
+44052.39,CALL,W2-62,slow_greet,v1,46052.66,2000.27,"Slow hello, W2-62! (from greeter v1.0)"
+44052.43,CALL,W12-62,slow_greet,v1,46052.73,2000.3,"Slow hello, W12-62! (from greeter v1.0)"
+44053.02,CALL,W1-62,slow_greet,v1,46053.22,2000.21,"Slow hello, W1-62! (from greeter v1.0)"
+44053.51,CALL,W9-62,slow_greet,v1,46053.85,2000.34,"Slow hello, W9-62! (from greeter v1.0)"
+44054.12,CALL,W11-62,slow_greet,v1,46054.48,2000.37,"Slow hello, W11-62! (from greeter v1.0)"
+44055.8,CALL,W4-62,slow_greet,v1,46056.08,2000.28,"Slow hello, W4-62! (from greeter v1.0)"

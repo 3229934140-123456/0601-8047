@@ -1,0 +1,3402 @@
+[
+  {
+    "ts_ms": 17.96,
+    "kind": "CTRL",
+    "id": "C0-0",
+    "sub": "REPLACE_V1",
+    "outcome": "OK",
+    "end_ms": 20.07,
+    "latency_ms": 2.11,
+    "detail": "→ v2"
+  },
+  {
+    "ts_ms": 18.07,
+    "kind": "CALL",
+    "id": "W0-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2018.2,
+    "latency_ms": 2000.14,
+    "detail": "Slow hello, W0-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 18.27,
+    "kind": "CALL",
+    "id": "W1-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2018.75,
+    "latency_ms": 2000.48,
+    "detail": "Slow hello, W1-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 18.52,
+    "kind": "CALL",
+    "id": "W2-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2018.79,
+    "latency_ms": 2000.27,
+    "detail": "Slow hello, W2-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 18.72,
+    "kind": "CALL",
+    "id": "W3-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2019.36,
+    "latency_ms": 2000.64,
+    "detail": "Slow hello, W3-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 19.61,
+    "kind": "CALL",
+    "id": "W4-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2020.19,
+    "latency_ms": 2000.58,
+    "detail": "Slow hello, W4-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 19.9,
+    "kind": "CALL",
+    "id": "W5-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2020.4,
+    "latency_ms": 2000.5,
+    "detail": "Slow hello, W5-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 20.05,
+    "kind": "CALL",
+    "id": "W6-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2020.46,
+    "latency_ms": 2000.42,
+    "detail": "Slow hello, W6-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 20.23,
+    "kind": "CALL",
+    "id": "W7-0",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 2020.43,
+    "latency_ms": 2000.2,
+    "detail": "Slow hello, W7-0! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 270.77,
+    "kind": "CTRL",
+    "id": "C1-0",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 271.05,
+    "latency_ms": 0.28,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 771.96,
+    "kind": "CTRL",
+    "id": "C1-0",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 772.74,
+    "latency_ms": 0.78,
+    "detail": "→ v3"
+  },
+  {
+    "ts_ms": 1023.2,
+    "kind": "CTRL",
+    "id": "C1-1",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 1023.49,
+    "latency_ms": 0.29,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 1524.09,
+    "kind": "CTRL",
+    "id": "C1-1",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 1524.95,
+    "latency_ms": 0.86,
+    "detail": "→ v4"
+  },
+  {
+    "ts_ms": 1775.41,
+    "kind": "CTRL",
+    "id": "C1-2",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 1775.7,
+    "latency_ms": 0.28,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 2029.61,
+    "kind": "CTRL",
+    "id": "C0-1",
+    "sub": "REPLACE_V2",
+    "outcome": "OK",
+    "end_ms": 2030.36,
+    "latency_ms": 0.75,
+    "detail": "→ v5"
+  },
+  {
+    "ts_ms": 2048.58,
+    "kind": "CALL",
+    "id": "W0-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4049.05,
+    "latency_ms": 2000.47,
+    "detail": "Slow hey, W0-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2049.15,
+    "kind": "CALL",
+    "id": "W1-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4050.1,
+    "latency_ms": 2000.95,
+    "detail": "Slow hey, W1-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2049.18,
+    "kind": "CALL",
+    "id": "W2-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4050.07,
+    "latency_ms": 2000.9,
+    "detail": "Slow hey, W2-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2049.87,
+    "kind": "CALL",
+    "id": "W3-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4050.04,
+    "latency_ms": 2000.17,
+    "detail": "Slow hey, W3-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2050.45,
+    "kind": "CALL",
+    "id": "W4-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4051.05,
+    "latency_ms": 2000.6,
+    "detail": "Slow hey, W4-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2050.5,
+    "kind": "CALL",
+    "id": "W6-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4051.12,
+    "latency_ms": 2000.61,
+    "detail": "Slow hey, W6-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2050.53,
+    "kind": "CALL",
+    "id": "W7-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4051.09,
+    "latency_ms": 2000.56,
+    "detail": "Slow hey, W7-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2050.54,
+    "kind": "CALL",
+    "id": "W5-1",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 4051.02,
+    "latency_ms": 2000.48,
+    "detail": "Slow hey, W5-1! Welcome back! (from greeter v2.0"
+  },
+  {
+    "ts_ms": 2276.29,
+    "kind": "CTRL",
+    "id": "C1-2",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 2277.29,
+    "latency_ms": 1.0,
+    "detail": "→ v6"
+  },
+  {
+    "ts_ms": 2527.87,
+    "kind": "CTRL",
+    "id": "C1-3",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 2528.14,
+    "latency_ms": 0.27,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 3028.94,
+    "kind": "CTRL",
+    "id": "C1-3",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 3029.7,
+    "latency_ms": 0.76,
+    "detail": "→ v7"
+  },
+  {
+    "ts_ms": 3280.04,
+    "kind": "CTRL",
+    "id": "C1-4",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 3280.32,
+    "latency_ms": 0.28,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 3781.15,
+    "kind": "CTRL",
+    "id": "C1-4",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 3781.89,
+    "latency_ms": 0.74,
+    "detail": "→ v8"
+  },
+  {
+    "ts_ms": 4032.08,
+    "kind": "CTRL",
+    "id": "C1-5",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 4032.35,
+    "latency_ms": 0.26,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 4033.04,
+    "kind": "CTRL",
+    "id": "C0-2",
+    "sub": "REPLACE_V3",
+    "outcome": "OK",
+    "end_ms": 4033.66,
+    "latency_ms": 0.63,
+    "detail": "→ v9"
+  },
+  {
+    "ts_ms": 4080.99,
+    "kind": "CALL",
+    "id": "W0-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5581.67,
+    "latency_ms": 1500.68,
+    "detail": "Slow hiya, W0-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4081.05,
+    "kind": "CALL",
+    "id": "W5-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5581.71,
+    "latency_ms": 1500.66,
+    "detail": "Slow hiya, W5-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4082.0,
+    "kind": "CALL",
+    "id": "W1-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5582.62,
+    "latency_ms": 1500.61,
+    "detail": "Slow hiya, W1-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4082.03,
+    "kind": "CALL",
+    "id": "W3-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5582.59,
+    "latency_ms": 1500.56,
+    "detail": "Slow hiya, W3-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4082.05,
+    "kind": "CALL",
+    "id": "W2-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5582.65,
+    "latency_ms": 1500.59,
+    "detail": "Slow hiya, W2-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4082.96,
+    "kind": "CALL",
+    "id": "W4-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5583.66,
+    "latency_ms": 1500.7,
+    "detail": "Slow hiya, W4-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4082.98,
+    "kind": "CALL",
+    "id": "W7-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5583.72,
+    "latency_ms": 1500.75,
+    "detail": "Slow hiya, W7-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4083.0,
+    "kind": "CALL",
+    "id": "W6-2",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 5583.69,
+    "latency_ms": 1500.69,
+    "detail": "Slow hiya, W6-2! Long time no see! (from greeter"
+  },
+  {
+    "ts_ms": 4532.92,
+    "kind": "CTRL",
+    "id": "C1-5",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 4533.87,
+    "latency_ms": 0.96,
+    "detail": "→ v10"
+  },
+  {
+    "ts_ms": 4784.73,
+    "kind": "CTRL",
+    "id": "C1-6",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 4784.99,
+    "latency_ms": 0.26,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 5285.6,
+    "kind": "CTRL",
+    "id": "C1-6",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 5286.36,
+    "latency_ms": 0.75,
+    "detail": "→ v11"
+  },
+  {
+    "ts_ms": 5537.52,
+    "kind": "CTRL",
+    "id": "C1-7",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 5537.82,
+    "latency_ms": 0.3,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 5613.57,
+    "kind": "CALL",
+    "id": "W5-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5613.61,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5613.67,
+    "kind": "CALL",
+    "id": "W0-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5613.69,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5614.53,
+    "kind": "CALL",
+    "id": "W1-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5614.55,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5614.57,
+    "kind": "CALL",
+    "id": "W2-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5614.58,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5614.63,
+    "kind": "CALL",
+    "id": "W3-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5614.64,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5615.57,
+    "kind": "CALL",
+    "id": "W7-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5615.58,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5615.6,
+    "kind": "CALL",
+    "id": "W6-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5615.61,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5615.64,
+    "kind": "CALL",
+    "id": "W4-3",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5615.66,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5645.51,
+    "kind": "CALL",
+    "id": "W0-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5645.53,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5645.57,
+    "kind": "CALL",
+    "id": "W5-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5645.59,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5645.61,
+    "kind": "CALL",
+    "id": "W7-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5645.62,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5645.64,
+    "kind": "CALL",
+    "id": "W6-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5645.66,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5646.49,
+    "kind": "CALL",
+    "id": "W2-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5646.51,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5646.52,
+    "kind": "CALL",
+    "id": "W1-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5646.54,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5646.56,
+    "kind": "CALL",
+    "id": "W3-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5646.57,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5647.6,
+    "kind": "CALL",
+    "id": "W4-4",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5647.62,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5677.48,
+    "kind": "CALL",
+    "id": "W0-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5677.5,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5677.53,
+    "kind": "CALL",
+    "id": "W6-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5677.54,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5677.57,
+    "kind": "CALL",
+    "id": "W5-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5677.58,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5677.6,
+    "kind": "CALL",
+    "id": "W7-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5677.61,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5678.42,
+    "kind": "CALL",
+    "id": "W2-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5678.43,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5678.44,
+    "kind": "CALL",
+    "id": "W3-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5678.45,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5678.47,
+    "kind": "CALL",
+    "id": "W1-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5678.48,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5679.47,
+    "kind": "CALL",
+    "id": "W4-5",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5679.48,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5707.53,
+    "kind": "CALL",
+    "id": "W0-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5707.55,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5709.43,
+    "kind": "CALL",
+    "id": "W7-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5709.44,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5709.46,
+    "kind": "CALL",
+    "id": "W5-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5709.48,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5709.5,
+    "kind": "CALL",
+    "id": "W4-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5709.51,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5709.53,
+    "kind": "CALL",
+    "id": "W6-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5709.54,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5710.37,
+    "kind": "CALL",
+    "id": "W3-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5710.38,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5710.4,
+    "kind": "CALL",
+    "id": "W1-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5710.42,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5710.44,
+    "kind": "CALL",
+    "id": "W2-6",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5710.45,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5739.42,
+    "kind": "CALL",
+    "id": "W0-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5739.44,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5741.38,
+    "kind": "CALL",
+    "id": "W7-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5741.39,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5741.42,
+    "kind": "CALL",
+    "id": "W5-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5741.43,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5741.45,
+    "kind": "CALL",
+    "id": "W6-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5741.46,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5741.48,
+    "kind": "CALL",
+    "id": "W4-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5741.5,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5742.35,
+    "kind": "CALL",
+    "id": "W2-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5742.36,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5742.38,
+    "kind": "CALL",
+    "id": "W3-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5742.39,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5742.41,
+    "kind": "CALL",
+    "id": "W1-7",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5742.42,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5769.93,
+    "kind": "CALL",
+    "id": "W0-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5769.97,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5771.76,
+    "kind": "CALL",
+    "id": "W4-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5771.78,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5772.38,
+    "kind": "CALL",
+    "id": "W2-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5772.4,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5772.42,
+    "kind": "CALL",
+    "id": "W6-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5772.43,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5772.46,
+    "kind": "CALL",
+    "id": "W5-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5772.47,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5772.49,
+    "kind": "CALL",
+    "id": "W7-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5772.51,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5773.26,
+    "kind": "CALL",
+    "id": "W1-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5773.27,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5773.29,
+    "kind": "CALL",
+    "id": "W3-8",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5773.3,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5799.99,
+    "kind": "CALL",
+    "id": "W0-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5800.0,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5802.98,
+    "kind": "CALL",
+    "id": "W4-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5803.0,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5803.69,
+    "kind": "CALL",
+    "id": "W5-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5803.81,
+    "latency_ms": 0.12,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5803.88,
+    "kind": "CALL",
+    "id": "W6-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5803.89,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5803.95,
+    "kind": "CALL",
+    "id": "W7-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5803.96,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5803.98,
+    "kind": "CALL",
+    "id": "W2-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5804.0,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5804.53,
+    "kind": "CALL",
+    "id": "W1-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5804.55,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5804.57,
+    "kind": "CALL",
+    "id": "W3-9",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5804.58,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5830.32,
+    "kind": "CALL",
+    "id": "W0-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5830.37,
+    "latency_ms": 0.05,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5833.27,
+    "kind": "CALL",
+    "id": "W4-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5833.35,
+    "latency_ms": 0.08,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5835.08,
+    "kind": "CALL",
+    "id": "W2-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5835.09,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5835.11,
+    "kind": "CALL",
+    "id": "W7-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5835.12,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5835.14,
+    "kind": "CALL",
+    "id": "W6-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5835.15,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5835.17,
+    "kind": "CALL",
+    "id": "W5-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5835.18,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5835.64,
+    "kind": "CALL",
+    "id": "W3-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5835.65,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5835.7,
+    "kind": "CALL",
+    "id": "W1-10",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5835.77,
+    "latency_ms": 0.07,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5860.53,
+    "kind": "CALL",
+    "id": "W0-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5860.54,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5863.53,
+    "kind": "CALL",
+    "id": "W4-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5863.54,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5865.38,
+    "kind": "CALL",
+    "id": "W6-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5865.42,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5865.62,
+    "kind": "CALL",
+    "id": "W5-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5865.63,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5865.74,
+    "kind": "CALL",
+    "id": "W2-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5865.76,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5865.78,
+    "kind": "CALL",
+    "id": "W7-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5865.85,
+    "latency_ms": 0.07,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5866.12,
+    "kind": "CALL",
+    "id": "W3-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5866.19,
+    "latency_ms": 0.06,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5866.31,
+    "kind": "CALL",
+    "id": "W1-11",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5866.33,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5891.22,
+    "kind": "CALL",
+    "id": "W0-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5891.24,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5894.2,
+    "kind": "CALL",
+    "id": "W4-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5894.22,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5895.97,
+    "kind": "CALL",
+    "id": "W5-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5896.0,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5896.26,
+    "kind": "CALL",
+    "id": "W2-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5896.29,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5896.53,
+    "kind": "CALL",
+    "id": "W6-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5896.55,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5896.57,
+    "kind": "CALL",
+    "id": "W7-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5896.59,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5896.8,
+    "kind": "CALL",
+    "id": "W3-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5896.87,
+    "latency_ms": 0.06,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5897.41,
+    "kind": "CALL",
+    "id": "W1-12",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5897.43,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5922.78,
+    "kind": "CALL",
+    "id": "W0-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5922.79,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5925.69,
+    "kind": "CALL",
+    "id": "W4-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5925.7,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5926.72,
+    "kind": "CALL",
+    "id": "W2-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5926.74,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5926.78,
+    "kind": "CALL",
+    "id": "W6-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5926.79,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5926.82,
+    "kind": "CALL",
+    "id": "W7-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5926.83,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5927.69,
+    "kind": "CALL",
+    "id": "W1-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5927.7,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5927.73,
+    "kind": "CALL",
+    "id": "W5-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5927.74,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5928.8,
+    "kind": "CALL",
+    "id": "W3-13",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5928.82,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5953.45,
+    "kind": "CALL",
+    "id": "W0-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5953.47,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5956.26,
+    "kind": "CALL",
+    "id": "W4-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5956.28,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5957.85,
+    "kind": "CALL",
+    "id": "W1-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5957.86,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5957.88,
+    "kind": "CALL",
+    "id": "W2-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5957.89,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5957.91,
+    "kind": "CALL",
+    "id": "W6-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5957.92,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5957.95,
+    "kind": "CALL",
+    "id": "W7-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5957.96,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5957.98,
+    "kind": "CALL",
+    "id": "W5-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5958.0,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5959.63,
+    "kind": "CALL",
+    "id": "W3-14",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5959.64,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5983.86,
+    "kind": "CALL",
+    "id": "W0-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5983.88,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5987.88,
+    "kind": "CALL",
+    "id": "W1-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5987.9,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5987.94,
+    "kind": "CALL",
+    "id": "W6-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5987.96,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5987.99,
+    "kind": "CALL",
+    "id": "W4-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5988.0,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5988.87,
+    "kind": "CALL",
+    "id": "W2-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5988.89,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5989.89,
+    "kind": "CALL",
+    "id": "W3-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5989.9,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5989.94,
+    "kind": "CALL",
+    "id": "W5-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5989.95,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 5989.97,
+    "kind": "CALL",
+    "id": "W7-15",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 5989.98,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6015.83,
+    "kind": "CALL",
+    "id": "W0-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6015.85,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6019.81,
+    "kind": "CALL",
+    "id": "W1-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6019.83,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6019.88,
+    "kind": "CALL",
+    "id": "W4-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6019.89,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6019.91,
+    "kind": "CALL",
+    "id": "W6-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6019.92,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6020.83,
+    "kind": "CALL",
+    "id": "W2-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6020.85,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6021.83,
+    "kind": "CALL",
+    "id": "W3-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6021.84,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6021.89,
+    "kind": "CALL",
+    "id": "W5-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6021.9,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6021.94,
+    "kind": "CALL",
+    "id": "W7-16",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 6021.95,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 6038.85,
+    "kind": "CTRL",
+    "id": "C1-7",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 6039.64,
+    "latency_ms": 0.79,
+    "detail": "→ v12"
+  },
+  {
+    "ts_ms": 6043.79,
+    "kind": "CTRL",
+    "id": "C0-3",
+    "sub": "REPLACE_V1",
+    "outcome": "OK",
+    "end_ms": 6044.69,
+    "latency_ms": 0.9,
+    "detail": "→ v13"
+  },
+  {
+    "ts_ms": 6047.79,
+    "kind": "CALL",
+    "id": "W0-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8048.89,
+    "latency_ms": 2001.1,
+    "detail": "Slow hello, W0-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6051.75,
+    "kind": "CALL",
+    "id": "W1-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8052.19,
+    "latency_ms": 2000.44,
+    "detail": "Slow hello, W1-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6051.77,
+    "kind": "CALL",
+    "id": "W6-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8052.27,
+    "latency_ms": 2000.49,
+    "detail": "Slow hello, W6-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6051.83,
+    "kind": "CALL",
+    "id": "W4-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8052.22,
+    "latency_ms": 2000.39,
+    "detail": "Slow hello, W4-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6052.79,
+    "kind": "CALL",
+    "id": "W2-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8053.27,
+    "latency_ms": 2000.48,
+    "detail": "Slow hello, W2-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6053.77,
+    "kind": "CALL",
+    "id": "W5-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8054.62,
+    "latency_ms": 2000.85,
+    "detail": "Slow hello, W5-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6053.79,
+    "kind": "CALL",
+    "id": "W3-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8054.41,
+    "latency_ms": 2000.61,
+    "detail": "Slow hello, W3-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6053.81,
+    "kind": "CALL",
+    "id": "W7-17",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 8054.49,
+    "latency_ms": 2000.68,
+    "detail": "Slow hello, W7-17! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 6290.01,
+    "kind": "CTRL",
+    "id": "C1-8",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 6290.25,
+    "latency_ms": 0.25,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 6790.99,
+    "kind": "CTRL",
+    "id": "C1-8",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 6791.78,
+    "latency_ms": 0.79,
+    "detail": "→ v14"
+  },
+  {
+    "ts_ms": 7042.87,
+    "kind": "CTRL",
+    "id": "C1-9",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 7043.13,
+    "latency_ms": 0.26,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 7543.67,
+    "kind": "CTRL",
+    "id": "C1-9",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 7544.48,
+    "latency_ms": 0.8,
+    "detail": "→ v15"
+  },
+  {
+    "ts_ms": 7795.17,
+    "kind": "CTRL",
+    "id": "C1-10",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 7795.43,
+    "latency_ms": 0.26,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 8051.87,
+    "kind": "CTRL",
+    "id": "C0-4",
+    "sub": "REPLACE_V2",
+    "outcome": "OK",
+    "end_ms": 8053.03,
+    "latency_ms": 1.16,
+    "detail": "→ v16"
+  },
+  {
+    "ts_ms": 8078.99,
+    "kind": "CALL",
+    "id": "W0-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10079.4,
+    "latency_ms": 2000.4,
+    "detail": "Slow hey, W0-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8082.79,
+    "kind": "CALL",
+    "id": "W6-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10083.9,
+    "latency_ms": 2001.11,
+    "detail": "Slow hey, W6-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8082.84,
+    "kind": "CALL",
+    "id": "W1-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10083.93,
+    "latency_ms": 2001.09,
+    "detail": "Slow hey, W1-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8082.87,
+    "kind": "CALL",
+    "id": "W4-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10083.86,
+    "latency_ms": 2000.98,
+    "detail": "Slow hey, W4-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8083.37,
+    "kind": "CALL",
+    "id": "W2-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10083.83,
+    "latency_ms": 2000.46,
+    "detail": "Slow hey, W2-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8084.55,
+    "kind": "CALL",
+    "id": "W3-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10085.03,
+    "latency_ms": 2000.48,
+    "detail": "Slow hey, W3-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8084.57,
+    "kind": "CALL",
+    "id": "W7-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10085.0,
+    "latency_ms": 2000.43,
+    "detail": "Slow hey, W7-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8085.65,
+    "kind": "CALL",
+    "id": "W5-18",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 10086.19,
+    "latency_ms": 2000.54,
+    "detail": "Slow hey, W5-18! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 8295.97,
+    "kind": "CTRL",
+    "id": "C1-10",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 8297.07,
+    "latency_ms": 1.11,
+    "detail": "→ v17"
+  },
+  {
+    "ts_ms": 8547.52,
+    "kind": "CTRL",
+    "id": "C1-11",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 8547.8,
+    "latency_ms": 0.28,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 9048.82,
+    "kind": "CTRL",
+    "id": "C1-11",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 9049.69,
+    "latency_ms": 0.87,
+    "detail": "→ v18"
+  },
+  {
+    "ts_ms": 9300.4,
+    "kind": "CTRL",
+    "id": "C1-12",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 9300.67,
+    "latency_ms": 0.27,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 9801.43,
+    "kind": "CTRL",
+    "id": "C1-12",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 9802.33,
+    "latency_ms": 0.9,
+    "detail": "→ v19"
+  },
+  {
+    "ts_ms": 10052.74,
+    "kind": "CTRL",
+    "id": "C1-13",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 10053.13,
+    "latency_ms": 0.39,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 10055.24,
+    "kind": "CTRL",
+    "id": "C0-5",
+    "sub": "REPLACE_V3",
+    "outcome": "OK",
+    "end_ms": 10055.94,
+    "latency_ms": 0.7,
+    "detail": "→ v20"
+  },
+  {
+    "ts_ms": 10110.35,
+    "kind": "CALL",
+    "id": "W0-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11610.58,
+    "latency_ms": 1500.23,
+    "detail": "Slow hiya, W0-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10114.06,
+    "kind": "CALL",
+    "id": "W2-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11614.25,
+    "latency_ms": 1500.19,
+    "detail": "Slow hiya, W2-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10114.1,
+    "kind": "CALL",
+    "id": "W4-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11614.22,
+    "latency_ms": 1500.12,
+    "detail": "Slow hiya, W4-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10114.66,
+    "kind": "CALL",
+    "id": "W6-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11614.77,
+    "latency_ms": 1500.11,
+    "detail": "Slow hiya, W6-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10114.85,
+    "kind": "CALL",
+    "id": "W1-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11615.31,
+    "latency_ms": 1500.46,
+    "detail": "Slow hiya, W1-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10115.13,
+    "kind": "CALL",
+    "id": "W3-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11615.96,
+    "latency_ms": 1500.83,
+    "detail": "Slow hiya, W3-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10115.41,
+    "kind": "CALL",
+    "id": "W7-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11615.83,
+    "latency_ms": 1500.43,
+    "detail": "Slow hiya, W7-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10116.66,
+    "kind": "CALL",
+    "id": "W5-19",
+    "sub": "slow_greet",
+    "outcome": "v3",
+    "end_ms": 11617.15,
+    "latency_ms": 1500.49,
+    "detail": "Slow hiya, W5-19! Long time no see! (from greete"
+  },
+  {
+    "ts_ms": 10553.79,
+    "kind": "CTRL",
+    "id": "C1-13",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 10554.83,
+    "latency_ms": 1.03,
+    "detail": "→ v21"
+  },
+  {
+    "ts_ms": 10805.41,
+    "kind": "CTRL",
+    "id": "C1-14",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 10805.68,
+    "latency_ms": 0.27,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 11306.23,
+    "kind": "CTRL",
+    "id": "C1-14",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 11307.09,
+    "latency_ms": 0.86,
+    "detail": "→ v22"
+  },
+  {
+    "ts_ms": 11557.38,
+    "kind": "CTRL",
+    "id": "C1-15",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 11557.65,
+    "latency_ms": 0.26,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 11641.54,
+    "kind": "CALL",
+    "id": "W0-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11641.61,
+    "latency_ms": 0.08,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11645.07,
+    "kind": "CALL",
+    "id": "W2-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11645.08,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11645.1,
+    "kind": "CALL",
+    "id": "W4-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11645.11,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11645.14,
+    "kind": "CALL",
+    "id": "W6-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11645.15,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11646.11,
+    "kind": "CALL",
+    "id": "W7-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11646.23,
+    "latency_ms": 0.12,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11646.43,
+    "kind": "CALL",
+    "id": "W3-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11646.44,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11646.47,
+    "kind": "CALL",
+    "id": "W1-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11646.48,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11647.6,
+    "kind": "CALL",
+    "id": "W5-20",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11647.65,
+    "latency_ms": 0.05,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11672.54,
+    "kind": "CALL",
+    "id": "W0-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11672.55,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11675.31,
+    "kind": "CALL",
+    "id": "W2-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11675.36,
+    "latency_ms": 0.05,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11675.46,
+    "kind": "CALL",
+    "id": "W4-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11675.47,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11675.98,
+    "kind": "CALL",
+    "id": "W6-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11676.02,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11676.61,
+    "kind": "CALL",
+    "id": "W1-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11676.62,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11676.66,
+    "kind": "CALL",
+    "id": "W7-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11676.67,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11677.13,
+    "kind": "CALL",
+    "id": "W3-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11677.14,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11677.76,
+    "kind": "CALL",
+    "id": "W5-21",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11677.77,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11702.56,
+    "kind": "CALL",
+    "id": "W0-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11702.57,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11705.61,
+    "kind": "CALL",
+    "id": "W4-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11705.62,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11705.65,
+    "kind": "CALL",
+    "id": "W2-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11705.67,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11706.78,
+    "kind": "CALL",
+    "id": "W1-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11706.8,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11706.84,
+    "kind": "CALL",
+    "id": "W6-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11706.85,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11707.29,
+    "kind": "CALL",
+    "id": "W3-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11707.33,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11707.35,
+    "kind": "CALL",
+    "id": "W7-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11707.36,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11707.96,
+    "kind": "CALL",
+    "id": "W5-22",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11707.98,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11732.73,
+    "kind": "CALL",
+    "id": "W0-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11732.76,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11735.72,
+    "kind": "CALL",
+    "id": "W4-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11735.75,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11735.82,
+    "kind": "CALL",
+    "id": "W2-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11735.83,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11736.94,
+    "kind": "CALL",
+    "id": "W1-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11736.94,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11737.01,
+    "kind": "CALL",
+    "id": "W6-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11737.02,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11737.53,
+    "kind": "CALL",
+    "id": "W7-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11737.54,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11737.56,
+    "kind": "CALL",
+    "id": "W3-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11737.57,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11738.23,
+    "kind": "CALL",
+    "id": "W5-23",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11738.24,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11762.86,
+    "kind": "CALL",
+    "id": "W0-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11762.9,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11766.49,
+    "kind": "CALL",
+    "id": "W2-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11766.5,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11766.52,
+    "kind": "CALL",
+    "id": "W4-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11766.53,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11766.98,
+    "kind": "CALL",
+    "id": "W1-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11767.0,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11767.57,
+    "kind": "CALL",
+    "id": "W7-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11767.67,
+    "latency_ms": 0.1,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11768.31,
+    "kind": "CALL",
+    "id": "W6-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11768.32,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11768.92,
+    "kind": "CALL",
+    "id": "W5-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11768.94,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11768.97,
+    "kind": "CALL",
+    "id": "W3-24",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11769.0,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11793.19,
+    "kind": "CALL",
+    "id": "W0-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11793.21,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11796.83,
+    "kind": "CALL",
+    "id": "W2-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11796.84,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11796.87,
+    "kind": "CALL",
+    "id": "W4-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11796.88,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11797.3,
+    "kind": "CALL",
+    "id": "W1-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11797.33,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11798.07,
+    "kind": "CALL",
+    "id": "W7-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11798.1,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11798.65,
+    "kind": "CALL",
+    "id": "W6-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11798.67,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11799.25,
+    "kind": "CALL",
+    "id": "W5-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11799.26,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11799.3,
+    "kind": "CALL",
+    "id": "W3-25",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11799.31,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11824.69,
+    "kind": "CALL",
+    "id": "W0-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11824.7,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11827.06,
+    "kind": "CALL",
+    "id": "W2-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11827.09,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11827.16,
+    "kind": "CALL",
+    "id": "W4-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11827.17,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11828.32,
+    "kind": "CALL",
+    "id": "W1-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11828.33,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11828.35,
+    "kind": "CALL",
+    "id": "W7-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11828.36,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11829.51,
+    "kind": "CALL",
+    "id": "W3-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11829.52,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11829.54,
+    "kind": "CALL",
+    "id": "W6-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11829.55,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11830.0,
+    "kind": "CALL",
+    "id": "W5-26",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11830.02,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11855.32,
+    "kind": "CALL",
+    "id": "W0-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11855.41,
+    "latency_ms": 0.08,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11857.79,
+    "kind": "CALL",
+    "id": "W4-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11857.8,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11857.81,
+    "kind": "CALL",
+    "id": "W2-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11857.83,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11858.92,
+    "kind": "CALL",
+    "id": "W7-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11858.96,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11859.66,
+    "kind": "CALL",
+    "id": "W1-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11859.71,
+    "latency_ms": 0.05,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11859.73,
+    "kind": "CALL",
+    "id": "W3-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11859.74,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11860.26,
+    "kind": "CALL",
+    "id": "W6-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11860.26,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11860.78,
+    "kind": "CALL",
+    "id": "W5-27",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11860.8,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11886.52,
+    "kind": "CALL",
+    "id": "W0-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11886.53,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11887.8,
+    "kind": "CALL",
+    "id": "W4-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11887.82,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11888.88,
+    "kind": "CALL",
+    "id": "W2-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11888.89,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11889.94,
+    "kind": "CALL",
+    "id": "W7-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11889.96,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11890.58,
+    "kind": "CALL",
+    "id": "W3-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11890.61,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11890.65,
+    "kind": "CALL",
+    "id": "W1-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11890.67,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11891.11,
+    "kind": "CALL",
+    "id": "W6-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11891.13,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11891.69,
+    "kind": "CALL",
+    "id": "W5-28",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11891.7,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11916.69,
+    "kind": "CALL",
+    "id": "W0-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11916.73,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11918.65,
+    "kind": "CALL",
+    "id": "W4-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11918.66,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11919.26,
+    "kind": "CALL",
+    "id": "W2-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11919.28,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11920.35,
+    "kind": "CALL",
+    "id": "W7-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11920.43,
+    "latency_ms": 0.08,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11921.0,
+    "kind": "CALL",
+    "id": "W1-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11921.01,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11921.03,
+    "kind": "CALL",
+    "id": "W3-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11921.04,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11921.56,
+    "kind": "CALL",
+    "id": "W6-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11921.57,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11922.49,
+    "kind": "CALL",
+    "id": "W5-29",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11922.51,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11947.65,
+    "kind": "CALL",
+    "id": "W0-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11947.7,
+    "latency_ms": 0.05,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11949.33,
+    "kind": "CALL",
+    "id": "W4-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11949.35,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11949.95,
+    "kind": "CALL",
+    "id": "W2-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11949.96,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11951.3,
+    "kind": "CALL",
+    "id": "W7-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11951.31,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11951.97,
+    "kind": "CALL",
+    "id": "W3-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11951.99,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11952.02,
+    "kind": "CALL",
+    "id": "W1-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11952.03,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11952.5,
+    "kind": "CALL",
+    "id": "W6-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11952.51,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11953.53,
+    "kind": "CALL",
+    "id": "W5-30",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11953.55,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11978.18,
+    "kind": "CALL",
+    "id": "W0-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11978.26,
+    "latency_ms": 0.08,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11979.96,
+    "kind": "CALL",
+    "id": "W4-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11979.98,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11980.47,
+    "kind": "CALL",
+    "id": "W2-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11980.51,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11981.63,
+    "kind": "CALL",
+    "id": "W7-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11981.66,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11982.29,
+    "kind": "CALL",
+    "id": "W3-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11982.3,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11982.31,
+    "kind": "CALL",
+    "id": "W1-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11982.32,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11982.75,
+    "kind": "CALL",
+    "id": "W6-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11982.84,
+    "latency_ms": 0.09,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 11983.69,
+    "kind": "CALL",
+    "id": "W5-31",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 11983.7,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12008.52,
+    "kind": "CALL",
+    "id": "W0-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12008.53,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12010.82,
+    "kind": "CALL",
+    "id": "W2-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12010.85,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12010.87,
+    "kind": "CALL",
+    "id": "W4-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12010.89,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12011.93,
+    "kind": "CALL",
+    "id": "W7-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12011.95,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12012.65,
+    "kind": "CALL",
+    "id": "W1-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12012.66,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12013.3,
+    "kind": "CALL",
+    "id": "W6-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12013.36,
+    "latency_ms": 0.06,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12013.38,
+    "kind": "CALL",
+    "id": "W3-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12013.39,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12014.65,
+    "kind": "CALL",
+    "id": "W5-32",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12014.66,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12039.44,
+    "kind": "CALL",
+    "id": "W0-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12039.45,
+    "latency_ms": 0.02,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12041.06,
+    "kind": "CALL",
+    "id": "W2-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12041.09,
+    "latency_ms": 0.03,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12041.11,
+    "kind": "CALL",
+    "id": "W4-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12041.12,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12043.08,
+    "kind": "CALL",
+    "id": "W7-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12043.09,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12043.12,
+    "kind": "CALL",
+    "id": "W1-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12043.13,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12043.71,
+    "kind": "CALL",
+    "id": "W6-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12043.72,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12043.75,
+    "kind": "CALL",
+    "id": "W3-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12043.77,
+    "latency_ms": 0.01,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12045.69,
+    "kind": "CALL",
+    "id": "W5-33",
+    "sub": "slow_greet",
+    "outcome": "degraded",
+    "end_ms": 12045.73,
+    "latency_ms": 0.04,
+    "detail": "[fallback-slow] Service temporarily unavailable "
+  },
+  {
+    "ts_ms": 12058.28,
+    "kind": "CTRL",
+    "id": "C1-15",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 12059.18,
+    "latency_ms": 0.9,
+    "detail": "→ v23"
+  },
+  {
+    "ts_ms": 12062.37,
+    "kind": "CTRL",
+    "id": "C0-6",
+    "sub": "REPLACE_V1",
+    "outcome": "OK",
+    "end_ms": 12063.37,
+    "latency_ms": 1.0,
+    "detail": "→ v24"
+  },
+  {
+    "ts_ms": 12070.2,
+    "kind": "CALL",
+    "id": "W0-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14070.56,
+    "latency_ms": 2000.36,
+    "detail": "Slow hello, W0-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12071.99,
+    "kind": "CALL",
+    "id": "W4-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14072.37,
+    "latency_ms": 2000.37,
+    "detail": "Slow hello, W4-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12072.05,
+    "kind": "CALL",
+    "id": "W2-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14072.33,
+    "latency_ms": 2000.27,
+    "detail": "Slow hello, W2-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12073.74,
+    "kind": "CALL",
+    "id": "W6-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14074.08,
+    "latency_ms": 2000.34,
+    "detail": "Slow hello, W6-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12073.83,
+    "kind": "CALL",
+    "id": "W1-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14074.02,
+    "latency_ms": 2000.19,
+    "detail": "Slow hello, W1-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12073.86,
+    "kind": "CALL",
+    "id": "W7-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14074.05,
+    "latency_ms": 2000.2,
+    "detail": "Slow hello, W7-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12074.32,
+    "kind": "CALL",
+    "id": "W3-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14074.63,
+    "latency_ms": 2000.31,
+    "detail": "Slow hello, W3-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12076.85,
+    "kind": "CALL",
+    "id": "W5-34",
+    "sub": "slow_greet",
+    "outcome": "v1",
+    "end_ms": 14077.13,
+    "latency_ms": 2000.28,
+    "detail": "Slow hello, W5-34! (from greeter v1.0)"
+  },
+  {
+    "ts_ms": 12309.6,
+    "kind": "CTRL",
+    "id": "C1-16",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 12310.02,
+    "latency_ms": 0.42,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 12810.42,
+    "kind": "CTRL",
+    "id": "C1-16",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 12811.21,
+    "latency_ms": 0.79,
+    "detail": "→ v25"
+  },
+  {
+    "ts_ms": 13061.54,
+    "kind": "CTRL",
+    "id": "C1-17",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 13061.94,
+    "latency_ms": 0.4,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 13562.68,
+    "kind": "CTRL",
+    "id": "C1-17",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 13563.48,
+    "latency_ms": 0.8,
+    "detail": "→ v26"
+  },
+  {
+    "ts_ms": 13814.19,
+    "kind": "CTRL",
+    "id": "C1-18",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 13814.47,
+    "latency_ms": 0.28,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 14068.37,
+    "kind": "CTRL",
+    "id": "C0-7",
+    "sub": "REPLACE_V2",
+    "outcome": "OK",
+    "end_ms": 14069.22,
+    "latency_ms": 0.86,
+    "detail": "→ v27"
+  },
+  {
+    "ts_ms": 14101.05,
+    "kind": "CALL",
+    "id": "W0-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16101.39,
+    "latency_ms": 2000.34,
+    "detail": "Slow hey, W0-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14102.78,
+    "kind": "CALL",
+    "id": "W2-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16103.02,
+    "latency_ms": 2000.25,
+    "detail": "Slow hey, W2-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14103.3,
+    "kind": "CALL",
+    "id": "W4-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16103.58,
+    "latency_ms": 2000.28,
+    "detail": "Slow hey, W4-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14105.05,
+    "kind": "CALL",
+    "id": "W3-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16106.29,
+    "latency_ms": 2001.24,
+    "detail": "Slow hey, W3-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14105.17,
+    "kind": "CALL",
+    "id": "W1-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16106.24,
+    "latency_ms": 2001.07,
+    "detail": "Slow hey, W1-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14105.2,
+    "kind": "CALL",
+    "id": "W7-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16106.35,
+    "latency_ms": 2001.15,
+    "detail": "Slow hey, W7-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14105.22,
+    "kind": "CALL",
+    "id": "W6-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16106.47,
+    "latency_ms": 2001.24,
+    "detail": "Slow hey, W6-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14108.79,
+    "kind": "CALL",
+    "id": "W5-35",
+    "sub": "slow_greet",
+    "outcome": "v2",
+    "end_ms": 16109.17,
+    "latency_ms": 2000.38,
+    "detail": "Slow hey, W5-35! Welcome back! (from greeter v2."
+  },
+  {
+    "ts_ms": 14315.03,
+    "kind": "CTRL",
+    "id": "C1-18",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 14316.01,
+    "latency_ms": 0.98,
+    "detail": "→ v28"
+  },
+  {
+    "ts_ms": 14567.21,
+    "kind": "CTRL",
+    "id": "C1-19",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 14567.49,
+    "latency_ms": 0.29,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 15068.2,
+    "kind": "CTRL",
+    "id": "C1-19",
+    "sub": "RELOAD_greeter_v3",
+    "outcome": "OK",
+    "end_ms": 15068.98,
+    "latency_ms": 0.78,
+    "detail": "→ v29"
+  },
+  {
+    "ts_ms": 15319.8,
+    "kind": "CTRL",
+    "id": "C1-20",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 15320.07,
+    "latency_ms": 0.26,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 15820.56,
+    "kind": "CTRL",
+    "id": "C1-20",
+    "sub": "RELOAD_greeter_v1",
+    "outcome": "OK",
+    "end_ms": 15821.36,
+    "latency_ms": 0.8,
+    "detail": "→ v30"
+  },
+  {
+    "ts_ms": 16071.96,
+    "kind": "CTRL",
+    "id": "C1-21",
+    "sub": "UNLOAD",
+    "outcome": "OK",
+    "end_ms": 16072.24,
+    "latency_ms": 0.28,
+    "detail": "unload=True"
+  },
+  {
+    "ts_ms": 16573.18,
+    "kind": "CTRL",
+    "id": "C1-21",
+    "sub": "RELOAD_greeter_v2",
+    "outcome": "OK",
+    "end_ms": 16573.93,
+    "latency_ms": 0.74,
+    "detail": "→ v31"
+  }
+]
