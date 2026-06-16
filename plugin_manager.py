@@ -182,6 +182,16 @@ class PluginSlot:
         self._op_mutex = threading.RLock()
         self._current: Optional[ModuleVersion] = None
         self._retiring: List[ModuleVersion] = []
+        self._fallback: Optional[Callable[..., Any]] = None
+
+    def set_fallback(self, fn: Optional[Callable[..., Any]]) -> None:
+        with self._lock:
+            self._fallback = fn
+
+    @property
+    def fallback(self) -> Optional[Callable[..., Any]]:
+        with self._lock:
+            return self._fallback
 
     @property
     def op_mutex(self) -> threading.RLock:
@@ -241,6 +251,39 @@ class PluginSlot:
 
     def release_read(self, mv: ModuleVersion) -> None:
         mv.guard.release_read()
+
+
+class FallbackResult:
+    """Sentinel returned by ``call_safe`` when no live plugin version is available."""
+
+    def __init__(self, plugin_name: str, func_name: str,
+                 fallback_value: Any = None) -> None:
+        self.plugin_name = plugin_name
+        self.func_name = func_name
+        self.fallback_value = fallback_value
+
+    def __repr__(self) -> str:
+        return (f"FallbackResult(plugin={self.plugin_name!r}, "
+                f"func={self.func_name!r}, value={self.fallback_value!r})")
+
+    def __str__(self) -> str:
+        return str(self.fallback_value)
+
+    def __bool__(self) -> bool:
+        return self.fallback_value is not None
+
+
+class ReadTimeoutError(Exception):
+    """Raised by ``call_safe`` when the read barrier times out."""
+
+    def __init__(self, plugin_name: str, func_name: str, timeout: float) -> None:
+        self.plugin_name = plugin_name
+        self.func_name = func_name
+        self.timeout = timeout
+        super().__init__(
+            f"Read barrier timeout ({timeout:.1f}s) for plugin "
+            f"'{plugin_name}' function '{func_name}'"
+        )
 
 
 class PluginManager:
@@ -385,6 +428,50 @@ class PluginManager:
             if fn is None:
                 raise AttributeError(f"Module '{name}' has no function '{func_name}'")
             return fn(*args, **kwargs)
+
+    def register_fallback(self, name: str, fallback_fn: Callable[..., Any]) -> None:
+        slot = self._get_or_create_slot(name)
+        slot.set_fallback(fallback_fn)
+
+    def call_safe(self, name: str, func_name: str, *args: Any, **kwargs: Any) -> Any:
+        """
+        Like ``call`` but never raises for "no plugin available".
+
+        Returns:
+          - Normal result if a live plugin version handled the call.
+          - ``FallbackResult`` if no version is installed (fallback invoked).
+        Raises:
+          - ``ReadTimeoutError`` if the read barrier timed out (should never
+            happen in normal operation; indicates a bug or stuck writer).
+          - ``AttributeError`` if the loaded module lacks the requested function.
+          - Any exception the plugin function itself raises.
+        """
+        with self._lock:
+            slot = self._slots.get(name)
+        if slot is None:
+            fb = None
+        else:
+            fb = slot.fallback
+            mv = slot.acquire_read(self._read_timeout)
+            if mv is not None:
+                try:
+                    fn = getattr(mv.module, func_name, None)
+                    if fn is None:
+                        raise AttributeError(
+                            f"Module '{name}' has no function '{func_name}'"
+                        )
+                    return fn(*args, **kwargs)
+                finally:
+                    slot.release_read(mv)
+        with self._lock:
+            slot2 = self._slots.get(name)
+        if slot2 is not None:
+            cur = slot2.current
+            if cur is not None:
+                raise ReadTimeoutError(name, func_name, self._read_timeout)
+        if fb is not None:
+            return FallbackResult(name, func_name, fb(*args, **kwargs))
+        return FallbackResult(name, func_name)
 
     def status(self) -> Dict[str, Any]:
         result: Dict[str, Any] = {}

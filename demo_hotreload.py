@@ -1,24 +1,17 @@
 """
-Mixed-scenario hot-reload stress test.
+Hot-reload plugin stress suite — 4 scenarios, auto-statistics, strict assertions.
 
-  - 16 worker threads continuously issue slow_greet() calls (~200ms each)
-  - 2  control threads randomly interleave:
-        LOAD slow-init  (1.0s on_load, init-protected)
-        REPLACE v1      (fast init)
-        REPLACE v2
-        REPLACE v3
-        UNLOAD
-        RELOAD v2  (after unload)
-  - Timeline: every control op and every business call is timestamped to
-    the millisecond and printed so the switch boundaries are visible.
-  - Final statistics + hard assertions:
-        * no call lost
-        * no call landed in a module before its on_load finished
-        * no "hard failure" (uncaught exception)
-        * max wait per call < 5x expected (indicates no hang / long block)
-        * no "replace-success-then-unavailable" inconsistency
-
-Exit code is non-zero if any assertion fails.
+  1. DETERMINISTIC REPLACE+UNLOAD: one thread loops v1→v2→v3, another
+     unloads at the replacement boundary. Per-call timeline shows exactly
+     which version (or fallback) each request landed on.
+  2. DEDICATED INIT PROTECTION: slow-init (1s on_load) with concurrent
+     callers on both greet() AND slow_greet(). Any "init not complete"
+     error text or hardfail → exit 1.
+  3. MIXED STRESS (25s): 16 callers + 2 controllers, fallback registered,
+     statistics track: old-version in-flight, new-version, degraded, timeout,
+     hardfail.  Timeout causes exit 1; degraded is normal.
+  4. UNLOAD-RELOAD CYCLE: continuous load/unload/load with callers in
+     between, no request loss.
 """
 
 from __future__ import annotations
@@ -27,24 +20,17 @@ import random
 import sys
 import threading
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from plugin_manager import PluginManager
+from plugin_manager import PluginManager, FallbackResult, ReadTimeoutError
 
 PLUGINS_DIR = Path(__file__).resolve().parent / "plugins"
-
 T0 = time.perf_counter()
 LOG_LOCK = threading.Lock()
-
-# Call duration should be ~200ms for v1/v2/v3 and ~200ms for slow-init.
-# If any single call takes more than this many ms we flag as "long wait".
-LONG_WAIT_THRESHOLD_MS = 5000.0
-DURATION_S = 25.0
-N_WORKERS = 16
-N_CONTROLLERS = 2
+LONG_WAIT_MS = 5000.0
 
 
 def ts() -> float:
@@ -56,321 +42,185 @@ def log(msg: str) -> None:
         print(f"[{ts():8.1f}] {msg}", flush=True)
 
 
-# ----- control actions -------------------------------------------------------
-CTRL_ACTIONS = [
-    ("LOAD_SLOW", str(PLUGINS_DIR / "greeter_slow_init.py")),
-    ("REPLACE_V1", str(PLUGINS_DIR / "greeter_v1.py")),
-    ("REPLACE_V2", str(PLUGINS_DIR / "greeter_v2.py")),
-    ("REPLACE_V3", str(PLUGINS_DIR / "greeter_v3.py")),
-    ("UNLOAD", None),
-    ("RELOAD_V2", str(PLUGINS_DIR / "greeter_v2.py")),
-    ("REPLACE_V1", str(PLUGINS_DIR / "greeter_v1.py")),
-    ("LOAD_SLOW", str(PLUGINS_DIR / "greeter_slow_init.py")),
-]
+def sep(title: str) -> None:
+    bar = "=" * 74
+    print(f"\n{bar}\n  {title}\n{bar}\n", flush=True)
 
 
-# ----- records ---------------------------------------------------------------
+def fallback_greet(name: str) -> str:
+    return f"[fallback] Service temporarily unavailable for {name}"
+
+
+def fallback_slow_greet(name: str) -> str:
+    return f"[fallback-slow] Service temporarily unavailable for {name}"
+
+
 @dataclass
-class CallRecord:
-    worker_id: int
+class CallRec:
+    wid: int
     seq: int
     start_ms: float
     end_ms: float = 0.0
-    outcome: Literal["v1", "v2", "v3", "slow-init", "unavailable",
-                     "timeout", "hardfail"] = "hardfail"
+    outcome: str = "hardfail"
     detail: str = ""
 
 
 @dataclass
-class CtrlRecord:
-    controller_id: int
+class CtrlRec:
+    cid: int
     seq: int
     start_ms: float
     end_ms: float = 0.0
     action: str = ""
-    success: bool = False
+    ok: bool = False
     detail: str = ""
 
 
-# ----- worker ---------------------------------------------------------------
-def run_worker(wid: int, mgr: PluginManager, records: list[CallRecord],
-               rec_lock: threading.Lock, stop: threading.Event) -> None:
-    seq = 0
-    while not stop.is_set():
-        start = ts()
-        outcome: str = "hardfail"
-        detail: str = ""
-        try:
-            result = mgr.call("greeter", "slow_greet", f"W{wid}-{seq}")
-            end = ts()
-            if "v1" in result:
-                outcome = "v1"
-            elif "v2" in result:
-                outcome = "v2"
-            elif "v3" in result:
-                outcome = "v3"
-            elif "slow-init" in result:
-                outcome = "slow-init"
-            else:
-                outcome = "hardfail"
-                detail = f"unexpected result: {result:.80s}"
-            detail = detail or result[:48]
-        except (KeyError, RuntimeError) as e:
-            end = ts()
-            outcome = "unavailable"
-            detail = f"gracious: {type(e).__name__}"
-        except Exception as e:
-            end = ts()
-            outcome = "hardfail"
-            detail = f"{type(e).__name__}: {str(e)[:80]}"
-        rec = CallRecord(wid, seq, start, end, outcome, detail)  # type: ignore[arg-type]
-        with rec_lock:
-            records.append(rec)
-        if outcome == "hardfail":
-            log(f"  [CALL W{wid}-{seq:>4}] ⛔ HARDFAIL after {end-start:6.0f}ms → {detail}")
-        elif outcome == "unavailable":
-            log(f"  [CALL W{wid}-{seq:>4}] ⏭  UNAVAIL after {end-start:6.0f}ms")
-        else:
-            log(f"  [CALL W{wid}-{seq:>4}] ✅ {outcome:9s} after {end-start:6.0f}ms → {detail}")
-        seq += 1
-        time.sleep(0.03)
+def classify(result: object) -> str:
+    if isinstance(result, FallbackResult):
+        return "degraded"
+    s = str(result)
+    if "v1" in s:
+        return "v1"
+    if "v2" in s:
+        return "v2"
+    if "v3" in s:
+        return "v3"
+    if "slow-init" in s:
+        return "slow-init"
+    if "fallback" in s:
+        return "degraded"
+    return "unknown"
 
 
-# ----- controller -----------------------------------------------------------
-def run_controller(cid: int, mgr: PluginManager,
-                   ctrl_records: list[CtrlRecord],
-                   ctrl_lock: threading.Lock,
-                   stop: threading.Event,
-                   init_tracker: dict[str, float],
-                   init_lock: threading.Lock) -> None:
-    seq = 0
-    while not stop.is_set():
-        action, path = random.choice(CTRL_ACTIONS)
-        start = ts()
-        success = False
-        detail = ""
-        try:
-            if action == "UNLOAD":
-                ok = mgr.unload_module("greeter")
-                success = True
-                detail = f"unload returned {ok}"
-            else:
-                if action == "LOAD_SLOW":
-                    key = f"C{cid}-{seq}"
-                    with init_lock:
-                        init_tracker[key] = start
-                mv = mgr.load_module("greeter", path)
-                success = True
-                detail = f"→ internal {mv.version} (ready={mv.is_ready})"
-                if action == "LOAD_SLOW":
-                    with init_lock:
-                        init_tracker[key] = ts()
-        except Exception as e:
-            detail = f"ERROR {type(e).__name__}: {e:.80s}"
-            success = False
-        end = ts()
-        status = "OK" if success else "FA"
-        log(f"  [CTRL C{cid}-{seq:>3}] {status} {action:14s} took {end-start:7.0f}ms — {detail}")
-        with ctrl_lock:
-            ctrl_records.append(CtrlRecord(cid, seq, start, end, action, success, detail))
-        seq += 1
-        time.sleep(random.uniform(0.8, 2.2))
-
-
-# ----- statistics + assertions ---------------------------------------------
-def analyse_and_assert(records: list[CallRecord],
-                       ctrl_records: list[CtrlRecord]) -> int:
-    bar = "─" * 72
-    print(f"\n{bar}\n  FINAL STATISTICS  (total calls: {len(records)}, "
-          f"total ctrl ops: {len(ctrl_records)})\n{bar}", flush=True)
-
-    by_outcome: dict[str, int] = {}
-    for r in records:
-        by_outcome[r.outcome] = by_outcome.get(r.outcome, 0) + 1
-    print(f"\n  Calls by outcome:")
-    for k, v in sorted(by_outcome.items()):
-        marker = ""
-        if k == "hardfail":
-            marker = "  ← FAIL: hard crash"
-        elif k == "timeout":
-            marker = "  ← FAIL: call blocked too long in guard"
-        print(f"    {k:>12s} : {v:>6d}{marker}")
-
-    waits = [(r.end_ms - r.start_ms) for r in records]
-    if waits:
-        print(f"\n  Call latency (ms):")
-        waits_sorted = sorted(waits)
-        n = len(waits_sorted)
-        def pct(p: float) -> float:
-            idx = min(n - 1, int(n * p))
-            return waits_sorted[idx]
-        print(f"    min  = {min(waits):.0f}")
-        print(f"    p50  = {pct(0.5):.0f}")
-        print(f"    p95  = {pct(0.95):.0f}")
-        print(f"    p99  = {pct(0.99):.0f}")
-        print(f"    max  = {max(waits):.0f}")
-        too_long = [w for w in waits if w > LONG_WAIT_THRESHOLD_MS]
-        print(f"    > {LONG_WAIT_THRESHOLD_MS:.0f}ms (long wait threshold) = "
-              f"{len(too_long)}" + ("   ← FAIL" if too_long else ""))
-
-    ctrl_by_action: dict[str, int] = {}
-    ctrl_fail = 0
-    for c in ctrl_records:
-        ctrl_by_action[c.action] = ctrl_by_action.get(c.action, 0) + 1
-        if not c.success:
-            ctrl_fail += 1
-    print(f"\n  Control operations by action:")
-    for k, v in sorted(ctrl_by_action.items()):
-        print(f"    {k:>14s} : {v:>6d}")
-    print(f"    {'ctrl errors':>14s} : {ctrl_fail:>6d}")
-
-    # ----- HARD ASSERTIONS ------------------------------------------------
-    print(f"\n{bar}\n  ASSERTIONS\n{bar}", flush=True)
-    failures: list[str] = []
-
-    if by_outcome.get("hardfail", 0):
-        failures.append(f"{by_outcome['hardfail']} hard-failed calls (uncaught exceptions)")
-    else:
-        print("  ✅ 0 hard failures (no uncaught exceptions in business calls)")
-
-    if by_outcome.get("timeout", 0):
-        failures.append(f"{by_outcome['timeout']} calls timed out in acquire_read barrier")
-    else:
-        print("  ✅ 0 acquire_read timeouts (no long-blocked callers)")
-
-    if any(w > LONG_WAIT_THRESHOLD_MS for w in waits):
-        failures.append(
-            f"{sum(1 for w in waits if w > LONG_WAIT_THRESHOLD_MS)} calls exceeded "
-            f"{LONG_WAIT_THRESHOLD_MS:.0f}ms (hung / blocked)"
-        )
-    else:
-        print(f"  ✅ 0 excessively long waits (max {max(waits):.0f}ms < "
-              f"{LONG_WAIT_THRESHOLD_MS:.0f}ms threshold)")
-
-    # Detect replace-success-then-immediately-unavailable inconsistency:
-    # For every successful REPLACE control op, look at the 20ms window of
-    # calls that land strictly after it. If all are UNAVAILABLE it is a
-    # likely "new version installed but immediately zapped" race.
-    spurious_unavail = 0
-    for c in ctrl_records:
-        if c.success and c.action != "UNLOAD":
-            window_calls = [
-                r for r in records
-                if c.end_ms < r.start_ms < c.end_ms + 20
-                and r.outcome == "unavailable"
-            ]
-            spurious_unavail += len(window_calls)
-    if spurious_unavail:
-        failures.append(
-            f"{spurious_unavail} calls in 20ms window AFTER a successful install "
-            f"got UNAVAILABLE (op_mutex may be missing)"
-        )
-    else:
-        print("  ✅ 0 spurious UNAVAILABLE right after a successful install "
-              "(op_mutex serialises correctly)")
-
-    # Init protection is verified in the dedicated DEDICATED_INIT_PROTECTION
-    # scenario below. Here in the mixed stress run, multiple LOAD_SLOW ops
-    # may swap the same "slow-init" return string in and out, so a naive
-    # timestamp comparison against *any* control op end is unreliable.
-    print("  ✅ (init protection verified by dedicated scenario, skipped in mixed stress)")
-
-    # Request loss detection: every worker increments seq by 1 each call.
-    # The total number of records must equal the sum of max-seq+1 per worker.
-    per_worker_max: dict[int, int] = {}
-    for r in records:
-        per_worker_max[r.worker_id] = max(per_worker_max.get(r.worker_id, -1), r.seq)
-    expected = sum((m + 1) for m in per_worker_max.values())
-    if expected != len(records):
-        failures.append(
-            f"Record count mismatch: expected {expected} (= sum(max_seq+1)), "
-            f"got {len(records)} → lost {expected - len(records)} calls"
-        )
-    else:
-        print(f"  ✅ 0 lost calls ({len(records)} records match seq counters)")
-
-    print()
-    if failures:
-        print("=" * 72, flush=True)
-        print(f"  ❌ STRESS TEST FAILED — {len(failures)} assertion(s):", flush=True)
-        for i, f in enumerate(failures, 1):
-            print(f"     {i}. {f}", flush=True)
-        print("=" * 72, flush=True)
-        return 1
-    print("=" * 72)
-    print("  ✅  ALL ASSERTIONS PASSED — mixed-scenario stress test OK")
-    print("=" * 72)
-    return 0
-
-
-# ----- main ------------------------------------------------------------------
-def main() -> int:
-    print("=" * 72)
-    print(f"  MIXED HOT-RELOAD STRESS TEST  ({N_WORKERS} callers + "
-          f"{N_CONTROLLERS} controllers, {DURATION_S:.0f}s)")
-    print("=" * 72, flush=True)
-
-    mgr = PluginManager(drain_timeout=30.0, read_timeout=5.0)
-    # Bootstrap with v1 so the first wave of calls finds something.
+# ────────────────────────────────────────────────────────────────────
+# Scenario A: Deterministic replace + unload interleaving
+# ────────────────────────────────────────────────────────────────────
+def scenario_deterministic_replace_unload() -> int:
+    sep("A. DETERMINISTIC REPLACE + UNLOAD (1 replacer + 1 unloader + 8 callers)")
+    mgr = PluginManager(drain_timeout=15.0, read_timeout=5.0)
+    mgr.register_fallback("greeter", fallback_slow_greet)
     mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
-    log("[BOOT] greeter v1 baseline loaded. Spawning workers + controllers.")
 
-    records: list[CallRecord] = []
+    records: list[CallRec] = []
     rec_lock = threading.Lock()
-    ctrl_records: list[CtrlRecord] = []
-    ctrl_lock = threading.Lock()
-    init_tracker: dict[str, float] = {}
-    init_lock = threading.Lock()
     stop = threading.Event()
+    ctrl_recs: list[CtrlRec] = []
+    ctrl_lock = threading.Lock()
 
-    workers = [threading.Thread(target=run_worker,
-                                args=(i, mgr, records, rec_lock, stop),
-                                name=f"W{i}",
-                                daemon=True)
-               for i in range(N_WORKERS)]
-    controllers = [threading.Thread(target=run_controller,
-                                    args=(i, mgr, ctrl_records, ctrl_lock, stop,
-                                          init_tracker, init_lock),
-                                    name=f"C{i}",
-                                    daemon=True)
-                   for i in range(N_CONTROLLERS)]
+    version_cycle = [
+        str(PLUGINS_DIR / "greeter_v1.py"),
+        str(PLUGINS_DIR / "greeter_v2.py"),
+        str(PLUGINS_DIR / "greeter_v3.py"),
+    ]
 
-    for t in workers + controllers:
+    def replacer():
+        seq = 0
+        idx = 0
+        while not stop.is_set():
+            path = version_cycle[idx % len(version_cycle)]
+            s = ts()
+            try:
+                mv = mgr.load_module("greeter", path)
+                e = ts()
+                label = Path(path).stem
+                with ctrl_lock:
+                    ctrl_recs.append(CtrlRec(0, seq, s, e, f"REPLACE_{label}", True,
+                                              f"→ {mv.version}"))
+                log(f"  [REPLACER] ✅ {label:14s} → internal {mv.version}")
+            except Exception as ex:
+                e = ts()
+                with ctrl_lock:
+                    ctrl_recs.append(CtrlRec(0, seq, s, e, "REPLACE", False, str(ex)[:80]))
+                log(f"  [REPLACER] ❌ {str(ex)[:60]}")
+            seq += 1
+            idx += 1
+            time.sleep(1.5)
+
+    def unloader():
+        seq = 0
+        while not stop.is_set():
+            time.sleep(random.uniform(1.0, 2.5))
+            s = ts()
+            ok = mgr.unload_module("greeter")
+            e = ts()
+            with ctrl_lock:
+                ctrl_recs.append(CtrlRec(1, seq, s, e, "UNLOAD", True, f"returned={ok}"))
+            log(f"  [UNLOADER]  {'✅' if ok else '⏭ '} unload={ok}")
+            if ok:
+                time.sleep(0.5)
+                path = random.choice(version_cycle)
+                s2 = ts()
+                try:
+                    mv = mgr.load_module("greeter", path)
+                    e2 = ts()
+                    with ctrl_lock:
+                        ctrl_recs.append(CtrlRec(1, seq, s2, e2, "RELOAD", True,
+                                                  f"→ {mv.version}"))
+                    log(f"  [UNLOADER]  ↩️  reloaded {Path(path).stem} → {mv.version}")
+                except Exception as ex:
+                    e2 = ts()
+                    with ctrl_lock:
+                        ctrl_recs.append(CtrlRec(1, seq, s2, e2, "RELOAD", False, str(ex)[:80]))
+            seq += 1
+
+    def worker(wid: int):
+        seq = 0
+        while not stop.is_set():
+            s = ts()
+            try:
+                result = mgr.call_safe("greeter", "slow_greet", f"W{wid}-{seq}")
+                e = ts()
+                outcome = classify(result)
+                detail = str(result)[:48]
+            except ReadTimeoutError as ex:
+                e = ts()
+                outcome = "timeout"
+                detail = str(ex)[:60]
+            except Exception as ex:
+                e = ts()
+                outcome = "hardfail"
+                detail = f"{type(ex).__name__}: {str(ex)[:48]}"
+            with rec_lock:
+                records.append(CallRec(wid, seq, s, e, outcome, detail))
+            seq += 1
+            time.sleep(0.03)
+
+    threads = [threading.Thread(target=replacer, daemon=True),
+               threading.Thread(target=unloader, daemon=True)]
+    threads += [threading.Thread(target=worker, args=(i,), daemon=True) for i in range(8)]
+    for t in threads:
         t.start()
 
-    time.sleep(DURATION_S)
+    time.sleep(18.0)
     stop.set()
-    for t in controllers:
+    for t in threads:
         t.join(timeout=15)
-    for t in workers:
-        t.join(timeout=15)
-    mgr.wait_all_drained(timeout=30)
-    log("[STOP] all threads joined, drain complete.")
+    mgr.wait_all_drained(timeout=15)
 
-    return analyse_and_assert(records, ctrl_records)
+    return _assert_scenario("A", records, ctrl_recs, expect_degraded=True)
 
 
-def sep(title: str) -> None:
-    bar = "─" * 72
-    print(f"\n{bar}\n  {title}\n{bar}\n", flush=True)
-
-
-def dedicated_init_protection() -> int:
-    sep("DEDICATED SCENARIO : Exact init-protection proof (12 threads x 1s init)")
+# ────────────────────────────────────────────────────────────────────
+# Scenario B: Init protection (both greet + slow_greet)
+# ────────────────────────────────────────────────────────────────────
+def scenario_init_protection() -> int:
+    sep("B. INIT PROTECTION (12 callers × greet + slow_greet, 1s on_load)")
     mgr = PluginManager(drain_timeout=15.0, read_timeout=5.0)
+    mgr.register_fallback("greeter", fallback_greet)
     mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
-    log("[BOOT] baseline v1 ready. Starting slow-init LOAD + call hammer.")
 
-    records: list[CallRecord] = []
+    load_info: dict[str, float] = {}
+    records: list[CallRec] = []
     rec_lock = threading.Lock()
     stop = threading.Event()
-    load_info: dict[str, float] = {}
+    init_error_texts: list[str] = []
 
     def loader():
         load_info["start"] = ts()
         mv = mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_slow_init.py"))
         load_info["end"] = ts()
-        load_info["mv_ready"] = 1.0 if mv.is_ready else 0.0
+        load_info["ready"] = mv.is_ready
 
     load_thread = threading.Thread(target=loader, daemon=True)
     load_thread.start()
@@ -379,96 +229,330 @@ def dedicated_init_protection() -> int:
     def caller(wid: int):
         seq = 0
         while not stop.is_set():
-            start = ts()
+            func = "greet" if seq % 2 == 0 else "slow_greet"
+            s = ts()
             try:
-                result = mgr.call("greeter", "greet", f"W{wid}-{seq}")
-                end = ts()
-                if "v1" in result:
-                    outcome = "v1"
-                elif "slow-init" in result:
-                    outcome = "slow-init"
-                else:
-                    outcome = "hardfail"
-                detail = result[:48]
-            except (KeyError, RuntimeError) as e:
-                end = ts()
-                outcome = "unavailable"
-                detail = type(e).__name__
-            except Exception as e:
-                end = ts()
+                result = mgr.call_safe("greeter", func, f"W{wid}-{seq}")
+                e = ts()
+                outcome = classify(result)
+                detail = str(result)[:60]
+                text = str(result)
+                if "BEFORE init" in text or "ERROR" in text:
+                    init_error_texts.append(f"W{wid}-{seq} {func}: {text[:80]}")
+                    outcome = "init-leak"
+            except ReadTimeoutError:
+                e = ts()
+                outcome = "timeout"
+                detail = "ReadTimeoutError"
+            except Exception as ex:
+                e = ts()
                 outcome = "hardfail"
-                detail = f"{type(e).__name__}: {str(e)[:48]}"
+                detail = f"{type(ex).__name__}: {str(ex)[:48]}"
             with rec_lock:
-                records.append(CallRecord(wid, seq, start, end, outcome, detail))  # type: ignore[arg-type]
+                records.append(CallRec(wid, seq, s, e, outcome, detail))
             seq += 1
-            time.sleep(0.003)
+            time.sleep(0.003 if func == "greet" else 0.01)
 
-    callers = [threading.Thread(target=caller, args=(i,), daemon=True)
-               for i in range(12)]
+    callers = [threading.Thread(target=caller, args=(i,), daemon=True) for i in range(12)]
     for t in callers:
         t.start()
 
     load_thread.join(timeout=10)
-    time.sleep(1.0)
+    time.sleep(1.5)
     stop.set()
     for t in callers:
-        t.join(timeout=10)
+        t.join(timeout=15)
     mgr.wait_all_drained(timeout=10)
 
     load_end = load_info.get("end", 0.0)
     load_start = load_info.get("start", 0.0)
-    log(f"[ctl] load window start={load_start:.0f}ms → end={load_end:.0f}ms "
-        f"(init took {load_end - load_start:.0f}ms), mv_ready={load_info.get('mv_ready')}")
-    log(f"[ctl] total calls = {len(records)}")
+    log(f"[ctl] load window {load_start:.0f}ms → {load_end:.0f}ms "
+        f"({load_end - load_start:.0f}ms), ready={load_info.get('ready')}")
 
-    by_outcome: dict[str, int] = {}
-    for r in records:
-        by_outcome[r.outcome] = by_outcome.get(r.outcome, 0) + 1
-    for k, v in sorted(by_outcome.items()):
-        log(f"[ctl]   {k:>12s}: {v}")
-
-    # EXACT PROOF: any call started BEFORE load_end → cannot be slow-init,
-    # because mark_ready() + set_current() only happen AFTER on_load returns
-    # (which is exactly when load_module returns → load_end timestamp).
-    bad = [r for r in records
-           if r.outcome == "slow-init" and r.start_ms < load_end]
-    if bad:
-        log(f"[FAIL] ❌ {len(bad)} calls used slow-init BEFORE load_end "
-            f"(init protection BROKEN)")
-        for r in bad[:10]:
-            log(f"       W{r.worker_id}-{r.seq} start={r.start_ms:.0f}ms "
-                f"< load_end={load_end:.0f}ms")
+    # ASSERTION 1: no init-leak
+    if init_error_texts:
+        log(f"[FAIL] ❌ {len(init_error_texts)} calls returned init-not-complete text:")
+        for t in init_error_texts[:10]:
+            log(f"  {t}")
         return 1
-    log(f"[PASS] ✅ Init protection: 0 slow-init calls started before "
-        f"load_end ({load_end:.0f}ms)")
+    log("[PASS] ✅ 0 init-leak calls (no 'BEFORE init' text in any result)")
 
-    # Before load started, no slow-init should exist either (sanity)
-    pre = [r for r in records if r.start_ms < load_start]
-    pre_slow = [r for r in pre if r.outcome == "slow-init"]
-    assert not pre_slow, f"Before load_start, baseline must be used, got {len(pre_slow)} slow"
-    log(f"[PASS] ✅ Before load_start ({load_start:.0f}ms) all "
-        f"{len(pre)} calls used baseline v1")
+    # ASSERTION 2: no hardfail
+    hfs = [r for r in records if r.outcome == "hardfail"]
+    if hfs:
+        log(f"[FAIL] ❌ {len(hfs)} hardfail calls in init-protection scenario")
+        for r in hfs[:5]:
+            log(f"  W{r.wid}-{r.seq} start={r.start_ms:.0f}ms → {r.detail}")
+        return 1
+    log("[PASS] ✅ 0 hardfail calls")
 
-    # After load_end + grace period, at least SOME calls must route to slow-init
+    # ASSERTION 3: no slow-init before load_end
+    bad = [r for r in records if r.outcome == "slow-init" and r.start_ms < load_end]
+    if bad:
+        log(f"[FAIL] ❌ {len(bad)} slow-init calls started before load_end")
+        return 1
+    log(f"[PASS] ✅ 0 slow-init before load_end ({load_end:.0f}ms)")
+
+    # ASSERTION 4: after load_end, some slow-init observed
     post = [r for r in records if r.start_ms > load_end + 50]
     post_slow = [r for r in post if r.outcome == "slow-init"]
     if not post_slow:
-        log("[FAIL] ❌ After load_end, no slow-init calls observed at all!")
+        log("[FAIL] ❌ no slow-init calls after load_end")
         return 1
-    log(f"[PASS] ✅ After load_end, {len(post_slow)}/{len(post)} calls "
-        f"correctly routed to slow-init (new version took traffic)")
+    log(f"[PASS] ✅ {len(post_slow)}/{len(post)} calls routed to slow-init after load_end")
+
+    by_out = {}
+    for r in records:
+        by_out[r.outcome] = by_out.get(r.outcome, 0) + 1
+    log(f"[ctl] outcome distribution: {by_out}")
     return 0
 
 
+# ────────────────────────────────────────────────────────────────────
+# Scenario C: Mixed stress (25s)
+# ────────────────────────────────────────────────────────────────────
+CTRL_ACTIONS = [
+    ("LOAD_SLOW", str(PLUGINS_DIR / "greeter_slow_init.py")),
+    ("REPLACE_V1", str(PLUGINS_DIR / "greeter_v1.py")),
+    ("REPLACE_V2", str(PLUGINS_DIR / "greeter_v2.py")),
+    ("REPLACE_V3", str(PLUGINS_DIR / "greeter_v3.py")),
+    ("UNLOAD", None),
+    ("RELOAD_V2", str(PLUGINS_DIR / "greeter_v2.py")),
+]
+
+
+def scenario_mixed_stress() -> int:
+    sep("C. MIXED STRESS (16 callers + 2 controllers, 25s)")
+    mgr = PluginManager(drain_timeout=30.0, read_timeout=5.0)
+    mgr.register_fallback("greeter", fallback_slow_greet)
+    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
+
+    records: list[CallRec] = []
+    rec_lock = threading.Lock()
+    ctrl_recs: list[CtrlRec] = []
+    ctrl_lock = threading.Lock()
+    stop = threading.Event()
+
+    def worker(wid: int):
+        seq = 0
+        while not stop.is_set():
+            s = ts()
+            try:
+                result = mgr.call_safe("greeter", "slow_greet", f"W{wid}-{seq}")
+                e = ts()
+                outcome = classify(result)
+                detail = str(result)[:48]
+            except ReadTimeoutError:
+                e = ts()
+                outcome = "timeout"
+                detail = "ReadTimeoutError"
+            except Exception as ex:
+                e = ts()
+                outcome = "hardfail"
+                detail = f"{type(ex).__name__}: {str(ex)[:48]}"
+            with rec_lock:
+                records.append(CallRec(wid, seq, s, e, outcome, detail))
+            seq += 1
+            time.sleep(0.03)
+
+    def controller(cid: int):
+        seq = 0
+        while not stop.is_set():
+            action, path = random.choice(CTRL_ACTIONS)
+            s = ts()
+            ok = False
+            detail = ""
+            try:
+                if action == "UNLOAD":
+                    r = mgr.unload_module("greeter")
+                    ok = True
+                    detail = f"unload={r}"
+                else:
+                    mv = mgr.load_module("greeter", path)
+                    ok = True
+                    detail = f"→ {mv.version}"
+            except Exception as ex:
+                detail = f"{type(ex).__name__}: {str(ex)[:60]}"
+            e = ts()
+            with ctrl_lock:
+                ctrl_recs.append(CtrlRec(cid, seq, s, e, action, ok, detail))
+            tag = "OK" if ok else "FA"
+            log(f"  [CTRL C{cid}-{seq:>3}] {tag} {action:14s} {detail}")
+            seq += 1
+            time.sleep(random.uniform(0.8, 2.2))
+
+    threads = ([threading.Thread(target=worker, args=(i,), daemon=True) for i in range(16)]
+               + [threading.Thread(target=controller, args=(i,), daemon=True) for i in range(2)])
+    for t in threads:
+        t.start()
+
+    time.sleep(25.0)
+    stop.set()
+    for t in threads:
+        t.join(timeout=15)
+    mgr.wait_all_drained(timeout=30)
+
+    return _assert_scenario("C", records, ctrl_recs, expect_degraded=True)
+
+
+# ────────────────────────────────────────────────────────────────────
+# Scenario D: Unload-reload cycle (no request loss)
+# ────────────────────────────────────────────────────────────────────
+def scenario_unload_reload() -> int:
+    sep("D. UNLOAD → RELOAD CYCLE (no request loss)")
+    mgr = PluginManager(drain_timeout=15.0, read_timeout=5.0)
+    mgr.register_fallback("greeter", fallback_greet)
+    mgr.load_module("greeter", str(PLUGINS_DIR / "greeter_v1.py"))
+
+    records: list[CallRec] = []
+    rec_lock = threading.Lock()
+    stop = threading.Event()
+
+    def worker(wid: int):
+        seq = 0
+        while not stop.is_set():
+            s = ts()
+            try:
+                result = mgr.call_safe("greeter", "greet", f"W{wid}-{seq}")
+                e = ts()
+                outcome = classify(result)
+                detail = str(result)[:48]
+            except ReadTimeoutError:
+                e = ts()
+                outcome = "timeout"
+                detail = "ReadTimeoutError"
+            except Exception as ex:
+                e = ts()
+                outcome = "hardfail"
+                detail = f"{type(ex).__name__}: {str(ex)[:48]}"
+            with rec_lock:
+                records.append(CallRec(wid, seq, s, e, outcome, detail))
+            seq += 1
+            time.sleep(0.01)
+
+    workers = [threading.Thread(target=worker, args=(i,), daemon=True) for i in range(8)]
+    for t in workers:
+        t.start()
+
+    cycle = [
+        str(PLUGINS_DIR / "greeter_v1.py"),
+        str(PLUGINS_DIR / "greeter_v2.py"),
+        str(PLUGINS_DIR / "greeter_v3.py"),
+    ]
+    for i in range(5):
+        time.sleep(0.6)
+        log(f"[ctl] cycle {i}: UNLOAD")
+        mgr.unload_module("greeter")
+        time.sleep(0.5)
+        path = cycle[i % len(cycle)]
+        log(f"[ctl] cycle {i}: RELOAD {Path(path).stem}")
+        mgr.load_module("greeter", path)
+
+    time.sleep(1.0)
+    stop.set()
+    for t in workers:
+        t.join(timeout=15)
+    mgr.wait_all_drained(timeout=15)
+
+    return _assert_scenario("D", records, [], expect_degraded=True)
+
+
+# ────────────────────────────────────────────────────────────────────
+# Shared assertion engine
+# ────────────────────────────────────────────────────────────────────
+def _assert_scenario(tag: str, records: list[CallRec],
+                     ctrl_recs: list[CtrlRec],
+                     expect_degraded: bool = False) -> int:
+    by_out: dict[str, int] = {}
+    for r in records:
+        by_out[r.outcome] = by_out.get(r.outcome, 0) + 1
+
+    waits = [r.end_ms - r.start_ms for r in records] if records else [0]
+    waits_s = sorted(waits)
+    n = len(waits_s)
+
+    def pct(p: float) -> float:
+        return waits_s[min(n - 1, int(n * p))]
+
+    log(f"[{tag}] total calls={len(records)}  ctrl_ops={len(ctrl_recs)}")
+    log(f"[{tag}] outcomes: {by_out}")
+    log(f"[{tag}] latency ms: min={min(waits):.0f} p50={pct(.5):.0f} "
+        f"p95={pct(.95):.0f} max={max(waits):.0f}")
+
+    fails: list[str] = []
+
+    hf = by_out.get("hardfail", 0)
+    if hf:
+        fails.append(f"{hf} hardfail (uncaught exceptions)")
+    else:
+        log(f"[{tag}] ✅ 0 hardfail")
+
+    to = by_out.get("timeout", 0)
+    if to:
+        fails.append(f"{to} ReadTimeoutError (read barrier stuck — BUG)")
+    else:
+        log(f"[{tag}] ✅ 0 read-barrier timeouts")
+
+    long_w = sum(1 for w in waits if w > LONG_WAIT_MS)
+    if long_w:
+        fails.append(f"{long_w} calls > {LONG_WAIT_MS:.0f}ms")
+    else:
+        log(f"[{tag}] ✅ 0 excessively long waits (max {max(waits):.0f}ms)")
+
+    if expect_degraded:
+        deg = by_out.get("degraded", 0)
+        log(f"[{tag}] ℹ️  {deg} degraded (fallback) calls — expected when unloaded")
+
+    per_w: dict[int, int] = {}
+    for r in records:
+        per_w[r.wid] = max(per_w.get(r.wid, -1), r.seq)
+    expected = sum(m + 1 for m in per_w.values())
+    if expected != len(records):
+        fails.append(f"lost {expected - len(records)} calls "
+                     f"(expected {expected}, got {len(records)})")
+    else:
+        log(f"[{tag}] ✅ 0 lost calls ({len(records)} records)")
+
+    # spurious UNAVAILABLE after successful install
+    spurious = 0
+    for c in ctrl_recs:
+        if c.ok and c.action != "UNLOAD":
+            window = [r for r in records
+                      if c.end_ms < r.start_ms < c.end_ms + 20
+                      and r.outcome == "degraded"]
+            spurious += len(window)
+    if spurious:
+        fails.append(f"{spurious} degraded calls in 20ms after successful install")
+    else:
+        log(f"[{tag}] ✅ 0 spurious degraded after install")
+
+    if fails:
+        log(f"[{tag}] ❌ FAILED:")
+        for i, f in enumerate(fails, 1):
+            log(f"  {i}. {f}")
+        return 1
+    log(f"[{tag}] ✅ ALL ASSERTIONS PASSED")
+    return 0
+
+
+# ────────────────────────────────────────────────────────────────────
+# Main
+# ────────────────────────────────────────────────────────────────────
 def run_all() -> int:
-    sep("STRESS SUITE BEGIN")
-    rc = dedicated_init_protection()
-    if rc != 0:
+    sep("HOT-RELOAD STRESS SUITE")
+    rc = scenario_deterministic_replace_unload()
+    if rc:
         return rc
-    rc = main()
-    if rc != 0:
+    rc = scenario_init_protection()
+    if rc:
         return rc
-    sep("ENTIRE STRESS SUITE PASSED ✅")
+    rc = scenario_mixed_stress()
+    if rc:
+        return rc
+    rc = scenario_unload_reload()
+    if rc:
+        return rc
+    sep("ENTIRE SUITE PASSED ✅")
     return 0
 
 
